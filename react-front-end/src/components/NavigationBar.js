@@ -13,7 +13,7 @@ function NavigationBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <NavLink eventKey="1" as={Link} to="/">
-              Wixwing
+              Waxwing
             </NavLink>
           </Nav>
           <Nav>
