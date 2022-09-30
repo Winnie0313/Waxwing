@@ -55,3 +55,7 @@ button {
   color: white;
   text-decoration: underline;
 }
+
+.footer-containe {
+  margin-bottom: 1rem;
+}
