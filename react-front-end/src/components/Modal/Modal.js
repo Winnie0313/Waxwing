@@ -2,6 +2,8 @@ import React from "react";
 
 function Modal() {
 
+// make sure to add state to this component, related to each of the cards on pages
+
   return (
     <div className="modal-background">
       <div className="modal">
