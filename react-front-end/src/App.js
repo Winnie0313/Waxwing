@@ -7,7 +7,7 @@ import Homepage from "./components/Homepage";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Search from "./components/Search";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
         </Routes>
       </Router>
+      <Footer />
     </div>
   );
 }
