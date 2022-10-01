@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NewCoktailCSS from "./NewCocktail.module.css";
-import "./style.scss";
 
 function NewCocktail() {
   const navigate = useNavigate();
