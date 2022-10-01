@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
+import NewCocktail from "./components/NewCocktail";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <NavigationBar />
         <Routes>
           <Route exact path="/" element={<Homepage />} />
+          <Route path="/NewCocktail" element={<NewCocktail />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
         </Routes>
