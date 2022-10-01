@@ -11,7 +11,15 @@ App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
 App.use(Express.static('public'));
 
-// Routes
+// renders the homepage
+// App.get('/', (req, res) => {
+//   axios.get('https://www.thecocktaildb.com/api/json/v2/9973533/popular.php')
+//     .then((response) => {
+//       console.log(response.data)
+//     })
+//     .catch((err) => 
+//     console.log(err))
+// })
 
 const usersRoutes = require('./routes/users');
 const favouritesRoutes = require('./routes/favourites');
