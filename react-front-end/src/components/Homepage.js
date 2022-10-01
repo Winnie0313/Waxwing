@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Search from "./Search";
 import styled from "styled-components";
+import Button from 'react-bootstrap/Button';
 const axios = require('axios');
 
 
@@ -14,10 +15,7 @@ function Homepage() {
 
   const getPopular = () => {
       axios.get(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/popular.php`)
-        .then((response) => {
-          console.log("I am here!")
-          console.log(response.data.drinks)
-          
+        .then((response) => { 
           setPopular(response.data.drinks)
           
         })
@@ -34,6 +32,8 @@ function Homepage() {
             <Card>
               <p>{cocktail.strDrink}</p>
               <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+              <Button variant="light">More Detials</Button>
+
             </Card>
           )
         })}
