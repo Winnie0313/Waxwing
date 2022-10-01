@@ -53,18 +53,25 @@ function Homepage() {
 }
 
 const Wrapper = styled.div`
-  flex-direction: column;
+  font-size: 25px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 `;
 
 const Card = styled.div`
+  width: auto;  
+  margin: 10px;
   min-height: 25rem;
   border-radius: 2rem;
 
   img{
-    border-radius: 2rem
+    max-width: 100%; 
+    max-height: 100%;
+    border-radius: 2rem;
   }
 `;
 
+// max-width: 100%; 
 
 
 export default Homepage;
