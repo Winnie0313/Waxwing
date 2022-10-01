@@ -3,7 +3,7 @@ import axios from "axios";
 import "./App.css";
 import NavigationBar from "./components/NavigationBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import MaybeHome from "./components/MaybeHome";
+import Homepage from "./components/Homepage";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -14,7 +14,7 @@ function App() {
       <Router>
         <NavigationBar />
         <Routes>
-          <Route exact path="/" element={<MaybeHome />} />
+          <Route exact path="/" element={<Homepage />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
         </Routes>
