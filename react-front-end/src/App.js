@@ -7,6 +7,7 @@ import Homepage from "./components/Homepage";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Search from "./components/Search";
 
 function App() {
   return (

@@ -14,17 +14,20 @@ function Homepage() {
   },[]);
 
   const getPopular = () => {
-    const check = localStorage.getItem("popular");
+    // const check = localStorage.getItem("popular");
 
-    if (check) {
-      setPopular(JSON.parse(check))
-    } else {
+    // if (check) {
+    //   setPopular(JSON.parse(check))
+    // } else {
       axios.get(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/popular.php`)
         .then((response) => {
+          console.log("I am here!")
+          console.log(response.data.drinks)
           setPopular(response.data.drinks)
+          // localStorage.getItem("popular", response.data.drinks)
         })
         .catch((err) => console.log(err))
-    }
+    // }
 
 
 
@@ -32,22 +35,36 @@ function Homepage() {
   }
   return (
     <div>
-      <h1> Popular Picks</h1>
-      {popular.map( cocktail => {
-        return(
-          <Card>
-            <p>{cocktail.strDrink}</p>
-            <img src={cocktail.strImageSource} alt={cocktail.strDrink} />
-          </Card>
-        )
-      })}
       <Search />
+      <h1> Popular Picks</h1>
+      <Wrapper>
+        {popular.map( cocktail => {
+          return(
+            <Card>
+              <p>{cocktail.strDrink}</p>
+              <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+            </Card>
+          )
+        })}
+      </Wrapper>
+      
     </div>
   );
 }
 
+const Wrapper = styled.div`
+  flex-direction: column;
+`;
+
 const Card = styled.div`
   min-height: 25rem;
   border-radius: 2rem;
-`
+
+  img{
+    border-radius: 2rem
+  }
+`;
+
+
+
 export default Homepage;
