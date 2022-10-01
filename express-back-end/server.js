@@ -3,6 +3,8 @@ const App = Express();
 const BodyParser = require('body-parser');
 const { application } = require('express');
 const PORT = 8001;
+const knexConfig = require('./knexfile');
+const knex = require('knex')(knexConfig);
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
