@@ -17,6 +17,9 @@ function NavigationBar() {
             </NavLink>
           </Nav>
           <Nav>
+            <NavLink eventKey="2" as={Link} to="/NewCocktail">
+              Add New Cocktail
+            </NavLink>
             <NavLink eventKey="2" as={Link} to="/Register">
               Register
             </NavLink>
