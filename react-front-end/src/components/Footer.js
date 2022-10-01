@@ -1,11 +1,12 @@
 import React from "react";
+import "./Styles-login-reg.css";
 
 import { BsFacebook, BsTwitter, BsGithub } from "react-icons/bs";
 
 function Footer() {
   return (
-    <div className="fixed-bottom ftr">
-      <footer className="footer mt-auto py-4 bg-dark text-white">
+    <div className="fixed-bottom ftr" style={{ marginTop: "10rem" }}>
+      <footer className="footer mt-auto py-2 bg-dark text-white">
         <div>
           <a href="https://www.facebook.com/" className="me-5 text-reset">
             <BsFacebook size="2em" color="#4267B1" />
