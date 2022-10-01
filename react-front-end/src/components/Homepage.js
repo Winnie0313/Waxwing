@@ -3,7 +3,6 @@ import Search from "./Search";
 import styled from "styled-components";
 const axios = require('axios');
 
-// `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/popular.php`
 
 function Homepage() {
   const [popular, setPopular] = useState([]);
@@ -14,25 +13,17 @@ function Homepage() {
   },[]);
 
   const getPopular = () => {
-    // const check = localStorage.getItem("popular");
-
-    // if (check) {
-    //   setPopular(JSON.parse(check))
-    // } else {
       axios.get(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/popular.php`)
         .then((response) => {
           console.log("I am here!")
           console.log(response.data.drinks)
+          
           setPopular(response.data.drinks)
-          // localStorage.getItem("popular", response.data.drinks)
+          
         })
         .catch((err) => console.log(err))
-    // }
-
-
-
-    
   }
+
   return (
     <div>
       <Search />
@@ -56,6 +47,7 @@ const Wrapper = styled.div`
   font-size: 25px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 100px 50px;
 `;
 
 const Card = styled.div`
@@ -71,7 +63,6 @@ const Card = styled.div`
   }
 `;
 
-// max-width: 100%; 
 
 
 export default Homepage;
