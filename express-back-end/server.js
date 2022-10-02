@@ -3,8 +3,8 @@ const App = Express();
 const BodyParser = require('body-parser');
 const { application } = require('express');
 const PORT = 8001;
-const knexConfig = require('./knexfile');
-const knex = require('knex')(knexConfig);
+// const knexConfig = require('./knexfile');
+// const knex = require('knex')(knexConfig);
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
@@ -26,8 +26,8 @@ const favouritesRoutes = require('./routes/favourites');
 
 // API Routes
 
-App.use('/api/users', usersRoutes(knex));
-App.use('/api/favourites', favouritesRoutes(knex));
+// App.use('/api/users', usersRoutes(knex));
+// App.use('/api/favourites', favouritesRoutes(knex));
 
 // Server Activation
 
