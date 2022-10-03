@@ -56,6 +56,53 @@ button {
   text-decoration: underline;
 }
 
+/* /// footer styles */
+.foooter {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
 .footer-containe {
   margin-bottom: 1rem;
+}
+.footerr {
+  /* background-color: red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.copyright {
+  margin-left: 4rem;
+}
+.icons {
+  display: flex;
+  /* background-color: blue; */
+  margin-right: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .footerr {
+    /* background-color: red; */
+    margin-top: -1rem;
+    margin-bottom: -1rem;
+    justify-content: space-around;
+  }
+  .copyright {
+    margin-right: 1rem;
+  }
+  .icons {
+    display: flex;
+    /* background-color: blue; */
+    margin-right: 0rem;
+  }
+  .copyright {
+    font-size: 0.8rem;
+    margin-top: 0.8rem;
+    padding: 0;
+    margin-left: 10px;
+    margin-right: -1px;
+  }
 }
