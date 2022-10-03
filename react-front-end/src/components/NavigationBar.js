@@ -63,6 +63,9 @@ function NavigationBar() {
             <NavLink eventKey="3" as={Link} to="/Login">
               Login
             </NavLink>
+            <NavLink eventKey="4" as={Link} to="/Favourites">
+              Favourites
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
