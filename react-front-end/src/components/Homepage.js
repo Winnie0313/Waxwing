@@ -15,14 +15,11 @@ function Homepage() {
 
   const [popular, setPopular] = useState([]);
   const [modalView, setModalView] = useState(false);
-  const [drinkId, setDrinkId] = useState(0);
   const [drinkObject, setDrinkObject] = useState({});
   
 
   useEffect(() => {
     getPopular();
-    singleDrinkId();
-    singleDrink();
   },[]);
 
   const getPopular = () => {
@@ -34,21 +31,18 @@ function Homepage() {
         .catch((err) => console.log(err))
   }
 
+  // Modal helper to dynamically render components of modal
+  const singleDrinkId = (id) => {
+    
+    const drink = popular.find((drink) => drink.idDrink === id);
+
+    setDrinkObject(drink)
+  }
+  
+  // Modal helper that sets the drinkObject and modalView state
   const handleModal = (id) => {
+    singleDrinkId(id);
     setModalView(true);
-    setDrinkId(id);
-  }
-
-  const singleDrinkId = () => {
-    popular.find((drink) => drink.idDrink === drinkId);
-  }
-
-  const singleDrink = () => {
-    axios.get(`https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/lookup.php?i=${drinkId}`)
-      .then((response) => {
-        setDrinkObject(response.data.drinks[0]);
-      })
-      .catch((err) => console.log(err))
   }
 
   return (
@@ -56,7 +50,6 @@ function Homepage() {
       <Search />
       <h1> Popular Picks</h1>
       <Wrapper>
-        {console.log(popular)}
         
         {popular.map( cocktail => {
           return(
@@ -67,27 +60,21 @@ function Homepage() {
                   <h6> {cocktail.strCategory} </h6>
                   <h4> {cocktail.strDrink}</h4>
                 {/* </Link> */}
-              <Button onClick={() => handleModal(cocktail.idDrink)}>View</Button>
-
-              
+                <Button onClick={() => handleModal(cocktail.idDrink)}>View</Button>
               </Card>
-
-
-
-
             </>
 
             )
           }
         )}
 
-{/* <CentredModal 
-  show={modalView}
-  onHide={() => setModalView(false)}
-  title={singleDrink.strDrink}
-  image={singleDrink.strDrinkThumb}
-  instructions={singleDrink.strInstructions}
-/> */}
+      <CentredModal 
+        show={modalView}
+        onHide={() => setModalView(false)}
+        title={drinkObject.strDrink}
+        image={drinkObject.strDrinkThumb}
+        instructions={drinkObject.strInstructions}
+      />
       </Wrapper>
       
     </div>

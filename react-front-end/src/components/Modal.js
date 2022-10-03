@@ -26,7 +26,7 @@ function CentredModal(props) {
     </Modal.Body>
 
     <Modal.Footer>
-      <button onClick={props.onHide}>Close</button>
+      <h6>Like what you see?</h6>
     </Modal.Footer>
 
     </Modal>
