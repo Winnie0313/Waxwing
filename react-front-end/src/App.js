@@ -24,10 +24,10 @@ function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/drink/:type" element={<Drink />} />
-          <Route path="/searched" element={<Searched />} />
+          <Route path="/searched/:search" element={<Searched />} />
         </Routes>
+        <Footer />
       </Router>
-      <Footer />
     </div>
   );
 }

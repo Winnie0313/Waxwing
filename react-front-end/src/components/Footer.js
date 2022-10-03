@@ -6,9 +6,9 @@ import { FaCocktail } from "react-icons/fa";
 
 function Footer() {
   return (
-    <div className="foooter">
-      <footer className="footer mt-auto py-2 bg-dark text-white">
-        <div className="footerr">
+    <div className="footer-container ">
+      <footer className="">
+        <div className="footer-elements ">
           <div>
             <FaCocktail size="2rem" />
           </div>
