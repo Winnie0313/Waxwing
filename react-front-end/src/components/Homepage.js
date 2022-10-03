@@ -7,6 +7,7 @@ const axios = require('axios');
 
 function Homepage() {
   const [popular, setPopular] = useState([]);
+  const [modalView, setModalView] = useState(false);
   
 
   useEffect(() => {
@@ -33,10 +34,12 @@ function Homepage() {
               <p>{cocktail.strDrink}</p>
               <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
               <Button variant="light">More Detials</Button>
+              
 
             </Card>
           )
         })}
+
       </Wrapper>
       
     </div>
