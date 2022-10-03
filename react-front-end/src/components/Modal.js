@@ -1,10 +1,13 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 
-function Modal(props) {
+function CentredModal(props) {
 
   return (
-    <Modal centered>
+    <Modal 
+      {...props}
+      centered
+      size= "lg">
 
     <Modal.Header closeButton>
       <Modal.Title>{props.title}</Modal.Title>
@@ -22,8 +25,12 @@ function Modal(props) {
 
     </Modal.Body>
 
+    <Modal.Footer>
+      <button onClick={props.onHide}>Close</button>
+    </Modal.Footer>
+
     </Modal>
   )
 }
 
-export default Modal;
+export default CentredModal;

@@ -4,13 +4,15 @@ import styled from "styled-components";
 import Button from 'react-bootstrap/Button';
 // import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-regular-svg-icons"
+import CentredModal from "./Modal";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faHeart } from "@fortawesome/free-regular-svg-icons"
 const axios = require('axios');
 
 
 
 function Homepage() {
+
   const [popular, setPopular] = useState([]);
   const [modalView, setModalView] = useState(false);
   
@@ -35,29 +37,36 @@ function Homepage() {
       <Wrapper>
         {popular.map( cocktail => {
           return(
-<<<<<<< HEAD
-            <Card>
-              <p>{cocktail.strDrink}</p>
-              <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
-              <Button variant="light">More Detials</Button>
-              
-
-            </Card>
-=======
+            <>
               <Card key={cocktail.idDrink}>
-                <Link to={`/drinks/${cocktail.idDrink}`}>
+                {/* <Link to={`/drinks/${cocktail.idDrink}`}> */}
                   <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
                   <h6> {cocktail.strCategory} </h6>
                   <h4> {cocktail.strDrink}</h4>
-                </Link>
+                {/* </Link> */}
+              <Button onClick={() => setModalView(true)}>View</Button>
+
+              <CentredModal 
+                show={modalView}
+                onHide={() => setModalView(false)}
+                title={cocktail.strDrink}
+                image={cocktail.strDrinkThumb}  
+                instructions={cocktail.strInstructions}
+              />
+              
               </Card>
->>>>>>> 15fd8d790d9aedbde8ac3a476e5a1aa47b326cb9
+
+
+
+            </>
+
           )
         })}
 
       </Wrapper>
-      
+      {console.log(modalView)}
     </div>
+
   );
 }
 
