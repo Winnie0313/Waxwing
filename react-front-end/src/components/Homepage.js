@@ -34,10 +34,11 @@ function Homepage() {
           return(
               <Card style={{ width: '18rem', textAlign: 'left'}} > 
                 <Card.Img variant="top" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
-                <Card.Body>
+                <Card.Body >
                   <Card.Title>{cocktail.strDrink}</Card.Title>
                   <Card.Text>{cocktail.strCategory}</Card.Text>
                   <Button variant="dark" as={Link} to='/cocktails/:id'>More Details</Button>
+                  <FontAwesomeIcon icon="fa-regular fa-heart" />
                 </Card.Body>
               </Card>
 
@@ -46,7 +47,7 @@ function Homepage() {
             //   <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
             //   {/* <Link to ='/:id'>More Details</Link> */}
             //   <Button variant="light" as={Link} to='/cocktails/:id'>More Detials</Button>
-            //   <FontAwesomeIcon icon="fa-thin fa-heart" />
+            //   
             // </Card>
           )
         })}
