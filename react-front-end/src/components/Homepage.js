@@ -2,10 +2,12 @@ import React, {useEffect, useState} from "react";
 import Search from "./Search";
 import styled from "styled-components";
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+// import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-regular-svg-icons"
 const axios = require('axios');
+
 
 
 function Homepage() {
@@ -32,23 +34,13 @@ function Homepage() {
       <Wrapper>
         {popular.map( cocktail => {
           return(
-              <Card style={{ width: '18rem', textAlign: 'left'}} > 
-                <Card.Img variant="top" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
-                <Card.Body >
-                  <Card.Title>{cocktail.strDrink}</Card.Title>
-                  <Card.Text>{cocktail.strCategory}</Card.Text>
-                  <Button variant="dark" as={Link} to='/cocktails/:id'>More Details</Button>
-                  <FontAwesomeIcon icon="fa-regular fa-heart" />
-                </Card.Body>
+              <Card key={cocktail.idDrink}>
+                <Link to={`/drinks/${cocktail.idDrink}`}>
+                  <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+                  <h6> {cocktail.strCategory} </h6>
+                  <h4> {cocktail.strDrink}</h4>
+                </Link>
               </Card>
-
-            // <Card>
-            //   <p>{cocktail.strDrink}</p>
-            //   <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
-            //   {/* <Link to ='/:id'>More Details</Link> */}
-            //   <Button variant="light" as={Link} to='/cocktails/:id'>More Detials</Button>
-            //   
-            // </Card>
           )
         })}
       </Wrapper>
@@ -64,20 +56,39 @@ const Wrapper = styled.div`
   margin: 40px;
 `;
 
-// const Card = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   width: auto;  
-//   margin: 10px;
-//   min-height: 25rem;
-//   border-radius: 2rem;
+const Card = styled.div`
+  border: 2px solid black;
+  background-color: black;
+  border-radius: 2rem;
 
-//   img{
-//     max-width: 100%; 
-//     max-height: 100%;
-//     border-radius: 2rem;
-//   }
-// `;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    box-shadow: 14px 6px 19px -1px rgba(0, 0, 0, 0.75);
+    transform: scale(1.05);
+  }
+
+  img {
+    width: 100%;
+    /* border-radius: 2rem; */
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  h4 {
+    text-align: center;
+    padding: 1rem;
+    color: white;
+  }
+
+  h6 {
+    text-align: center;
+    padding-top: 1rem;
+    color: white;
+  }
+`;
 
 
 
