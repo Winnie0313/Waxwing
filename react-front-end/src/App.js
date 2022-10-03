@@ -6,10 +6,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Homepage from "./components/Homepage";
 import Login from "./components/Login";
 import Register from "./components/Register";
+<<<<<<< HEAD
 import Favourites from "./components/Favourites/Favourites";
+=======
+import Modal from "./components/Modal";
+>>>>>>> 15fd8d790d9aedbde8ac3a476e5a1aa47b326cb9
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import NewCocktail from "./components/NewCocktail";
+
+
+
+import Drink from "./components/Drink";
 
 function App() {
   return (
@@ -21,7 +29,12 @@ function App() {
           <Route path="/NewCocktail" element={<NewCocktail />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
+<<<<<<< HEAD
           <Route path="/Favourites" element={<Favourites />} />
+=======
+
+          <Route path="/drink/:type" element={<Drink />} />
+>>>>>>> 15fd8d790d9aedbde8ac3a476e5a1aa47b326cb9
         </Routes>
       </Router>
       <Footer />
