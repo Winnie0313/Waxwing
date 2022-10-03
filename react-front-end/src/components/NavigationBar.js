@@ -1,13 +1,15 @@
 import { Nav, Navbar, NavLink } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { FaCocktail } from "react-icons/fa";
 
 function NavigationBar() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          Logo
+          <FaCocktail size="1.3em" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -15,8 +17,46 @@ function NavigationBar() {
             <NavLink eventKey="1" as={Link} to="/">
               Waxwing
             </NavLink>
+
+            <NavDropdown
+              title="Categories"
+              bg="dark"
+              id="collasible-nav-dropdown"
+            >
+              <NavDropdown.Item as={Link} to={"/drink/c=Ordinary_Drink"}>
+                Ordinary Drink
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={"/drink/a=Non_Alcoholic"}>
+                Non Alcoholic
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={"/drink/a=Alcoholic"}>
+                Alcoholic
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={"/drink/c=shake"}>
+                Milk / Float /shake
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={"/drink/c=shot"}>
+                shot
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={"/drink/c=Soft_Drink"}>
+                Soft Drink
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={"/drink/c=Beer"}>
+                Beer
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={"/drink/c=Cocktail"}>
+                Cocktail
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={"/drink/c=Homemade_Liqueur"}>
+                Homemade Liqueur
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
           <Nav>
+            <NavLink eventKey="2" as={Link} to="/NewCocktail">
+              Add New Cocktail
+            </NavLink>
+
             <NavLink eventKey="2" as={Link} to="/Register">
               Register
             </NavLink>

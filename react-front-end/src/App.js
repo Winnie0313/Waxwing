@@ -9,6 +9,9 @@ import Register from "./components/Register";
 import Modal from "./components/Modal";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
+import NewCocktail from "./components/NewCocktail";
+
+import Drink from "./components/Drink";
 
 function App() {
   return (
@@ -17,8 +20,11 @@ function App() {
         <NavigationBar />
         <Routes>
           <Route exact path="/" element={<Homepage />} />
+          <Route path="/NewCocktail" element={<NewCocktail />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
+
+          <Route path="/drink/:type" element={<Drink />} />
         </Routes>
       </Router>
       <Footer />

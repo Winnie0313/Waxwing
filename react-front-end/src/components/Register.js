@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./Styles-login-reg.css";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
@@ -9,6 +11,11 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(name, email, pass);
+    setEmail("");
+    setPass("");
+    setName("");
+    /// to redirect to home page
+    navigate("/");
   };
 
   return (
