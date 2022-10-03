@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 function Drink() {
   const [drink, setDrink] = useState([]);
@@ -38,6 +39,7 @@ function Drink() {
             <Link to={"/recipe/" + item.idDrink}>
               <img src={item.strDrinkThumb} alt={item.strDrink} />
               <h4> {item.strDrink}</h4>
+              <Button variant="primary" >View Recipe</Button>
             </Link>
           </Card>
         );

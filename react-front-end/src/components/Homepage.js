@@ -3,8 +3,8 @@ import Search from "./Search";
 import styled from "styled-components";
 import Button from 'react-bootstrap/Button';
 // import Card from 'react-bootstrap/Card';
-import { Link } from "react-router-dom";
 import CentredModal from "./Modal";
+import useModal from "../hooks/useModal";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faHeart } from "@fortawesome/free-regular-svg-icons"
 const axios = require('axios');
@@ -14,9 +14,8 @@ const axios = require('axios');
 function Homepage() {
 
   const [popular, setPopular] = useState([]);
-  const [modalView, setModalView] = useState(false);
   const [drinkObject, setDrinkObject] = useState({});
-  
+  const [modalView, setModalView] = useState(false);
 
   useEffect(() => {
     getPopular();
@@ -31,19 +30,17 @@ function Homepage() {
         .catch((err) => console.log(err))
   }
 
-  // Modal helper to dynamically render components of modal
   const singleDrinkId = (id) => {
     
     const drink = popular.find((drink) => drink.idDrink === id);
 
     setDrinkObject(drink)
   }
-  
-  // Modal helper that sets the drinkObject and modalView state
-  const handleModal = (id) => {
-    singleDrinkId(id);
-    setModalView(true);
-  }
+
+const handleModal = (id) => {
+  singleDrinkId(id);
+  setModalView(true);
+}
 
   return (
     <div>
@@ -55,12 +52,12 @@ function Homepage() {
           return(
             <>
               <Card key={cocktail.idDrink}>
-                {/* <Link to={`/drinks/${cocktail.idDrink}`}> */}
-                  <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
-                  <h6> {cocktail.strCategory} </h6>
-                  <h4> {cocktail.strDrink}</h4>
-                {/* </Link> */}
+                
+                <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+                <h6> {cocktail.strCategory} </h6>
+                <h4> {cocktail.strDrink}</h4>
                 <Button onClick={() => handleModal(cocktail.idDrink)}>View</Button>
+                
               </Card>
             </>
 
