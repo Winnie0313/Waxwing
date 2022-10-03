@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Homepage from "./components/Homepage";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Modal from "./components/Modal";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 
