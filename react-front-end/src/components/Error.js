@@ -12,6 +12,8 @@ function Error(props) {
 }
 
 export default Error;
+
+/// styling of the error message
 const Box = styled.div`
   background-color: #fce4e4;
   border: 1px solid #fcc2c3;
