@@ -4,29 +4,51 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import Search from "./Search";
+import { useNavigate } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
 
-function Searched() {
+function SearchedIng() {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
   let params = useParams();
+  console.log("params", params);
   const getSearched = async (name) => {
     const data = await fetch(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
+      `https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=${name}`
     );
-    // console.log("dattttta", data);
+
+    console.log("name", name);
     const recipes = await data.json();
     setSearchedRecipes(recipes.drinks);
-    // console.log("ddrinks", recipes.drinks);
-    console.log("results length", recipes.drinks.length);
-    console.log(params.search);
   };
 
   useEffect(() => {
     getSearched(params.search);
   }, [params.search]);
+
+  /// searchBar parameters
+  const [input, setInput] = useState("");
+  const navigate = useNavigate();
+  const submitHandler = (e) => {
+    e.preventDefault();
+    navigate("/searchedIng/" + input);
+
+    console.log("input", input);
+  };
+
   return (
     <div>
-      <Search />
+      <FormStyle onSubmit={submitHandler}>
+        <div>
+          <FaSearch></FaSearch>
+          <input
+            onChange={(e) => setInput(e.target.value)}
+            type="text"
+            value={input}
+            placeholder="Search by ingredient: anis,gin "
+          />
+        </div>
+      </FormStyle>
+
       <Grid
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
@@ -95,4 +117,35 @@ const Card = styled.div`
     color: white;
   }
 `;
-export default Searched;
+
+/// search bar styling
+
+const FormStyle = styled.form`
+  margin: 0rem 5rem;
+
+  width: 100%auto;
+  div {
+    width: 100%auto;
+    position: relative;
+  }
+  input {
+    border: none;
+    background-color: black;
+    font-size: 1.5rem;
+    color: white;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 1rem;
+    outline: none;
+    width: 100%;
+  }
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(100%, -50%);
+    color: white;
+  }
+`;
+
+export default SearchedIng;

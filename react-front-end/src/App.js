@@ -9,9 +9,13 @@ import Register from "./components/Register";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import NewCocktail from "./components/NewCocktail";
-import Searched from "./components/Searched";
-
+import Searched from "./components/Search/Searched";
+import SearchByIngred from "./components/Search/SearchByIngred";
+import SearchedIng from "./components/Search/SearchedIng";
+import SearchedFirst from "./components/Search/SearchedFirst";
 import Drink from "./components/Drink";
+import SearchByFirst from "./components/Search/SearchByFirst";
+import Search from "./components/Search/Search";
 
 function App() {
   return (
@@ -24,7 +28,18 @@ function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/drink/:type" element={<Drink />} />
+
+          {/* {search by name } */}
+          <Route path="/search" element={<Search />} />
           <Route path="/searched/:search" element={<Searched />} />
+
+          {/* search by ingredients routes */}
+          <Route path="/SearchByIngred/" element={<SearchByIngred />} />
+          <Route path="/searchedIng/:search" element={<SearchedIng />} />
+
+          {/* search by first letter routes */}
+          <Route path="/SearchByFirst/" element={<SearchByFirst />} />
+          <Route path="/searchedFirst/:search" element={<SearchedFirst />} />
         </Routes>
         <Footer />
       </Router>
