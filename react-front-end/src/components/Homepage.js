@@ -17,6 +17,7 @@ function Homepage() {
   const [drinkObject, setDrinkObject] = useState({});
   const [modalView, setModalView] = useState(false);
 
+  // empty arrays for functions
   const ingredientsArray = [];
   const measurementsArray = [];
 
@@ -33,6 +34,7 @@ function Homepage() {
         .catch((err) => console.log(err))
   }
 
+  // sets the drink object based on the id of the drink
   const singleDrinkId = (id) => {
     
     const drink = popular.find((drink) => drink.idDrink === id);
@@ -40,11 +42,13 @@ function Homepage() {
     setDrinkObject(drink)
   }
 
+  // Opens modal and fetches details for drink
 const handleModal = (id) => {
   singleDrinkId(id);
   setModalView(true);
 }
 
+// Dynamically gets ingredients for each drink
 const ingredientsForDrink = () => {
   for (let i = 1; i < 16; i++) {
     if (drinkObject[`strIngredient${i}`] !== null) {
@@ -54,6 +58,7 @@ const ingredientsForDrink = () => {
   return ingredientsArray;
 };
 
+// dynamically gets measurements for drink
 const measurementsForDrink = () => {
   for (let i = 1; i < 16; i++) {
     if (drinkObject[`strMeasure${i}`] !== null) {

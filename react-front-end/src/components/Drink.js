@@ -6,10 +6,12 @@ import Button from "react-bootstrap/Button";
 import CentredModal from "./Modal";
 
 function Drink() {
+  
   const [drink, setDrink] = useState([]);
   const [drinkObject, setDrinkObject] = useState({});
   const [modalView, setModalView] = useState(false);
 
+  // empty arrays for functions
   const ingredientsArray = [];
   const measurementsArray = [];
 
@@ -34,6 +36,7 @@ function Drink() {
   }, [params.type]);
   console.log("drink", drink);
 
+  // sets the drink object based on the id of the drink, used in this context to open the modal with the proper drink details
   const singleDrinkId = (id) => {
     
     const properDrink = drink.find((drink) => drink.idDrink === id);
@@ -41,6 +44,7 @@ function Drink() {
     setDrinkObject(properDrink);
   }
 
+  // calls the API using ID fetched by above function by Mustafa
   const fetchDetailsForDrink = async (id) => {
     const data = await fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
@@ -49,12 +53,14 @@ function Drink() {
     setDrinkObject(drink.drinks[0]);
   };
 
+  // Similar to home page, but calls the API for the specific drink
   const handleModal = (id) => {
     singleDrinkId(id);
     fetchDetailsForDrink(id);
     setModalView(true);
   }
 
+  // Same as homepage
   const ingredientsForDrink = () => {
     for (let i = 1; i < 16; i++) {
       if (drinkObject[`strIngredient${i}`] !== null) {
@@ -64,6 +70,7 @@ function Drink() {
     return ingredientsArray;
   };
 
+  // Same as homepage
   const measurementsForDrink = () => {
     for (let i = 1; i < 16; i++) {
       if (drinkObject[`strMeasure${i}`] !== null) {
