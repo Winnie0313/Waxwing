@@ -76,7 +76,7 @@ function Homepage() {
             <>
               <Card key={cocktail.idDrink}>
                 <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
-                <h6> {cocktail.strCategory} </h6>
+                {/* <h6> {cocktail.strCategory} </h6> */}
                 <h4> {cocktail.strDrink}</h4>
                 <Button onClick={() => handleModal(cocktail.idDrink)}>
                   View
