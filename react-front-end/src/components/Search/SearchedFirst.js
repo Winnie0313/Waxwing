@@ -8,11 +8,13 @@ import { motion } from "framer-motion";
 import Search from "./Search";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import Error from "../Error";
 const axios = require("axios");
 
 function SearchedFirst() {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
   let params = useParams();
+  const erroMsg = "Oops , couldn't find that cocktail, please try again";
   console.log("params", params);
 
   ////
@@ -62,16 +64,22 @@ function SearchedFirst() {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {searchedRecipes.map((item) => {
-          return (
-            <Card key={item.idDrink}>
-              <Link to={"/recipe/" + item.idDrink}>
-                <img src={item.strDrinkThumb} alt={item.strDrink} />
-                <h4> {item.strDrink}</h4>
-              </Link>
-            </Card>
-          );
-        })}
+        {searchedRecipes ? (
+          <>
+            {searchedRecipes.map((item) => {
+              return (
+                <Card key={item.idDrink}>
+                  <Link to={"/recipe/" + item.idDrink}>
+                    <img src={item.strDrinkThumb} alt={item.strDrink} />
+                    <h4> {item.strDrink}</h4>
+                  </Link>
+                </Card>
+              );
+            })}
+          </>
+        ) : (
+          <Error message={erroMsg} />
+        )}
       </Grid>
     </div>
   );

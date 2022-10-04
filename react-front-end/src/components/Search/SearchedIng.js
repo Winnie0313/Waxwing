@@ -6,11 +6,14 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import Error from "../Error";
 const axios = require("axios");
 
 function SearchedIng() {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
   let params = useParams();
+  const erroMsg =
+    "Oops , couldn't find any drinks, please try other ingredients";
 
   /////
   const getSearched = (name) => {
@@ -20,7 +23,6 @@ function SearchedIng() {
       )
       .then((response) => {
         setSearchedRecipes(response.data.drinks);
-        // console.log("====", response.data.drinks);
       })
       .catch((err) => console.log(err));
   };
@@ -31,6 +33,7 @@ function SearchedIng() {
     getSearched(params.search);
   }, [params.search]);
 
+  console.log("=+++===", searchedRecipes);
   /// searchBar parameters
   const [input, setInput] = useState("");
   const navigate = useNavigate();
@@ -61,16 +64,22 @@ function SearchedIng() {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {searchedRecipes.map((item) => {
-          return (
-            <Card key={item.idDrink}>
-              <Link to={"/recipe/" + item.idDrink}>
-                <img src={item.strDrinkThumb} alt={item.strDrink} />
-                <h4> {item.strDrink}</h4>
-              </Link>
-            </Card>
-          );
-        })}
+        {searchedRecipes !== "None Found" ? (
+          <>
+            {searchedRecipes.map((item) => {
+              return (
+                <Card key={item.idDrink}>
+                  <Link to={"/recipe/" + item.idDrink}>
+                    <img src={item.strDrinkThumb} alt={item.strDrink} />
+                    <h4> {item.strDrink}</h4>
+                  </Link>
+                </Card>
+              );
+            })}
+          </>
+        ) : (
+          <Error message={erroMsg} />
+        )}
       </Grid>
     </div>
   );

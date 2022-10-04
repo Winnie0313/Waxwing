@@ -5,11 +5,13 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Search from "./Search";
+import Error from "../Error";
 const axios = require("axios");
 
 function Searched() {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
   let params = useParams();
+  const erroMsg = "Oops , couldn't find that cocktail, please try again";
   console.log("params", params);
 
   /////
@@ -18,9 +20,9 @@ function Searched() {
       .get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`)
       .then((response) => {
         setSearchedRecipes(response.data.drinks);
-        console.log("====", response.data.drinks);
+        // console.log("====", response.data.drinks);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("++++++", err));
   };
 
   /////
@@ -37,16 +39,24 @@ function Searched() {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {searchedRecipes.map((item) => {
-          return (
-            <Card key={item.idDrink}>
-              <Link to={"/recipe/" + item.idDrink}>
-                <img src={item.strDrinkThumb} alt={item.strDrink} />
-                <h4> {item.strDrink}</h4>
-              </Link>
-            </Card>
-          );
-        })}
+        {searchedRecipes ? (
+          <>
+            {searchedRecipes.map((item) => {
+              return (
+                <Card key={item.idDrink}>
+                  <Link to={"/recipe/" + item.idDrink}>
+                    <img src={item.strDrinkThumb} alt={item.strDrink} />
+                    <h4> {item.strDrink}</h4>
+                  </Link>
+                </Card>
+              );
+            })}
+          </>
+        ) : (
+          <>
+            <Error message={erroMsg} />
+          </>
+        )}
       </Grid>
     </div>
   );
