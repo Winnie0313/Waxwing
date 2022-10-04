@@ -1,10 +1,15 @@
+import { useContext } from "react"
+import { UserContext } from "./UserContext"
 import { Nav, Navbar, NavLink } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaCocktail } from "react-icons/fa";
 
+
 function NavigationBar() {
+  const { user, setUser } = useContext(UserContext)
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -68,19 +73,30 @@ function NavigationBar() {
                 By Ingredients
               </NavDropdown.Item>
             </NavDropdown>
-            <NavLink eventKey="2" as={Link} to="/NewCocktail">
-              Add New Cocktail
-            </NavLink>
-
-            <NavLink eventKey="2" as={Link} to="/Register">
-              Register
-            </NavLink>
-            <NavLink eventKey="3" as={Link} to="/Login">
-              Login
-            </NavLink>
-            <NavLink eventKey="4" as={Link} to="/Favourites">
-              Favourites
-            </NavLink>
+            
+            {user ? (
+              <>
+                <NavLink eventKey="2" as={Link} to="/NewCocktail">
+                  Add New Cocktail
+                </NavLink>
+                <NavLink eventKey="4" as={Link} to="/Favourites">
+                  Favourites
+                </NavLink>
+                <NavLink as={Link} to="/" onClick={() => setUser(null)}>
+                  Logout
+                </NavLink>
+              </>
+            ) : (
+              <> 
+                <NavLink eventKey="2" as={Link} to="/Register" >
+                  Register
+                </NavLink>
+                <NavLink eventKey="3" as={Link} to="/Login" state={{from:"text"}} >
+                  Login
+                </NavLink>
+              </>
+            )}
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

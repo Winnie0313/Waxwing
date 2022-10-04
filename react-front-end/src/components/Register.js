@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Styles-login-reg.css";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 function Register() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
+  const { user, setUser } = useContext(UserContext)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,6 +16,7 @@ function Register() {
     setEmail("");
     setPass("");
     setName("");
+    setUser(email);
     /// to redirect to home page
     navigate("/");
   };
