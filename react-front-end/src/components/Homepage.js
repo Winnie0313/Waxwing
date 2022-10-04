@@ -17,6 +17,9 @@ function Homepage() {
   const [drinkObject, setDrinkObject] = useState({});
   const [modalView, setModalView] = useState(false);
 
+  const ingredientsArray = [];
+  const measurementsArray = [];
+
   useEffect(() => {
     getPopular();
   },[]);
@@ -41,6 +44,24 @@ const handleModal = (id) => {
   singleDrinkId(id);
   setModalView(true);
 }
+
+const ingredientsForDrink = () => {
+  for (let i = 1; i < 16; i++) {
+    if (drinkObject[`strIngredient${i}`] !== null) {
+      ingredientsArray.push(drinkObject[`strIngredient${i}`]);
+    }
+  }
+  return ingredientsArray;
+};
+
+const measurementsForDrink = () => {
+  for (let i = 1; i < 16; i++) {
+    if (drinkObject[`strMeasure${i}`] !== null) {
+      measurementsArray.push(drinkObject[`strMeasure${i}`]);
+    }
+  }
+  return measurementsArray;
+};
 
   return (
     <div>
@@ -71,6 +92,8 @@ const handleModal = (id) => {
         title={drinkObject.strDrink}
         image={drinkObject.strDrinkThumb}
         instructions={drinkObject.strInstructions}
+        ingredients={ingredientsForDrink()}
+        measurements={measurementsForDrink()}
       />
       </Wrapper>
       
