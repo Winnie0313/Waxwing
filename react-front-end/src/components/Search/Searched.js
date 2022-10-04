@@ -5,21 +5,25 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Search from "./Search";
+const axios = require("axios");
 
 function Searched() {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
   let params = useParams();
   console.log("params", params);
-  const getSearched = async (name) => {
-    const data = await fetch(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
-    );
 
-    const recipes = await data.json();
-    setSearchedRecipes(recipes.drinks);
-
-    console.log("results length", recipes.drinks.length);
+  /////
+  const getSearched = (name) => {
+    axios
+      .get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`)
+      .then((response) => {
+        setSearchedRecipes(response.data.drinks);
+        console.log("====", response.data.drinks);
+      })
+      .catch((err) => console.log(err));
   };
+
+  /////
 
   useEffect(() => {
     getSearched(params.search);

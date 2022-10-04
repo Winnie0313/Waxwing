@@ -8,20 +8,25 @@ import { motion } from "framer-motion";
 import Search from "./Search";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+const axios = require("axios");
 
 function SearchedFirst() {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
   let params = useParams();
   console.log("params", params);
-  const getSearched = async (name) => {
-    const data = await fetch(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${name}`
-    );
 
-    console.log("name", name);
-    const recipes = await data.json();
-    setSearchedRecipes(recipes.drinks);
+  ////
+  const getSearched = (name) => {
+    axios
+      .get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${name}`)
+      .then((response) => {
+        setSearchedRecipes(response.data.drinks);
+        console.log("====", response.data.drinks);
+      })
+      .catch((err) => console.log(err));
   };
+
+  /////
 
   useEffect(() => {
     getSearched(params.search);
@@ -78,9 +83,10 @@ const Grid = styled(motion.div)`
   margin-right: 3rem;
 
   /* display: grid;
-
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   grid-gap: 3rem; */
+
+  /* flex  */
   display: flex;
   align-content: flex-start;
   flex-wrap: wrap;

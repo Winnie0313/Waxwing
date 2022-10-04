@@ -6,20 +6,26 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+const axios = require("axios");
 
 function SearchedIng() {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
   let params = useParams();
-  console.log("params", params);
-  const getSearched = async (name) => {
-    const data = await fetch(
-      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/filter.php?i=${name}`
-    );
 
-    console.log("name", name);
-    const recipes = await data.json();
-    setSearchedRecipes(recipes.drinks);
+  /////
+  const getSearched = (name) => {
+    axios
+      .get(
+        `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/filter.php?i=${name}`
+      )
+      .then((response) => {
+        setSearchedRecipes(response.data.drinks);
+        // console.log("====", response.data.drinks);
+      })
+      .catch((err) => console.log(err));
   };
+
+  /////
 
   useEffect(() => {
     getSearched(params.search);

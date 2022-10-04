@@ -13,7 +13,11 @@ function SearchByFirst() {
     e.preventDefault();
     navigate("/searchedFirst/" + input);
   };
-
+  // example of search :
+  //  a
+  //  b
+  //  c
+  //  d
   return (
     <div>
       <FormStyle onSubmit={submitHandler}>
