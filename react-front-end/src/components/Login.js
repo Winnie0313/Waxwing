@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Styles-login-reg.css";
-function Login() {
+import { UserContext } from "./UserContext";
+function Login(props) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const { user, setUser } = useContext(UserContext)
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email, pass);
+    setUser(email)
   };
 
   return (
