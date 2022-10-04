@@ -18,7 +18,17 @@ function CentredModal(props) {
       <img src={props.image} alt={props.title} />
 
       <h3>Ingredients</h3>
-      placeholder for ingredients
+      
+      <ul>
+        {props.ingredients.map((ingredient, index) => {
+          return (
+            <li key={index}>
+              {ingredient} - {props.measurements[index]}
+            </li>
+          );
+        })}
+      </ul>
+
 
       <h3>Instructions</h3>
       <p>{props.instructions}</p>
