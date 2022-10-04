@@ -1,14 +1,13 @@
-import { useContext } from "react"
-import { UserContext } from "./UserContext"
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
 import { Nav, Navbar, NavLink } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaCocktail } from "react-icons/fa";
 
-
 function NavigationBar() {
-  const { user, setUser } = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext);
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -57,6 +56,7 @@ function NavigationBar() {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
+
           <Nav>
             <NavDropdown
               title="Search Cocktail by"
@@ -73,7 +73,7 @@ function NavigationBar() {
                 By Ingredients
               </NavDropdown.Item>
             </NavDropdown>
-            
+
             {user ? (
               <>
                 <NavLink eventKey="2" as={Link} to="/NewCocktail">
@@ -87,16 +87,20 @@ function NavigationBar() {
                 </NavLink>
               </>
             ) : (
-              <> 
-                <NavLink eventKey="2" as={Link} to="/Register" >
+              <>
+                <NavLink eventKey="2" as={Link} to="/Register">
                   Register
                 </NavLink>
-                <NavLink eventKey="3" as={Link} to="/Login" state={{from:"text"}} >
+                <NavLink
+                  eventKey="3"
+                  as={Link}
+                  to="/Login"
+                  state={{ from: "text" }}
+                >
                   Login
                 </NavLink>
               </>
             )}
-            
           </Nav>
         </Navbar.Collapse>
       </Container>
