@@ -20,7 +20,6 @@ function SearchedIng() {
       )
       .then((response) => {
         setSearchedRecipes(response.data.drinks);
-        // console.log("====", response.data.drinks);
       })
       .catch((err) => console.log(err));
   };
@@ -31,6 +30,7 @@ function SearchedIng() {
     getSearched(params.search);
   }, [params.search]);
 
+  console.log("=+++===", searchedRecipes);
   /// searchBar parameters
   const [input, setInput] = useState("");
   const navigate = useNavigate();
@@ -61,16 +61,22 @@ function SearchedIng() {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {searchedRecipes.map((item) => {
-          return (
-            <Card key={item.idDrink}>
-              <Link to={"/recipe/" + item.idDrink}>
-                <img src={item.strDrinkThumb} alt={item.strDrink} />
-                <h4> {item.strDrink}</h4>
-              </Link>
-            </Card>
-          );
-        })}
+        {searchedRecipes !== "None Found" ? (
+          <>
+            {searchedRecipes.map((item) => {
+              return (
+                <Card key={item.idDrink}>
+                  <Link to={"/recipe/" + item.idDrink}>
+                    <img src={item.strDrinkThumb} alt={item.strDrink} />
+                    <h4> {item.strDrink}</h4>
+                  </Link>
+                </Card>
+              );
+            })}
+          </>
+        ) : (
+          <h1>Oops , couldn't find any drinks, please try other ingredients</h1>
+        )}
       </Grid>
     </div>
   );

@@ -10,7 +10,7 @@ import Favourites from "./components/Favourites/Favourites";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import NewCocktail from "./components/NewCocktail";
-import { UserContext } from "./components/UserContext"
+import { UserContext } from "./components/UserContext";
 import Searched from "./components/Search/Searched";
 import SearchByIngred from "./components/Search/SearchByIngred";
 import SearchedIng from "./components/Search/SearchedIng";
@@ -21,8 +21,7 @@ import Search from "./components/Search/Search";
 
 function App() {
   const [user, setUser] = useState(null);
-  const value = useMemo(() => ({ user, setUser}), [user, setUser])
-
+  const value = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (
     <div className="App">

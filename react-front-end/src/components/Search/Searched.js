@@ -18,9 +18,9 @@ function Searched() {
       .get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`)
       .then((response) => {
         setSearchedRecipes(response.data.drinks);
-        console.log("====", response.data.drinks);
+        // console.log("====", response.data.drinks);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("++++++", err));
   };
 
   /////
@@ -37,16 +37,22 @@ function Searched() {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {searchedRecipes.map((item) => {
-          return (
-            <Card key={item.idDrink}>
-              <Link to={"/recipe/" + item.idDrink}>
-                <img src={item.strDrinkThumb} alt={item.strDrink} />
-                <h4> {item.strDrink}</h4>
-              </Link>
-            </Card>
-          );
-        })}
+        {searchedRecipes ? (
+          <>
+            {searchedRecipes.map((item) => {
+              return (
+                <Card key={item.idDrink}>
+                  <Link to={"/recipe/" + item.idDrink}>
+                    <img src={item.strDrinkThumb} alt={item.strDrink} />
+                    <h4> {item.strDrink}</h4>
+                  </Link>
+                </Card>
+              );
+            })}
+          </>
+        ) : (
+          <h1>Oops , couldn't find that cocktail, please try again</h1>
+        )}
       </Grid>
     </div>
   );
