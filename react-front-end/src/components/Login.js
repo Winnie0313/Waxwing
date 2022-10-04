@@ -1,7 +1,9 @@
 import React, { useState, useContext } from "react";
 import "./Styles-login-reg.css";
 import { UserContext } from "./UserContext";
+import { useNavigate } from "react-router-dom";
 function Login(props) {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const { user, setUser } = useContext(UserContext)
@@ -11,6 +13,8 @@ function Login(props) {
     e.preventDefault();
     console.log(email, pass);
     setUser(email)
+    /// to redirect to home page
+    navigate("/");
   };
 
   return (
