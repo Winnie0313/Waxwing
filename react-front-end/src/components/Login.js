@@ -12,15 +12,40 @@ function Login(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, pass);
-    setUser(email)
-    /// to redirect to home page
-    navigate("/");
+    // check email and password 
+    axios.post("http://localhost:8001/api/users/login", {
+      email: email,
+      password: pass
+    })
+    .then((response) => {
+      if(response.data.length){
+        setUser(response.data[0].name);
+        navigate("/");
+      } else {
+        alert("Please enter correct email or passowrd.")
+      }
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+
+
+    // console.log(email, pass);
+    // setUser(email)
+    // /// to redirect to home page
+    // navigate("/");
   };
 
-  const submit = (e) => {
-    axios.post("/login")
-  }
+  // const submit = () => {
+  //   axios.post("/login", {
+  //     email: email,
+  //     password: pass
+  //   })
+  //   .then((response) => {
+  //     console.log(response);
+  //   })
+  // }
 
   return (
     <div className="auth-form-container">
