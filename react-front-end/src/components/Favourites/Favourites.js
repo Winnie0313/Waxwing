@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const Favourites = () => {
+
+    // Have to add user context to this page once login is accessing the user database
   const { user } = useContext(UserContext);
 
   const [db, setDb] = useState([]);
@@ -34,16 +36,15 @@ const Favourites = () => {
   };
 
   const singleDrinkId = (id) => {
-    
     const properDrink = db.find((drink) => drink.idDrink === id);
 
     setDrinkObject(properDrink);
-  }
+  };
 
-    const handleModal = (id) => {
+  const handleModal = (id) => {
     singleDrinkId(id);
     setModalView(true);
-  }
+  };
 
   const ingredientsForDrink = () => {
     const ingredientsArray = [];
@@ -56,7 +57,7 @@ const Favourites = () => {
     return ingredientsArray;
   };
 
-    // Same as homepage
+  // Same as homepage
   const measurementsForDrink = () => {
     const measurementsArray = [];
 
@@ -85,21 +86,25 @@ const Favourites = () => {
               <Card key={item.idDrink}>
                 <img src={item.strDrinkThumb} alt={item.strDrink} />
                 <h4> {item.strDrink}</h4>
-                <Button variant="primary" onClick={() => handleModal(item.idDrink)}>View Recipe</Button>
+                <Button
+                  variant="primary"
+                  onClick={() => handleModal(item.idDrink)}
+                >
+                  View Recipe
+                </Button>
               </Card>
             );
           })}
 
-            <CentredModal
-                show={modalView}
-                onHide={() => setModalView(false)}
-                title={drinkObject.strDrink}
-                image={drinkObject.strDrinkThumb}
-                instructions={drinkObject.strInstructions}
-                ingredients={ingredientsForDrink()}
-                measurements={measurementsForDrink()}
-            />
-
+          <CentredModal
+            show={modalView}
+            onHide={() => setModalView(false)}
+            title={drinkObject.strDrink}
+            image={drinkObject.strDrinkThumb}
+            instructions={drinkObject.strInstructions}
+            ingredients={ingredientsForDrink()}
+            measurements={measurementsForDrink()}
+          />
         </Grid>
       </>
     </>
