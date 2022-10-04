@@ -66,7 +66,7 @@ function NavigationBar() {
                 <NavLink eventKey="4" as={Link} to="/Favourites">
                   Favourites
                 </NavLink>
-                <NavLink as={Link} to="/Logout" onClick={() => setUser(null)}>
+                <NavLink as={Link} to="/" onClick={() => setUser(null)}>
                   Logout
                 </NavLink>
               </>
