@@ -6,19 +6,34 @@ import { UserContext } from "./UserContext";
 function Register() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const { user, setUser } = useContext(UserContext)
 
-  const handleSubmit = (e) => {
+  // function to post user into database and set user context
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(name, email, pass);
-    setEmail("");
-    setPass("");
-    setName("");
-    setUser(email);
-    /// to redirect to home page
-    navigate("/");
+    console.log(name, email, password);
+
+    if(!name || !email || !password) {
+      alert("If you want to start drinking, you need to fill out the form!");
+      return;
+    }
+
+    fetch("/api/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", },
+      body: JSON.stringify({ name, email, password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setUser(data);
+        navigate("/home");
+      })
+      .catch((err) => console.log(err));
+
+      navigate("/home");
   };
 
   return (
@@ -44,8 +59,8 @@ function Register() {
         />
         <label htmlFor="password">Password</label>
         <input
-          value={pass}
-          onChange={(e) => setPass(e.target.value)}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           type="password"
           placeholder="********"
           id="password"
