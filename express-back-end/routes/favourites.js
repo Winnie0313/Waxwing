@@ -23,7 +23,7 @@ module.exports = (knex) => {
       .insert(
         {
           user_id: req.body.user_id,
-          ap_cocktail_id: req.body.api_cocktail_id
+          api_cocktail_id: req.body.api_cocktail_id
         },
       )
       .then(() => {

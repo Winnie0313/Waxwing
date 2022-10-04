@@ -4,25 +4,31 @@ import { UserContext } from '../UserContext';
 
 const Favourites = () => {
 
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     const [db, setDb] = useState([]);
-
-    const drinkArray = [];
 
     useEffect(() => {
         fetchFavourites();
     }, []);
 
     const fetchFavourites = async () => {
-        const response = await fetch('localhost:8001/api/favourites/1');
+
+        const response = await fetch('/api/favourites/1');
         const data = await response.json();
-        console.log(data);
-        setDb();
-        console.log(db);
+        
+        const drinkArray = await Promise.all(
+            data.map(async (drink) => {
+                const response = await fetch(`https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=${drink.api_cocktail_id}`);
+                const drinkData = await response.json();
+                return drinkData.drinks[0];
+            })
+        );
+
+        setDb(drinkArray);
+        
     };
 
-    
     return (
 
         
@@ -31,7 +37,7 @@ const Favourites = () => {
             <h1>Favourites</h1>
         </div>
 
-
+        
 
         
       
