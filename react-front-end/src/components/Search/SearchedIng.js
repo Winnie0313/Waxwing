@@ -13,7 +13,7 @@ function SearchedIng() {
   console.log("params", params);
   const getSearched = async (name) => {
     const data = await fetch(
-      `https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=${name}`
+      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/filter.php?i=${name}`
     );
 
     console.log("name", name);

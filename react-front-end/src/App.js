@@ -28,10 +28,7 @@ function App() {
           <Route path="/NewCocktail" element={<NewCocktail />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
-<<<<<<< HEAD
-=======
           <Route path="/Favourites" element={<Favourites />} />
->>>>>>> master
           <Route path="/drink/:type" element={<Drink />} />
 
           {/* {search by name } */}
