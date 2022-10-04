@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from 'react-bootstrap/Button';
 // import Card from 'react-bootstrap/Card';
 import CentredModal from "./Modal";
-import useModal from "../hooks/useModal";
+// import useModal from "../hooks/useModal";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faHeart } from "@fortawesome/free-regular-svg-icons"
 const axios = require('axios');
@@ -16,6 +16,10 @@ function Homepage() {
   const [popular, setPopular] = useState([]);
   const [drinkObject, setDrinkObject] = useState({});
   const [modalView, setModalView] = useState(false);
+
+  // empty arrays for functions
+  const ingredientsArray = [];
+  const measurementsArray = [];
 
   useEffect(() => {
     getPopular();
@@ -30,6 +34,7 @@ function Homepage() {
         .catch((err) => console.log(err))
   }
 
+  // sets the drink object based on the id of the drink
   const singleDrinkId = (id) => {
     
     const drink = popular.find((drink) => drink.idDrink === id);
@@ -37,10 +42,31 @@ function Homepage() {
     setDrinkObject(drink)
   }
 
+  // Opens modal and fetches details for drink
 const handleModal = (id) => {
   singleDrinkId(id);
   setModalView(true);
 }
+
+// Dynamically gets ingredients for each drink
+const ingredientsForDrink = () => {
+  for (let i = 1; i < 16; i++) {
+    if (drinkObject[`strIngredient${i}`] !== null) {
+      ingredientsArray.push(drinkObject[`strIngredient${i}`]);
+    }
+  }
+  return ingredientsArray;
+};
+
+// dynamically gets measurements for drink
+const measurementsForDrink = () => {
+  for (let i = 1; i < 16; i++) {
+    if (drinkObject[`strMeasure${i}`] !== null) {
+      measurementsArray.push(drinkObject[`strMeasure${i}`]);
+    }
+  }
+  return measurementsArray;
+};
 
   return (
     <div>
@@ -71,6 +97,8 @@ const handleModal = (id) => {
         title={drinkObject.strDrink}
         image={drinkObject.strDrinkThumb}
         instructions={drinkObject.strInstructions}
+        ingredients={ingredientsForDrink()}
+        measurements={measurementsForDrink()}
       />
       </Wrapper>
       

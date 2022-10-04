@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import CentredModal from "./Modal";
 
 function Drink() {
+  
   const [drink, setDrink] = useState([]);
+  const [drinkObject, setDrinkObject] = useState({});
+  const [modalView, setModalView] = useState(false);
+
+  // empty arrays for functions
+  const ingredientsArray = [];
+  const measurementsArray = [];
+
   let params = useParams();
 
   const getDrink = async (name) => {
@@ -26,6 +35,51 @@ function Drink() {
     getDrink(params.type);
   }, [params.type]);
   console.log("drink", drink);
+
+  // sets the drink object based on the id of the drink, used in this context to open the modal with the proper drink details
+  const singleDrinkId = (id) => {
+    
+    const properDrink = drink.find((drink) => drink.idDrink === id);
+
+    setDrinkObject(properDrink);
+  }
+
+  // calls the API using ID fetched by above function by Mustafa
+  const fetchDetailsForDrink = async (id) => {
+    const data = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+    );
+    const drink = await data.json();
+    setDrinkObject(drink.drinks[0]);
+  };
+
+  // Similar to home page, but calls the API for the specific drink
+  const handleModal = (id) => {
+    singleDrinkId(id);
+    fetchDetailsForDrink(id);
+    setModalView(true);
+  }
+
+  // Same as homepage
+  const ingredientsForDrink = () => {
+    for (let i = 1; i < 16; i++) {
+      if (drinkObject[`strIngredient${i}`] !== null) {
+        ingredientsArray.push(drinkObject[`strIngredient${i}`]);
+      }
+    }
+    return ingredientsArray;
+  };
+
+  // Same as homepage
+  const measurementsForDrink = () => {
+    for (let i = 1; i < 16; i++) {
+      if (drinkObject[`strMeasure${i}`] !== null) {
+        measurementsArray.push(drinkObject[`strMeasure${i}`]);
+      }
+    }
+    return measurementsArray;
+  };
+
   return (
     <Grid
       animate={{ opacity: 1 }}
@@ -36,14 +90,23 @@ function Drink() {
       {drink.map((item) => {
         return (
           <Card key={item.idDrink}>
-            <Link to={"/recipe/" + item.idDrink}>
               <img src={item.strDrinkThumb} alt={item.strDrink} />
               <h4> {item.strDrink}</h4>
-              <Button variant="primary" >View Recipe</Button>
-            </Link>
+              <Button variant="primary" onClick={() => handleModal(item.idDrink)} >View Recipe</Button>
           </Card>
         );
       })}
+
+      <CentredModal
+        show={modalView}
+        onHide={() => setModalView(false)}
+        title={drinkObject.strDrink}
+        image={drinkObject.strDrinkThumb}
+        instructions={drinkObject.strInstructions}
+        ingredients={ingredientsForDrink()}
+        measurements={measurementsForDrink()}
+      />
+
     </Grid>
   );
 }
