@@ -1,14 +1,13 @@
-import { useContext } from "react"
-import { UserContext } from "./UserContext"
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
 import { Nav, Navbar, NavLink } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaCocktail } from "react-icons/fa";
 
-
 function NavigationBar() {
-  const { user, setUser } = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext);
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -57,26 +56,8 @@ function NavigationBar() {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
+
           <Nav>
-            {/* { if (user) {
-              <span style={{color: 'white'}}>{`Welcome ${user}!`}</span>
-            }} */}
-            {/* <NavDropdown
-              title="Search Cocktail by"
-              bg="dark"
-              id="collasible-nav-dropdown"
-            >
-              <NavDropdown.Item as={Link} to={"/search"}>
-                Name
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to={"/SearchByFirst"}>
-                First letter
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to={"/SearchByIngred"}>
-                By Ingredients
-              </NavDropdown.Item>
-            </NavDropdown>
-             */}
             {user ? (
               <div style={{display: 'flex', alignItems: 'center'}}>
                 <NavLink style={{cursor: 'default'}}>{`Welcome ${user}!`}</NavLink>
@@ -106,16 +87,20 @@ function NavigationBar() {
                 </NavLink>
               </div>
             ) : (
-              <> 
-                <NavLink eventKey="2" as={Link} to="/Register" >
+              <>
+                <NavLink eventKey="2" as={Link} to="/Register">
                   Register
                 </NavLink>
-                <NavLink eventKey="3" as={Link} to="/Login" state={{from:"text"}} >
+                <NavLink
+                  eventKey="3"
+                  as={Link}
+                  to="/Login"
+                  state={{ from: "text" }}
+                >
                   Login
                 </NavLink>
               </>
             )}
-            
           </Nav>
         </Navbar.Collapse>
       </Container>
