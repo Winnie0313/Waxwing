@@ -3,6 +3,7 @@ const App = Express();
 const BodyParser = require('body-parser');
 const { application } = require('express');
 const PORT = 8001;
+const knex = require('./db/knex');
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
@@ -19,10 +20,15 @@ App.use(Express.static('public'));
 //     console.log(err))
 // })
 
-// Sample GET route
-App.get('/api/data', (req, res) => res.json({
-  message: "Seems to work!",
-}));
+const usersRoutes = require('./routes/users');
+const favouritesRoutes = require('./routes/favourites');
+
+// API Routes
+
+App.use('/api/users', usersRoutes(knex));
+App.use('/api/favourites', favouritesRoutes(knex));
+
+// Server Activation
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
