@@ -71,3 +71,5 @@ export const FormStyle = styled.form`
     color: white;
   }
 `;
+
+// import { FormStyle } from "../Search/CardStyles";
