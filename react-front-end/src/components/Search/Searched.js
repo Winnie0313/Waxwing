@@ -5,11 +5,13 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Search from "./Search";
+import Error from "../Error";
 const axios = require("axios");
 
 function Searched() {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
   let params = useParams();
+  const erroMsg = "Oops , couldn't find that cocktail, please try again";
   console.log("params", params);
 
   /////
@@ -51,7 +53,9 @@ function Searched() {
             })}
           </>
         ) : (
-          <h1>Oops , couldn't find that cocktail, please try again</h1>
+          <>
+            <Error message={erroMsg} />
+          </>
         )}
       </Grid>
     </div>

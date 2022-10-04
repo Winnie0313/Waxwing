@@ -6,11 +6,14 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import Error from "../Error";
 const axios = require("axios");
 
 function SearchedIng() {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
   let params = useParams();
+  const erroMsg =
+    "Oops , couldn't find any drinks, please try other ingredients";
 
   /////
   const getSearched = (name) => {
@@ -75,7 +78,7 @@ function SearchedIng() {
             })}
           </>
         ) : (
-          <h1>Oops , couldn't find any drinks, please try other ingredients</h1>
+          <Error message={erroMsg} />
         )}
       </Grid>
     </div>

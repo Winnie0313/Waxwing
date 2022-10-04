@@ -8,11 +8,13 @@ import { motion } from "framer-motion";
 import Search from "./Search";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import Error from "../Error";
 const axios = require("axios");
 
 function SearchedFirst() {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
   let params = useParams();
+  const erroMsg = "Oops , couldn't find that cocktail, please try again";
   console.log("params", params);
 
   ////
@@ -76,7 +78,7 @@ function SearchedFirst() {
             })}
           </>
         ) : (
-          <h1>Oops , couldn't find that cocktail, please try again</h1>
+          <Error message={erroMsg} />
         )}
       </Grid>
     </div>

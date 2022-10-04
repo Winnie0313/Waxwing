@@ -59,6 +59,9 @@ function App() {
             {/* search by first letter routes */}
             <Route path="/SearchByFirst/" element={<SearchByFirst />} />
             <Route path="/searchedFirst/:search" element={<SearchedFirst />} />
+
+            {/* to catch all routes that don't match any of the above , and redirect to home page */}
+            <Route path="*" element={<Homepage />} />
           </Routes>
         </UserContext.Provider>
         <Footer />
