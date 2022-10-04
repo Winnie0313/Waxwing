@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from 'react-bootstrap/Button';
 // import Card from 'react-bootstrap/Card';
 import CentredModal from "./Modal";
-import useModal from "../hooks/useModal";
+// import useModal from "../hooks/useModal";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faHeart } from "@fortawesome/free-regular-svg-icons"
 const axios = require('axios');
