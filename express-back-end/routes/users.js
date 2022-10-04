@@ -30,6 +30,11 @@ module.exports = (knex) => {
       });
   });
 
+  // get user by email
+  router.post('/login', (req, res) => {}
+
+  );
+
   return router;
 
 }

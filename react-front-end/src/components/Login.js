@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import "./Styles-login-reg.css";
 import { UserContext } from "./UserContext";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 function Login(props) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -16,6 +17,10 @@ function Login(props) {
     /// to redirect to home page
     navigate("/");
   };
+
+  const submit = (e) => {
+    axios.post("/login")
+  }
 
   return (
     <div className="auth-form-container">
