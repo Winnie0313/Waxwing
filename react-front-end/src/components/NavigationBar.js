@@ -58,7 +58,10 @@ function NavigationBar() {
             </NavDropdown>
           </Nav>
           <Nav>
-            <NavDropdown
+            {/* { if (user) {
+              <span style={{color: 'white'}}>{`Welcome ${user}!`}</span>
+            }} */}
+            {/* <NavDropdown
               title="Search Cocktail by"
               bg="dark"
               id="collasible-nav-dropdown"
@@ -73,9 +76,25 @@ function NavigationBar() {
                 By Ingredients
               </NavDropdown.Item>
             </NavDropdown>
-            
+             */}
             {user ? (
-              <>
+              <div style={{display: 'flex', alignItems: 'center'}}>
+                <NavLink style={{cursor: 'default'}}>{`Welcome ${user}!`}</NavLink>
+                <NavDropdown
+                  title="Search Cocktail by"
+                  bg="dark"
+                  id="collasible-nav-dropdown"
+                >
+                  <NavDropdown.Item as={Link} to={"/search"}>
+                    Name
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to={"/SearchByFirst"}>
+                    First letter
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to={"/SearchByIngred"}>
+                    By Ingredients
+                  </NavDropdown.Item>
+                </NavDropdown>
                 <NavLink eventKey="2" as={Link} to="/NewCocktail">
                   Add New Cocktail
                 </NavLink>
@@ -85,7 +104,7 @@ function NavigationBar() {
                 <NavLink as={Link} to="/" onClick={() => setUser(null)}>
                   Logout
                 </NavLink>
-              </>
+              </div>
             ) : (
               <> 
                 <NavLink eventKey="2" as={Link} to="/Register" >

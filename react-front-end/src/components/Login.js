@@ -30,22 +30,7 @@ function Login(props) {
       console.log(err)
     })
 
-
-    // console.log(email, pass);
-    // setUser(email)
-    // /// to redirect to home page
-    // navigate("/");
   };
-
-  // const submit = () => {
-  //   axios.post("/login", {
-  //     email: email,
-  //     password: pass
-  //   })
-  //   .then((response) => {
-  //     console.log(response);
-  //   })
-  // }
 
   return (
     <div className="auth-form-container">
