@@ -24,7 +24,12 @@ App.use(Express.static('public'));
 const usersRoutes = require('./routes/users');
 const favouritesRoutes = require('./routes/favourites');
 
+var cors = require('cors');
+
+App.use(cors());
+
 // API Routes
+
 
 App.use('/api/users', usersRoutes(knex));
 App.use('/api/favourites', favouritesRoutes(knex));

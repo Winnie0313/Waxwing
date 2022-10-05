@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import "./Styles-login-reg.css";
 import { UserContext } from "./UserContext";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 function Login(props) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -11,10 +12,24 @@ function Login(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, pass);
-    setUser(email)
-    /// to redirect to home page
-    navigate("/");
+    // check email and password 
+    axios.post("http://localhost:8001/api/users/login", {
+      email: email,
+      password: pass
+    })
+    .then((response) => {
+      if(response.data.length){
+        setUser(response.data[0].name);
+        navigate("/");
+      } else {
+        alert("Please enter correct email or passowrd.")
+      }
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+
   };
 
   return (
