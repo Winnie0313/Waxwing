@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { GridContainer, TopLeft, TopRight, BottomLeft, BottomRight } from "./ShowRecipeStyles";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from "@fortawesome/fontawesome-free-solid";
+import { UserContext } from "../UserContext";
 
 
 const axios = require("axios");
@@ -13,6 +14,8 @@ function ShowRecipe() {
   console.log("drink is: ", drink);
   const [ingredients, setIngredients] = useState([])
   const [measurements, setMeasurements] = useState([])
+
+  const {user, setUser} = useContext(UserContext)
   // get drink id from the endpoint
  
   const { id } = useParams();
@@ -61,6 +64,21 @@ function ShowRecipe() {
     setMeasurements(measurementsArray);
   };
 
+  // On click function to add cocktail to the favourites database by user id
+  const addToFavourites = () => {
+    axios.post(`/api/favourites/${user.id}`, {
+      user_id: user.id,
+      api_cocktail_id: drink.idDrink,
+    })
+    .then((response) => {
+      console.log(user)
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
   return (
     <div>
       <GridContainer>
@@ -68,7 +86,7 @@ function ShowRecipe() {
           <div>
             <h1>{drink.strDrink}</h1>
             <p>{drink.strCategory}</p>
-            <FontAwesomeIcon icon={faHeart} size="2x" className="fa-icon"/>
+            <FontAwesomeIcon icon={faHeart} size="2x" className="fa-icon" onClick={() => addToFavourites()}/>
           </div>
         </TopLeft>
         <TopRight>
