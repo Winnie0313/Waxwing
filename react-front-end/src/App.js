@@ -27,18 +27,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <UserContext.Provider value={value}>
-          <NavigationBar />
-          <Routes>
-            <Route exact path="/" element={<Homepage />} />
-            <Route path="/NewCocktail" element={<NewCocktail />} />
-            <Route path="/Register" element={<Register />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/Favourites" element={<Favourites />} />
-            <Route path="/drink/:type" element={<Drink />} />
-          </Routes>
-        </UserContext.Provider>
-         */}
         <UserContext.Provider value={value}>
           <NavigationBar />
           <Routes>

@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Flex, CardFlex } from "./Search/CardStyles";
 import Search from "./Search/Search";
 import Button from "react-bootstrap/Button";
-// import Card from 'react-bootstrap/Card';
 import CentredModal from "./Modal";
-// import useModal from "../hooks/useModal";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faHeart } from "@fortawesome/free-regular-svg-icons"
 const axios = require("axios");
 
 function Homepage() {
@@ -78,7 +74,6 @@ function Homepage() {
             <>
               <CardFlex key={cocktail.idDrink}>
                 <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
-                {/* <h6> {cocktail.strCategory} </h6> */}
                 <h4> {cocktail.strDrink}</h4>
                 <Button onClick={() => handleModal(cocktail.idDrink)}>
                   View
