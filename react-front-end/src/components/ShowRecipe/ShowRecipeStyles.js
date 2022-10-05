@@ -31,6 +31,10 @@ export const TopLeft = styled.div`
     font-size: 20px;
     padding-bottom: 2rem;
   }
+
+  .fa-icon:hover {
+    color: red;
+  }
 `
 export const TopRight = styled.div`
 

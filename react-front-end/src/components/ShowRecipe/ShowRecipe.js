@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { GridContainer, TopLeft, TopRight, BottomLeft, BottomRight } from "./ShowRecipeStyles";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart } from "@fortawesome/fontawesome-free-solid";
 
 
 const axios = require("axios");
@@ -14,6 +14,7 @@ function ShowRecipe() {
   const [ingredients, setIngredients] = useState([])
   const [measurements, setMeasurements] = useState([])
   // get drink id from the endpoint
+ 
   const { id } = useParams();
   console.log(id);
 
@@ -28,6 +29,7 @@ function ShowRecipe() {
         `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
       )
       .then((response) => {
+        console.log("response is: ", response);
         setDrink(response.data.drinks[0]);
         getIngredientsForDrink(response.data.drinks[0]);
         getMeasurementsForDrink(response.data.drinks[0]);
@@ -66,7 +68,7 @@ function ShowRecipe() {
           <div>
             <h1>{drink.strDrink}</h1>
             <p>{drink.strCategory}</p>
-            <FontAwesomeIcon icon={faHeart} size="2x" />
+            <FontAwesomeIcon icon={faHeart} size="2x" className="fa-icon"/>
           </div>
         </TopLeft>
         <TopRight>
