@@ -18,10 +18,16 @@ import SearchedFirst from "./components/Search/SearchedFirst";
 import Drink from "./components/Drink";
 import SearchByFirst from "./components/Search/SearchByFirst";
 import Search from "./components/Search/Search";
+import MyDrinks from "./components/MyDrinks";
+
+import { MyContext } from "./components/MyContext";
 
 function App() {
   const [user, setUser] = useState(null);
   const value = useMemo(() => ({ user, setUser }), [user, setUser]);
+
+  /// adding new cocktail
+  const [data, setData] = useState([]);
 
   return (
     <div className="App">
@@ -39,30 +45,38 @@ function App() {
         </UserContext.Provider>
          */}
         <UserContext.Provider value={value}>
-          <NavigationBar />
-          <Routes>
-            <Route exact path="/" element={<Homepage />} />
-            <Route path="/NewCocktail" element={<NewCocktail />} />
-            <Route path="/Register" element={<Register />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/Favourites" element={<Favourites />} />
-            <Route path="/drink/:type" element={<Drink />} />
+          <MyContext.Provider value={{ data, setData }}>
+            <NavigationBar />
+            <Routes>
+              <Route exact path="/" element={<Homepage />} />
+              <Route path="/NewCocktail" element={<NewCocktail />} />
+              <Route path="/Register" element={<Register />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Favourites" element={<Favourites />} />
+              <Route path="/drink/:type" element={<Drink />} />
 
-            {/* {search by name } */}
-            <Route path="/search" element={<Search />} />
-            <Route path="/searched/:search" element={<Searched />} />
+              {/* {search by name } */}
+              <Route path="/search" element={<Search />} />
+              <Route path="/searched/:search" element={<Searched />} />
 
-            {/* search by ingredients routes */}
-            <Route path="/SearchByIngred/" element={<SearchByIngred />} />
-            <Route path="/searchedIng/:search" element={<SearchedIng />} />
+              {/* search by ingredients routes */}
+              <Route path="/SearchByIngred/" element={<SearchByIngred />} />
+              <Route path="/searchedIng/:search" element={<SearchedIng />} />
 
-            {/* search by first letter routes */}
-            <Route path="/SearchByFirst/" element={<SearchByFirst />} />
-            <Route path="/searchedFirst/:search" element={<SearchedFirst />} />
+              {/* search by first letter routes */}
+              <Route path="/SearchByFirst/" element={<SearchByFirst />} />
+              <Route
+                path="/searchedFirst/:search"
+                element={<SearchedFirst />}
+              />
 
-            {/* to catch all routes that don't match any of the above , and redirect to home page */}
-            <Route path="*" element={<Homepage />} />
-          </Routes>
+              {/* path for new drinks */}
+              <Route path="/myDrinks" element={<MyDrinks />} />
+
+              {/* to catch all routes that don't match any of the above , and redirect to home page */}
+              <Route path="*" element={<Homepage />} />
+            </Routes>
+          </MyContext.Provider>
         </UserContext.Provider>
         <Footer />
       </Router>

@@ -74,11 +74,14 @@ function NavigationBar() {
               </NavDropdown.Item>
             </NavDropdown>
 
+            <NavLink eventKey="2" as={Link} to="/NewCocktail">
+              Add New Cocktail
+            </NavLink>
+            <NavLink eventKey="2" as={Link} to="/myDrinks">
+              My Drinks
+            </NavLink>
             {user ? (
               <>
-                <NavLink eventKey="2" as={Link} to="/NewCocktail">
-                  Add New Cocktail
-                </NavLink>
                 <NavLink eventKey="4" as={Link} to="/Favourites">
                   Favourites
                 </NavLink>
