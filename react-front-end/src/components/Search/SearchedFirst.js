@@ -2,15 +2,20 @@ import React from "react";
 import { Flex, CardFlex, FormStyle } from "../Search/CardStyles";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import Button from "react-bootstrap/Button";
 import Error from "../Error";
+import CentredModal from "../Modal";
 const axios = require("axios");
 
 function SearchedFirst() {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
+  const [drinkObject, setDrinkObject] = useState({});
+  const [modalView, setModalView] = useState(false);
+
   let params = useParams();
+
   const erroMsg = "Oops , couldn't find that cocktail, please try again";
   console.log("params", params);
 
@@ -41,6 +46,43 @@ function SearchedFirst() {
     console.log("input", input);
   };
 
+  // sets the drink object based on the id of the drink
+  const firstDrinkId = (id) => {
+    const properDrink = searchedRecipes.find((drink) => drink.idDrink === id);
+
+    setDrinkObject(properDrink);
+  };
+
+  // fetches ingredient details for drink
+  const ingredientsForDrink = () => {
+    const ingredientsArray = [];
+
+    for (let i = 1; i < 16; i++) {
+      if (drinkObject[`strIngredient${i}`] !== null) {
+        ingredientsArray.push(drinkObject[`strIngredient${i}`]);
+      }
+    }
+    return ingredientsArray;
+  };
+
+  // fetches measurements for drink
+  const measurementsForDrink = () => {
+    const measurementsArray = [];
+
+    for (let i = 1; i < 16; i++) {
+      if (drinkObject[`strMeasure${i}`] !== null) {
+        measurementsArray.push(drinkObject[`strMeasure${i}`]);
+      }
+    }
+    return measurementsArray;
+  };
+
+  // Opens modal and fetches details for drink
+  const handleModal = (id) => {
+    firstDrinkId(id);
+    setModalView(true);
+  };
+
   return (
     <div>
       <FormStyle onSubmit={submitHandler}>
@@ -66,13 +108,26 @@ function SearchedFirst() {
             {searchedRecipes.map((item) => {
               return (
                 <CardFlex key={item.idDrink}>
-                  <Link to={"/recipe/" + item.idDrink}>
+                  
                     <img src={item.strDrinkThumb} alt={item.strDrink} />
                     <h4> {item.strDrink}</h4>
-                  </Link>
+                    <Button onClick={() => handleModal(item.idDrink)}>
+                      View
+                    </Button>
                 </CardFlex>
               );
             })}
+
+            <CentredModal 
+              show={modalView}
+              onHide={() => setModalView(false)}
+              title={drinkObject.strDrink}
+              image={drinkObject.strDrinkThumb}
+              instructions={drinkObject.strInstructions}
+              ingredients={ingredientsForDrink()}
+              measurements={measurementsForDrink()}
+            />
+
           </>
         ) : (
           <Error message={erroMsg} />
