@@ -59,8 +59,10 @@ function NavigationBar() {
 
           <Nav>
             {user ? (
-              <div style={{display: 'flex', alignItems: 'center'}}>
-                <NavLink style={{cursor: 'default'}}>{`Welcome ${user}!`}</NavLink>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <NavLink
+                  style={{ cursor: "default" }}
+                >{`Welcome ${user}!`}</NavLink>
                 <NavDropdown
                   title="Search Cocktail by"
                   bg="dark"
