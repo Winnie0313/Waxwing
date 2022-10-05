@@ -12,6 +12,8 @@ export const GridContainer = styled.div`
 //   display: flex;
 // `
 export const TopLeft = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Lobster&family=Source+Sans+Pro:ital,wght@0,600;1,300&display=swap');
+
   display: grid;
   align-items: center;
   flex: 50%;
@@ -19,7 +21,9 @@ export const TopLeft = styled.div`
   padding-right: 1.5rem;
   
   h1 {
+    padding: 2rem;
     font-size: 50px;
+    font-family: 'Lobster', cursive;
   }
 `
 export const TopRight = styled.div`
