@@ -2,19 +2,24 @@ import React from "react";
 import { Flex, CardFlex, FormStyle } from "../Search/CardStyles";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import Button from "react-bootstrap/Button";
+import CentredModal from "../Modal";
 import Error from "../Error";
 const axios = require("axios");
 
 function SearchedIng() {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
+  const [drinkObject, setDrinkObject] = useState({});
+  const [modalView, setModalView] = useState(false);
+
   let params = useParams();
+
   const erroMsg =
     "Oops , couldn't find any drinks, please try other ingredients";
 
-  /////
+  ///// Functions for the search bar/modal
   const getSearched = (name) => {
     axios
       .get(
@@ -26,6 +31,41 @@ function SearchedIng() {
       .catch((err) => console.log(err));
   };
 
+  const fetchDetailsForDrink = async (id) => {
+    const data = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+    );
+    const drink = await data.json();
+    setDrinkObject(drink.drinks[0]);
+  };
+
+  const ingredientsForDrink = () => {
+    const ingredientsArray = [];
+
+    for (let i = 1; i < 16; i++) {
+      if (drinkObject[`strIngredient${i}`] !== null) {
+        ingredientsArray.push(drinkObject[`strIngredient${i}`]);
+      }
+    }
+    return ingredientsArray;
+  };
+
+  const measurementsForDrink = () => {
+    const measurementsArray = [];
+
+    for (let i = 1; i < 16; i++) {
+      if (drinkObject[`strMeasure${i}`] !== null) {
+        measurementsArray.push(drinkObject[`strMeasure${i}`]);
+      }
+    }
+    return measurementsArray;
+  };
+
+  const handleModal = (id) => {
+    fetchDetailsForDrink(id);
+    setModalView(true);
+  };
+
   /////
 
   useEffect(() => {
@@ -33,9 +73,12 @@ function SearchedIng() {
   }, [params.search]);
 
   console.log("=+++===", searchedRecipes);
+
   /// searchBar parameters
   const [input, setInput] = useState("");
+
   const navigate = useNavigate();
+
   const submitHandler = (e) => {
     e.preventDefault();
     navigate("/searchedIng/" + input);
@@ -68,13 +111,24 @@ function SearchedIng() {
             {searchedRecipes.map((item) => {
               return (
                 <CardFlex key={item.idDrink}>
-                  <Link to={"/recipe/" + item.idDrink}>
-                    <img src={item.strDrinkThumb} alt={item.strDrink} />
-                    <h4> {item.strDrink}</h4>
-                  </Link>
+                  <img src={item.strDrinkThumb} alt={item.strDrink} />
+                  <h4> {item.strDrink}</h4>
+                  <Button onClick={() => handleModal(item.idDrink)}>
+                    View
+                  </Button>
                 </CardFlex>
               );
             })}
+
+            <CentredModal
+              show={modalView}
+              onHide={() => setModalView(false)}
+              title={drinkObject.strDrink}
+              image={drinkObject.strDrinkThumb}
+              instructions={drinkObject.strInstructions}
+              ingredients={ingredientsForDrink()}
+              measurements={measurementsForDrink()}
+            />
           </>
         ) : (
           <Error message={erroMsg} />

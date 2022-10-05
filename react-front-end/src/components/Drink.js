@@ -34,13 +34,6 @@ function Drink() {
   }, [params.type]);
   console.log("drink", drink);
 
-  // sets the drink object based on the id of the drink, used in this context to open the modal with the proper drink details
-  const singleDrinkId = (id) => {
-    const properDrink = drink.find((drink) => drink.idDrink === id);
-
-    setDrinkObject(properDrink);
-  };
-
   // calls the API using ID fetched by above function by Mustafa
   const fetchDetailsForDrink = async (id) => {
     const data = await fetch(
@@ -52,7 +45,6 @@ function Drink() {
 
   // Similar to home page, but calls the API for the specific drink
   const handleModal = (id) => {
-    singleDrinkId(id);
     fetchDetailsForDrink(id);
     setModalView(true);
   };

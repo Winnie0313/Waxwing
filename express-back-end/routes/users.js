@@ -30,6 +30,17 @@ module.exports = (knex) => {
       });
   });
 
+  
+  router.post('/login', (req, res) => {
+    knex
+      .select('*')
+      .from('users')
+      .where({email: req.body.email, password: req.body.password})
+      .then((results) => {
+        res.json(results);
+      });
+  });
+
   return router;
 
 }
