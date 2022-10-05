@@ -1,5 +1,7 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
+import Button from 'react-bootstrap/Button';
+
 
 function CentredModal(props) {
 
@@ -36,6 +38,7 @@ function CentredModal(props) {
     </Modal.Body>
 
     <Modal.Footer>
+      <Button variant="outline-dark">VIEW RECIPE PAGE</Button>
       <h6>Like what you see?</h6>
     </Modal.Footer>
 

@@ -90,6 +90,7 @@ function Homepage() {
 
         <CentredModal
           show={modalView}
+          
           onHide={() => setModalView(false)}
           title={drinkObject.strDrink}
           image={drinkObject.strDrinkThumb}
