@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { MyContext } from "./MyContext";
 import { Flex, CardFlex } from "./Search/CardStyles";
 import Error from "./Error";
@@ -7,8 +7,17 @@ import { Button } from "react-bootstrap";
 
 function MyDrinks() {
   const erroMsg = "your list is empty ...";
-  const { data } = useContext(MyContext);
-  console.log("data", data);
+  const { data, setData } = useContext(MyContext);
+
+  useEffect(() => {
+    const check = localStorage.getItem("myDrinks");
+    console.log("check", check);
+    if (check) {
+      const localData = JSON.parse(check);
+      setData(localData);
+    }
+  }, []);
+
   return (
     <div>
       <h2> My Drinks</h2>
@@ -27,7 +36,7 @@ function MyDrinks() {
           <>
             {data.map((item) => {
               return (
-                <CardFlex key={item.idDrink}>
+                <CardFlex key={item.id}>
                   <Link to={"/recipe/" + item.idDrink}>
                     <img src={item.image} alt={item.cocktailName} />
                     <h4> {item.cocktailName}</h4>

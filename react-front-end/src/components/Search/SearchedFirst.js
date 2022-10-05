@@ -17,7 +17,7 @@ function SearchedFirst() {
   let params = useParams();
 
   const erroMsg = "Oops , couldn't find that cocktail, please try again";
-  console.log("params", params);
+  // console.log("params", params);
 
   ////
   const getSearched = (name) => {
@@ -25,7 +25,7 @@ function SearchedFirst() {
       .get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${name}`)
       .then((response) => {
         setSearchedRecipes(response.data.drinks);
-        console.log("====", response.data.drinks);
+        // console.log("====", response.data.drinks);
       })
       .catch((err) => console.log(err));
   };
@@ -43,7 +43,7 @@ function SearchedFirst() {
     e.preventDefault();
     navigate("/searchedFirst/" + input);
 
-    console.log("input", input);
+    // console.log("input", input);
   };
 
   // sets the drink object based on the id of the drink
@@ -108,17 +108,16 @@ function SearchedFirst() {
             {searchedRecipes.map((item) => {
               return (
                 <CardFlex key={item.idDrink}>
-                  
-                    <img src={item.strDrinkThumb} alt={item.strDrink} />
-                    <h4> {item.strDrink}</h4>
-                    <Button onClick={() => handleModal(item.idDrink)}>
-                      View
-                    </Button>
+                  <img src={item.strDrinkThumb} alt={item.strDrink} />
+                  <h4> {item.strDrink}</h4>
+                  <Button onClick={() => handleModal(item.idDrink)}>
+                    View
+                  </Button>
                 </CardFlex>
               );
             })}
 
-            <CentredModal 
+            <CentredModal
               show={modalView}
               onHide={() => setModalView(false)}
               title={drinkObject.strDrink}
@@ -127,7 +126,6 @@ function SearchedFirst() {
               ingredients={ingredientsForDrink()}
               measurements={measurementsForDrink()}
             />
-
           </>
         ) : (
           <Error message={erroMsg} />

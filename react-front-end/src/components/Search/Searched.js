@@ -16,7 +16,7 @@ function Searched() {
   let params = useParams();
 
   const erroMsg = "Oops , couldn't find that cocktail, please try again";
-  console.log("params", params);
+  // console.log("params", params);
 
   /////
   const getSearched = (name) => {
@@ -70,8 +70,8 @@ function Searched() {
     getSearched(params.search);
   }, [params.search]);
 
-  let results = searchedRecipes.length;
-  console.log("lenghtof", searchedRecipes.length);
+  // let results = searchedRecipes.length;
+
   //// styling
 
   return (
@@ -83,20 +83,18 @@ function Searched() {
         initial={{ opacity: 0 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
-        results={results}
+        // results={results}
       >
-        {searchedRecipes !== null ? (
+        {searchedRecipes ? (
           <>
             {searchedRecipes.map((item) => {
               return (
                 <CardFlex key={item.idDrink}>
-                  
-                    <img src={item.strDrinkThumb} alt={item.strDrink} />
-                    <h4> {item.strDrink}</h4>
-                    <Button onClick={() => handleModal(item.idDrink)}>
-                      View
-                    </Button>
-                  
+                  <img src={item.strDrinkThumb} alt={item.strDrink} />
+                  <h4> {item.strDrink}</h4>
+                  <Button onClick={() => handleModal(item.idDrink)}>
+                    View
+                  </Button>
                 </CardFlex>
               );
             })}
