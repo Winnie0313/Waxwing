@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
+import { GridContainer, TopLeft, TopRight, BottomLeft, BottomRight } from "./ShowRecipeStyles";
 
 
 const axios = require("axios");
@@ -95,51 +95,6 @@ function ShowRecipe() {
   );
 
 }
-
-
-const GridContainer = styled.div`
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: repeat(2, 1fr);
-  width: 100vw;
-  height: 100vh;
-`
-
-// const Top = styled.div`
-//   display: flex;
-// `
-const TopLeft = styled.div`
-  display: grid;
-  align-items: center;
-  flex: 50%;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  
-  h1 {
-    font-size: 50px;
-  }
-`
-const TopRight = styled.div`
-  flex: 50%;
-  img {
-    width: 100%;
-  };
-`
-const BottomLeft = styled.div`
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  li {
-    text-align: left;
-  }
-`
-const BottomRight = styled.div`
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  
-`
 
 
 export default ShowRecipe;

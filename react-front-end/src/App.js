@@ -18,7 +18,7 @@ import SearchedFirst from "./components/Search/SearchedFirst";
 import Drink from "./components/Drink";
 import SearchByFirst from "./components/Search/SearchByFirst";
 import Search from "./components/Search/Search";
-import ShowRecipe from "./components/ShowRecipe"
+import ShowRecipe from "./components/ShowRecipe/ShowRecipe"
 
 function App() {
   const [user, setUser] = useState(null);
