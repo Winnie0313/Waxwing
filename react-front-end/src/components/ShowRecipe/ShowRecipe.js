@@ -10,6 +10,7 @@ const axios = require("axios");
 
 function ShowRecipe() {
   const [drink, setDrink] = useState({});
+  console.log("drink is: ", drink);
   const [ingredients, setIngredients] = useState([])
   const [measurements, setMeasurements] = useState([])
   // get drink id from the endpoint
@@ -18,8 +19,6 @@ function ShowRecipe() {
 
   useEffect(() => {
     getDrinkById();
-    getIngredientsForDrink();
-    getMeasurementsForDrink();
   }, []);
 
   // get drink by id
@@ -29,30 +28,32 @@ function ShowRecipe() {
         `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
       )
       .then((response) => {
-        setDrink(response.data.drinks[0])
+        setDrink(response.data.drinks[0]);
+        getIngredientsForDrink(response.data.drinks[0]);
+        getMeasurementsForDrink(response.data.drinks[0]);
         console.log(response.data.drinks[0])
       })
       .catch((err) => console.log(err));
   }
 
   // get ingredients for the drink
-  const getIngredientsForDrink = () => {
+  const getIngredientsForDrink = (cocktail) => {
     const ingredientsArray = [];
     for (let i = 1; i < 16; i++) {
-      if (drink[`strIngredient${i}`] !== null) {
-        ingredientsArray.push(drink[`strIngredient${i}`]);
+      if (cocktail[`strIngredient${i}`] !== null) {
+        ingredientsArray.push(cocktail[`strIngredient${i}`]);
       }
     }
     setIngredients(ingredientsArray);
   };
 
   // get measurements for ingredients
-  const getMeasurementsForDrink = () => {
+  const getMeasurementsForDrink = (cocktail) => {
     const measurementsArray = [];
 
     for (let i = 1; i < 16; i++) {
-      if (drink[`strMeasure${i}`] !== null) {
-        measurementsArray.push(drink[`strMeasure${i}`]);
+      if (cocktail[`strMeasure${i}`] !== null) {
+        measurementsArray.push(cocktail[`strMeasure${i}`]);
       }
     }
     setMeasurements(measurementsArray);
@@ -65,7 +66,7 @@ function ShowRecipe() {
           <div>
             <h1>{drink.strDrink}</h1>
             <p>{drink.strCategory}</p>
-            <FontAwesomeIcon icon={faHeart} size="2x"/>
+            <FontAwesomeIcon icon={faHeart} size="2x" />
           </div>
         </TopLeft>
         <TopRight>

@@ -57,7 +57,7 @@ function App() {
             <Route path="*" element={<Homepage />} />
           </Routes>
         </UserContext.Provider>
-        <Footer />
+        <Footer style={{position: "relative"}}/>
       </Router>
     </div>
   );

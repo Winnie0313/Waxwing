@@ -6,6 +6,7 @@ export const GridContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   width: 100vw;
   height: 100vh;
+  
 `
 
 // const Top = styled.div`
@@ -43,6 +44,8 @@ export const BottomLeft = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 100px;
+
   li {
     text-align: left;
   }
@@ -51,5 +54,6 @@ export const BottomRight = styled.div`
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  padding-bottom: 100px;
   
 `
