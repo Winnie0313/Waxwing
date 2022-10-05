@@ -18,6 +18,7 @@ import SearchedFirst from "./components/Search/SearchedFirst";
 import Drink from "./components/Drink";
 import SearchByFirst from "./components/Search/SearchByFirst";
 import Search from "./components/Search/Search";
+import ShowRecipe from "./components/ShowRecipe"
 
 function App() {
   const [user, setUser] = useState(null);
@@ -47,6 +48,10 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/Favourites" element={<Favourites />} />
             <Route path="/drink/:type" element={<Drink />} />
+
+            {/* view recipe page */}
+            <Route path="/recipes/:id" element={<ShowRecipe />} />
+
 
             {/* {search by name } */}
             <Route path="/search" element={<Search />} />

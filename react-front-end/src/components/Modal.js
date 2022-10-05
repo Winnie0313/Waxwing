@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
 
 
 function CentredModal(props) {
@@ -38,7 +39,7 @@ function CentredModal(props) {
     </Modal.Body>
 
     <Modal.Footer>
-      <Button variant="outline-dark">VIEW RECIPE PAGE</Button>
+      <Button variant="outline-dark" as={Link} to={`/recipes/${props.id}`}>VIEW RECIPE PAGE</Button>
       <h6>Like what you see?</h6>
     </Modal.Footer>
 
