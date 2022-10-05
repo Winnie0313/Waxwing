@@ -1,23 +1,74 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { MyContext } from "./MyContext";
 
 function NewCocktail() {
   const navigate = useNavigate();
-  const [cocktailName, setCocktailName] = useState("");
-  const [ingredients, setIngredients] = useState("");
-  const [instructions, setInstructions] = useState("");
-  const [image, setImage] = useState("");
+  const { data, setData } = useContext(MyContext);
+  function getRandomInt() {
+    return Math.floor(Math.random() * 1000);
+  }
+  getRandomInt();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(cocktailName, ingredients, instructions, image);
-    setCocktailName("");
-    setIngredients("");
-    setInstructions("");
-    setImage("");
-    /// to redirect to home page
-    navigate("/");
+  const [cocktailInfo, setCocktailInfo] = useState({
+    id: getRandomInt(),
+    cocktailName: "",
+    ingredient1: "",
+    ingredient2: "",
+    ingredient3: "",
+    ingredient4: "",
+    measurement1: "",
+    measurement2: "",
+    measurement3: "",
+    measurement4: "",
+    instructions: "",
+    image: "",
+  });
+  const handelChange = (event) => {
+    setCocktailInfo({
+      ...cocktailInfo,
+      [event.target.name]: event.target.value,
+    });
   };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    console.log("cocktailInfo", cocktailInfo);
+    setCocktailInfo({
+      cocktailName: "",
+      ingredient1: "",
+      ingredient2: "",
+      ingredient3: "",
+      ingredient4: "",
+      measurement1: "",
+      measurement2: "",
+      measurement3: "",
+      measurement4: "",
+      instructions: "",
+      image: "",
+    });
+
+    setData([
+      ...data,
+      {
+        id: cocktailInfo.id,
+        cocktailName: cocktailInfo.cocktailName,
+        ingredient1: cocktailInfo.ingredient1,
+        ingredient2: cocktailInfo.ingredient2,
+        ingredient3: cocktailInfo.ingredient3,
+        ingredient4: cocktailInfo.ingredient3,
+        measurement1: cocktailInfo.measurement1,
+        measurement2: cocktailInfo.measurement2,
+        measurement3: cocktailInfo.ingredient3,
+        measurement4: cocktailInfo.measurement4,
+        instructions: cocktailInfo.instructions,
+        image: cocktailInfo.image,
+      },
+    ]);
+
+    navigate("/myDrinks");
+  };
+
   return (
     <div
       className="auth-form-container newCockt "
@@ -27,37 +78,83 @@ function NewCocktail() {
     >
       <h2>Add new cocktail</h2>
       <form className="register-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">Name of your cocktail</label>
+        <label>Name of your cocktail</label>
         <input
-          value={cocktailName}
-          name="name"
-          id="name"
-          // placeholder="Enter name "
-          onChange={(e) => setCocktailName(e.target.value)}
+          value={cocktailInfo.name}
+          type="text"
+          name="cocktailName"
+          onChange={handelChange}
         />
-        <label htmlFor="name">Ingredients</label>
+        <label>Ingredient 1</label>
         <input
-          value={ingredients}
-          name="name"
-          id="name"
+          value={cocktailInfo.ingredient1}
+          type="text"
+          name="ingredient1"
+          onChange={handelChange}
+        />
+        <label>Ingredient 2</label>
+        <input
+          value={cocktailInfo.ingredient2}
+          name="ingredient2"
+          type="text"
+          onChange={handelChange}
+        />
+        <label>Ingredient 3</label>
+        <input
+          value={cocktailInfo.ingredient3}
+          name="ingredient3"
+          type="text"
+          onChange={handelChange}
+        />
+        <label>Ingredient 4</label>
+        <input
+          value={cocktailInfo.ingredient4}
+          name="ingredient4"
+          type="text"
+          onChange={handelChange}
+        />
+        <label>Measurement 1</label>
+        <input
+          value={cocktailInfo.measurement1}
+          name="measurement1"
+          type="text"
           // placeholder="Ingredients"
-          onChange={(e) => setIngredients(e.target.value)}
+          onChange={handelChange}
         />
-        <label htmlFor="name">Instructions</label>
+        <label>Measurement 2</label>
         <input
-          value={instructions}
-          name="name"
-          id="name"
-          // placeholder="Instructions"
-          onChange={(e) => setInstructions(e.target.value)}
+          value={cocktailInfo.measurement2}
+          name="measurement2"
+          type="text"
+          onChange={handelChange}
         />
-        <label htmlFor="name">Image link</label>
+        <label>Measurement 3</label>
         <input
-          value={image}
-          name="name"
-          id="name"
-          // placeholder=""
-          onChange={(e) => setImage(e.target.value)}
+          value={cocktailInfo.measurement3}
+          name="measurement3"
+          type="text"
+          onChange={handelChange}
+        />
+        <label>Measurement 4</label>
+        <input
+          value={cocktailInfo.measurement4}
+          name="measurement4"
+          type="text"
+          onChange={handelChange}
+        />
+        <label>Instructions</label>
+        <input
+          value={cocktailInfo.setInstructions}
+          name="instructions"
+          type="text"
+          onChange={handelChange}
+        />
+        <label>Image link</label>
+        <input
+          value={cocktailInfo.image}
+          name="image"
+          type="text"
+          onChange={handelChange}
         />
 
         <button type="submit">submit</button>
