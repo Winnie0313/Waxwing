@@ -5,6 +5,9 @@ import { MyContext } from "./MyContext";
 function NewCocktail() {
   const navigate = useNavigate();
   const { data, setData } = useContext(MyContext);
+
+  const check = localStorage.getItem("popular");
+
   function getRandomInt() {
     return Math.floor(Math.random() * 1000);
   }
