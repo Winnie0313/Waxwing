@@ -6,14 +6,11 @@ function NewCocktail() {
   const navigate = useNavigate();
   const { data, setData } = useContext(MyContext);
 
-  const check = localStorage.getItem("popular");
-
   function getRandomInt() {
     return Math.floor(Math.random() * 1000);
   }
-  getRandomInt();
 
-  const [cocktailInfo, setCocktailInfo] = useState({
+  let defaultCocktail = {
     id: getRandomInt(),
     cocktailName: "",
     ingredient1: "",
@@ -26,12 +23,18 @@ function NewCocktail() {
     measurement4: "",
     instructions: "",
     image: "",
-  });
+  };
+
+  const [cocktailInfo, setCocktailInfo] = useState(defaultCocktail);
+  console.log("cocktailInfoFirst", cocktailInfo);
+
   const handelChange = (event) => {
-    setCocktailInfo({
+    const updatedCocktail = {
       ...cocktailInfo,
       [event.target.name]: event.target.value,
-    });
+    };
+
+    setCocktailInfo(updatedCocktail);
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -50,8 +53,7 @@ function NewCocktail() {
       instructions: "",
       image: "",
     });
-
-    setData([
+    const newData = [
       ...data,
       {
         id: cocktailInfo.id,
@@ -67,7 +69,9 @@ function NewCocktail() {
         instructions: cocktailInfo.instructions,
         image: cocktailInfo.image,
       },
-    ]);
+    ];
+    localStorage.setItem("myDrinks", JSON.stringify(newData));
+    setData(newData);
 
     navigate("/myDrinks");
   };
@@ -147,7 +151,7 @@ function NewCocktail() {
         />
         <label>Instructions</label>
         <input
-          value={cocktailInfo.setInstructions}
+          value={cocktailInfo.instructions}
           name="instructions"
           type="text"
           onChange={handelChange}
