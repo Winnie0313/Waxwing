@@ -15,8 +15,6 @@ function Homepage() {
   const [modalView, setModalView] = useState(false);
 
   // empty arrays for functions
-  const ingredientsArray = [];
-  const measurementsArray = [];
 
   useEffect(() => {
     getPopular();
@@ -48,6 +46,8 @@ function Homepage() {
 
   // Dynamically gets ingredients for each drink
   const ingredientsForDrink = () => {
+    const ingredientsArray = [];
+
     for (let i = 1; i < 16; i++) {
       if (drinkObject[`strIngredient${i}`] !== null) {
         ingredientsArray.push(drinkObject[`strIngredient${i}`]);
@@ -58,6 +58,8 @@ function Homepage() {
 
   // dynamically gets measurements for drink
   const measurementsForDrink = () => {
+    const measurementsArray = [];
+
     for (let i = 1; i < 16; i++) {
       if (drinkObject[`strMeasure${i}`] !== null) {
         measurementsArray.push(drinkObject[`strMeasure${i}`]);

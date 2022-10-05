@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const Favourites = () => {
 
-    // Have to add user context to this page once login is accessing the user database
+    // Have to add user context to this page once login is accessing the user
   const { user } = useContext(UserContext);
 
   const [db, setDb] = useState([]);
