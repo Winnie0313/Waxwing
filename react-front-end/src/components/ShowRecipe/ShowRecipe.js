@@ -65,7 +65,7 @@ function ShowRecipe() {
           <div>
             <h1>{drink.strDrink}</h1>
             <p>{drink.strCategory}</p>
-            <FontAwesomeIcon icon={faHeart} />
+            <FontAwesomeIcon icon={faHeart} size="2x"/>
           </div>
         </TopLeft>
         <TopRight>

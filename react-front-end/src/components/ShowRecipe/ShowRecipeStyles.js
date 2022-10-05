@@ -22,8 +22,13 @@ export const TopLeft = styled.div`
   
   h1 {
     padding: 2rem;
-    font-size: 50px;
+    font-size: 100px;
     font-family: 'Lobster', cursive;
+  }
+
+  p {
+    font-size: 20px;
+    padding-bottom: 2rem;
   }
 `
 export const TopRight = styled.div`
