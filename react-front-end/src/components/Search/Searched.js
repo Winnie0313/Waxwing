@@ -2,7 +2,6 @@ import React from "react";
 import { Flex, CardFlex } from "../Search/CardStyles";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import CentredModal from "../Modal";
 import Button from "react-bootstrap/Button";
 import Search from "./Search";
