@@ -38,6 +38,7 @@ export const TopLeft = styled.div`
 
   .fa-icon-heart:hover {
     color: red;
+    cursor: pointer;
   }
 
   .fa-icon-share:hover {
