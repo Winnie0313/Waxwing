@@ -15,7 +15,7 @@ function ShowRecipe() {
   const [ingredients, setIngredients] = useState([])
   const [measurements, setMeasurements] = useState([])
 
-  const {user, setUser} = useContext(UserContext)
+  const {user} = useContext(UserContext)
   // get drink id from the endpoint
  
   const { id } = useParams();

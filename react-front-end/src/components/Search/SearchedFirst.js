@@ -53,30 +53,6 @@ function SearchedFirst() {
     setDrinkObject(properDrink);
   };
 
-  // fetches ingredient details for drink
-  const ingredientsForDrink = () => {
-    const ingredientsArray = [];
-
-    for (let i = 1; i < 16; i++) {
-      if (drinkObject[`strIngredient${i}`] !== null) {
-        ingredientsArray.push(drinkObject[`strIngredient${i}`]);
-      }
-    }
-    return ingredientsArray;
-  };
-
-  // fetches measurements for drink
-  const measurementsForDrink = () => {
-    const measurementsArray = [];
-
-    for (let i = 1; i < 16; i++) {
-      if (drinkObject[`strMeasure${i}`] !== null) {
-        measurementsArray.push(drinkObject[`strMeasure${i}`]);
-      }
-    }
-    return measurementsArray;
-  };
-
   // Opens modal and fetches details for drink
   const handleModal = (id) => {
     firstDrinkId(id);
@@ -122,9 +98,8 @@ function SearchedFirst() {
               onHide={() => setModalView(false)}
               title={drinkObject.strDrink}
               image={drinkObject.strDrinkThumb}
-              instructions={drinkObject.strInstructions}
-              ingredients={ingredientsForDrink()}
-              measurements={measurementsForDrink()}
+              category={drinkObject.strCategory}
+              alcohol={drinkObject.strAlcoholic}
             />
           </>
         ) : (

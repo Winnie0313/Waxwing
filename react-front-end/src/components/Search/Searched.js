@@ -29,34 +29,11 @@ function Searched() {
       .catch((err) => console.log("++++++", err));
   };
 
+  // sets drink object to the drink that was clicked on
   const searchedDrinkId = (id) => {
     const properDrink = searchedRecipes.find((drink) => drink.idDrink === id);
 
     setDrinkObject(properDrink);
-  };
-
-  // fetches ingredient details for drink
-  const ingredientsForDrink = () => {
-    const ingredientsArray = [];
-
-    for (let i = 1; i < 16; i++) {
-      if (drinkObject[`strIngredient${i}`] !== null) {
-        ingredientsArray.push(drinkObject[`strIngredient${i}`]);
-      }
-    }
-    return ingredientsArray;
-  };
-
-  // fetches measurements for drink
-  const measurementsForDrink = () => {
-    const measurementsArray = [];
-
-    for (let i = 1; i < 16; i++) {
-      if (drinkObject[`strMeasure${i}`] !== null) {
-        measurementsArray.push(drinkObject[`strMeasure${i}`]);
-      }
-    }
-    return measurementsArray;
   };
 
   const handleModal = (id) => {
@@ -105,9 +82,8 @@ function Searched() {
               id={drinkObject.idDrink}
               title={drinkObject.strDrink}
               image={drinkObject.strDrinkThumb}
-              instructions={drinkObject.strInstructions}
-              ingredients={ingredientsForDrink()}
-              measurements={measurementsForDrink()}
+              category={drinkObject.strCategory}
+              alcohol={drinkObject.strAlcoholic}
             />
           </>
         ) : (
