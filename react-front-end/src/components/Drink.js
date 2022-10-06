@@ -9,10 +9,6 @@ function Drink() {
   const [drinkObject, setDrinkObject] = useState({});
   const [modalView, setModalView] = useState(false);
 
-  // empty arrays for functions
-  const ingredientsArray = [];
-  const measurementsArray = [];
-
   let params = useParams();
 
   const getDrink = async (name) => {
@@ -49,26 +45,6 @@ function Drink() {
     setModalView(true);
   };
 
-  // Same as homepage
-  const ingredientsForDrink = () => {
-    for (let i = 1; i < 16; i++) {
-      if (drinkObject[`strIngredient${i}`] !== null) {
-        ingredientsArray.push(drinkObject[`strIngredient${i}`]);
-      }
-    }
-    return ingredientsArray;
-  };
-
-  // Same as homepage
-  const measurementsForDrink = () => {
-    for (let i = 1; i < 16; i++) {
-      if (drinkObject[`strMeasure${i}`] !== null) {
-        measurementsArray.push(drinkObject[`strMeasure${i}`]);
-      }
-    }
-    return measurementsArray;
-  };
-
   return (
     <Flex
       animate={{ opacity: 1 }}
@@ -94,9 +70,8 @@ function Drink() {
         id={drinkObject.idDrink}
         title={drinkObject.strDrink}
         image={drinkObject.strDrinkThumb}
-        instructions={drinkObject.strInstructions}
-        ingredients={ingredientsForDrink()}
-        measurements={measurementsForDrink()}
+        category={drinkObject.strCategory}
+        alcohol={drinkObject.strAlcoholic}
       />
     </Flex>
   );

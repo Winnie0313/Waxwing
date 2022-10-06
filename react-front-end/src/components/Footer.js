@@ -20,7 +20,7 @@ function Footer() {
             <a href="https://twitter.com/home" className="me-2 text-reset">
               <BsTwitter size="2em" color="white" />
             </a>
-            <a href="https://github.com/" className="me-2 text-reset">
+            <a href="https://github.com/mustafa-bhm/cocktail-final-project" className="me-2 text-reset">
               <BsGithub size="2em" />
             </a>
           </div>
