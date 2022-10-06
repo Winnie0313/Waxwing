@@ -66,12 +66,11 @@ function ShowRecipe() {
 
   // On click function to add cocktail to the favourites database by user id
   const addToFavourites = () => {
-    fetch(`api/favourites/${user.id}`, {
+    fetch(`/api/favourites/${user.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user_id: user.id, api_cocktail_id: drink.idDrink }),
     })
-      .then((res) => res.json())
       .then((data) => {
         console.log(data);
     })
