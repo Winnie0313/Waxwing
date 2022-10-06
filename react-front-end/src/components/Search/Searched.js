@@ -16,7 +16,6 @@ function Searched() {
   let params = useParams();
 
   const erroMsg = "Oops , couldn't find that cocktail, please try again";
-  // console.log("params", params);
 
   /////
   const getSearched = (name) => {
@@ -24,7 +23,6 @@ function Searched() {
       .get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`)
       .then((response) => {
         setSearchedRecipes(response.data.drinks);
-        // console.log("====", response.data.drinks);
       })
       .catch((err) => console.log("++++++", err));
   };
@@ -46,10 +44,6 @@ function Searched() {
   useEffect(() => {
     getSearched(params.search);
   }, [params.search]);
-
-  // let results = searchedRecipes.length;
-
-  //// styling
 
   return (
     <div>

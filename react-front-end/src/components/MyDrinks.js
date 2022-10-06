@@ -4,28 +4,34 @@ import { Flex, CardFlex } from "./Search/CardStyles";
 import Error from "./Error";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
 
 function MyDrinks() {
   const erroMsg = "your list is empty ...";
   const { data, setData } = useContext(MyContext);
-  // const navigate = useNavigate();
 
   const handleRemoveItem = (id) => {
     const dataAfterDelet = data.filter((item) => item.id !== id);
     localStorage.setItem("myDrinks", JSON.stringify(dataAfterDelet));
     setData(dataAfterDelet);
   };
-  console.log("newData", data);
 
+  /// to updatae the list when a drink is deleted
   useEffect(() => {
     const check = localStorage.getItem("myDrinks");
-    console.log("check", check);
     if (check) {
       const localData = JSON.parse(check);
       setData(localData);
     }
   }, [setData]);
+
+  /// modal
+  const [modalView, setModalView] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const handleModal = (item) => {
+    setModalView(true);
+    setSelectedItem(item);
+  };
 
   return (
     <div>
@@ -45,24 +51,61 @@ function MyDrinks() {
           <>
             {data.map((item) => {
               return (
-                <CardFlex key={item.id}>
-                  <Link to={"/Myrecipe/" + item.id}>
-                    <img src={item.image} alt={item.cocktailName} />
-                    <h4> {item.cocktailName}</h4>
-                  </Link>
-                  <button
-                    id={item.id}
-                    onClick={() => handleRemoveItem(item.id)}
-                  >
-                    X
-                  </button>
+                <div key={item.id}>
+                  <CardFlex key={item.id}>
+                    <Link to={"/Myrecipe/" + item.id}>
+                      <img src={item.image} alt={item.cocktailName} />
+                      <h4> {item.cocktailName}</h4>
+                    </Link>
+                    <Button
+                      variant="danger"
+                      id={item.id}
+                      onClick={() => handleRemoveItem(item.id)}
+                    >
+                      Delete
+                    </Button>
 
-                  <Button as={Link} to={"/Myrecipe/" + item.id}>
-                    details
-                  </Button>
-                </CardFlex>
+                    <Button onClick={() => handleModal(item)}>View</Button>
+                  </CardFlex>
+                </div>
               );
             })}
+            {selectedItem && (
+              <Modal
+                centered
+                size="lg"
+                show={modalView}
+                onHide={() => setModalView(false)}
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>{selectedItem.cocktailName}</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                  <img
+                    src={selectedItem.image}
+                    alt={selectedItem.cocktailName}
+                  />
+
+                  <h4>Category</h4>
+                  <p>{selectedItem.category}</p>
+
+                  <h4>Alcoholic/Non-Alcoholic</h4>
+                  <p>{selectedItem.category}</p>
+                </Modal.Body>
+
+                <Modal.Footer>
+                  <h6>Like what you see?</h6>
+                  <Button
+                    variant="outline-dark"
+                    as={Link}
+                    to={"/Myrecipe/" + selectedItem.id}
+                  >
+                    VIEW RECIPE PAGE
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+            )}
           </>
         ) : (
           <>
