@@ -102,6 +102,7 @@ function SearchedIng() {
             <CentredModal
               show={modalView}
               onHide={() => setModalView(false)}
+              id={drinkObject.idDrink}
               title={drinkObject.strDrink}
               image={drinkObject.strDrinkThumb}
               category={drinkObject.strCategory}
