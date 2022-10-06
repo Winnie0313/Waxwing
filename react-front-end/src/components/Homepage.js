@@ -3,6 +3,7 @@ import { Flex, CardFlex } from "./Search/CardStyles";
 import Search from "./Search/Search";
 import Button from "react-bootstrap/Button";
 import CentredModal from "./Modal";
+import BrandBar from "./Brand/BrandBar";
 const axios = require("axios");
 
 function Homepage() {
@@ -42,6 +43,10 @@ function Homepage() {
 
   return (
     <div>
+      <BrandBar
+        title="Welcome to Waxwing"
+        description="The cedar waxwing is a bird native to North America, a natural work of art known to feast on fermented berries and get a little tipsy. Their habits and their beauty inspired the creation of a space where people can share their own unique and beautiful cocktail creations."
+      />
       <Search />
       <h1> Popular Picks</h1>
       <Flex>

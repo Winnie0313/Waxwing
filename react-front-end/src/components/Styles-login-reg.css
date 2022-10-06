@@ -47,7 +47,8 @@ button {
   color: #070707;
   font-size: larger;
   font-weight: bolder;
-  margin-top: 2rem;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
 }
 
 .link-btn {
