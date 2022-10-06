@@ -13,13 +13,13 @@ function Login(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // check email and password 
-    axios.post("http://localhost:8001/api/users/login", {
+    axios.post("/api/users/login", {
       email: email,
       password: pass
     })
     .then((response) => {
       if(response.data.length){
-        setUser(response.data[0].name);
+        setUser(response.data[0]);
         navigate("/");
       } else {
         alert("Please enter correct email or passowrd.")

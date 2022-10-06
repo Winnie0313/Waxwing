@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MyContext } from "./MyContext";
 import { Flex, CardFlex } from "./Search/CardStyles";
 import Error from "./Error";
@@ -7,8 +7,25 @@ import { Button } from "react-bootstrap";
 
 function MyDrinks() {
   const erroMsg = "your list is empty ...";
-  const { data } = useContext(MyContext);
-  console.log("data", data);
+  const { data, setData } = useContext(MyContext);
+
+  /// to delet new cocktail
+  const handleRemoveItem = (id) => {
+    const dataAfterDelet = data.filter((item) => item.id !== id);
+    localStorage.setItem("myDrinks", JSON.stringify(dataAfterDelet));
+    setData(dataAfterDelet);
+  };
+  console.log("newData", data);
+
+  useEffect(() => {
+    const check = localStorage.getItem("myDrinks");
+    console.log("check", check);
+    if (check) {
+      const localData = JSON.parse(check);
+      setData(localData);
+    }
+  }, [setData]);
+
   return (
     <div>
       <h2> My Drinks</h2>
@@ -27,11 +44,17 @@ function MyDrinks() {
           <>
             {data.map((item) => {
               return (
-                <CardFlex key={item.idDrink}>
-                  <Link to={"/recipe/" + item.idDrink}>
+                <CardFlex key={item.id}>
+                  <Link to={"/recipe/" + item.id}>
                     <img src={item.image} alt={item.cocktailName} />
                     <h4> {item.cocktailName}</h4>
                   </Link>
+                  <button
+                    id={item.id}
+                    onClick={() => handleRemoveItem(item.id)}
+                  >
+                    X
+                  </button>
                 </CardFlex>
               );
             })}

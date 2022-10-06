@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { GridContainer, TopLeft, TopRight, BottomLeft, BottomRight } from "./ShowRecipeStyles";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faShare } from "@fortawesome/fontawesome-free-solid";
-// import {CopyToClipboard} from 'react-copy-to-clipboard';
 import toast, { Toaster } from 'react-hot-toast';
 import Tooltip from '@mui/material/Tooltip';
+import { UserContext } from "../UserContext";
 
 
 const axios = require("axios");
@@ -16,6 +16,8 @@ function ShowRecipe() {
   console.log("drink is: ", drink);
   const [ingredients, setIngredients] = useState([])
   const [measurements, setMeasurements] = useState([])
+
+  const {user} = useContext(UserContext)
   // get drink id from the endpoint
  
   const { id } = useParams();
@@ -74,7 +76,7 @@ const CopyToClipboard = async () => {
 }
 
 // show noticication after click on the share button
-const handleClick = () => {
+const handleShare = () => {
   CopyToClipboard()
     .then((res) => toast.success("Successfully copied URL to clipboard!"))
     .catch((err) => toast.error("Faild to copy URL!"))
@@ -82,6 +84,19 @@ const handleClick = () => {
 
 
 
+  // On click function to add cocktail to the favourites database by user id
+  const addToFavourites = () => {
+    fetch(`/api/favourites/${user.id}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: user.id, api_cocktail_id: drink.idDrink }),
+    })
+      .then((data) => {
+        console.log(data);
+    })
+      .catch((err) => console.log(err));
+  };
+  
 
   return (
     <div>
@@ -91,11 +106,11 @@ const handleClick = () => {
             <h1>{drink.strDrink}</h1>
             <p>{drink.strCategory}</p>
             <Tooltip title="Add to favourite">
-              <FontAwesomeIcon icon={faHeart} size="2x" className="fa-icon-heart"/>
+              <FontAwesomeIcon icon={faHeart} size="2x" className="fa-icon-heart" onClick={() => addToFavourites()}/>
             </Tooltip>
         
             <Tooltip title="Share URL">
-              <FontAwesomeIcon icon={faShare} size="2x" className="fa-icon-share" onClick={handleClick}/>
+              <FontAwesomeIcon icon={faShare} size="2x" className="fa-icon-share" onClick={handleShare}/>
             </Tooltip>
           </div>
         </TopLeft>
@@ -117,7 +132,7 @@ const handleClick = () => {
             </ul>
           </div>
         </BottomLeft>
-        
+
         <BottomRight>
           <h3>Instructions</h3>
           <p>{drink.strInstructions}</p>

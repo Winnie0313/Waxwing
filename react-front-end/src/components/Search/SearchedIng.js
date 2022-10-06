@@ -31,34 +31,13 @@ function SearchedIng() {
       .catch((err) => console.log(err));
   };
 
+  // gets details for clicked drink from the api
   const fetchDetailsForDrink = async (id) => {
     const data = await fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
     );
     const drink = await data.json();
     setDrinkObject(drink.drinks[0]);
-  };
-
-  const ingredientsForDrink = () => {
-    const ingredientsArray = [];
-
-    for (let i = 1; i < 16; i++) {
-      if (drinkObject[`strIngredient${i}`] !== null) {
-        ingredientsArray.push(drinkObject[`strIngredient${i}`]);
-      }
-    }
-    return ingredientsArray;
-  };
-
-  const measurementsForDrink = () => {
-    const measurementsArray = [];
-
-    for (let i = 1; i < 16; i++) {
-      if (drinkObject[`strMeasure${i}`] !== null) {
-        measurementsArray.push(drinkObject[`strMeasure${i}`]);
-      }
-    }
-    return measurementsArray;
   };
 
   const handleModal = (id) => {
@@ -125,9 +104,8 @@ function SearchedIng() {
               onHide={() => setModalView(false)}
               title={drinkObject.strDrink}
               image={drinkObject.strDrinkThumb}
-              instructions={drinkObject.strInstructions}
-              ingredients={ingredientsForDrink()}
-              measurements={measurementsForDrink()}
+              category={drinkObject.strCategory}
+              alcohol={drinkObject.strAlcoholic}
             />
           </>
         ) : (

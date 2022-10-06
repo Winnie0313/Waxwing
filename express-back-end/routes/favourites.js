@@ -18,7 +18,7 @@ module.exports = (knex) => {
 
   // route to add a new favourite to the database
 
-  router.post('/', (req, res) => {
+  router.post('/:id', (req, res) => {
     knex('favourites')
       .insert(
         {

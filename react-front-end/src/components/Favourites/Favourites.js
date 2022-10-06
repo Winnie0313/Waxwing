@@ -46,29 +46,6 @@ const Favourites = () => {
     setModalView(true);
   };
 
-  const ingredientsForDrink = () => {
-    const ingredientsArray = [];
-
-    for (let i = 1; i < 16; i++) {
-      if (drinkObject[`strIngredient${i}`] !== null) {
-        ingredientsArray.push(drinkObject[`strIngredient${i}`]);
-      }
-    }
-    return ingredientsArray;
-  };
-
-  // Same as homepage
-  const measurementsForDrink = () => {
-    const measurementsArray = [];
-
-    for (let i = 1; i < 16; i++) {
-      if (drinkObject[`strMeasure${i}`] !== null) {
-        measurementsArray.push(drinkObject[`strMeasure${i}`]);
-      }
-    }
-    return measurementsArray;
-  };
-
   return (
     <>
       <div>
@@ -101,9 +78,8 @@ const Favourites = () => {
             onHide={() => setModalView(false)}
             title={drinkObject.strDrink}
             image={drinkObject.strDrinkThumb}
-            instructions={drinkObject.strInstructions}
-            ingredients={ingredientsForDrink()}
-            measurements={measurementsForDrink()}
+            category={drinkObject.strCategory}
+            alcohol={drinkObject.strAlcoholic}
           />
         </Grid>
       </>

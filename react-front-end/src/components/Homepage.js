@@ -40,30 +40,6 @@ function Homepage() {
     setModalView(true);
   };
 
-  // Dynamically gets ingredients for each drink
-  const ingredientsForDrink = () => {
-    const ingredientsArray = [];
-
-    for (let i = 1; i < 16; i++) {
-      if (drinkObject[`strIngredient${i}`] !== null) {
-        ingredientsArray.push(drinkObject[`strIngredient${i}`]);
-      }
-    }
-    return ingredientsArray;
-  };
-
-  // dynamically gets measurements for drink
-  const measurementsForDrink = () => {
-    const measurementsArray = [];
-
-    for (let i = 1; i < 16; i++) {
-      if (drinkObject[`strMeasure${i}`] !== null) {
-        measurementsArray.push(drinkObject[`strMeasure${i}`]);
-      }
-    }
-    return measurementsArray;
-  };
-
   return (
     <div>
       <Search />
@@ -89,9 +65,8 @@ function Homepage() {
           id={drinkObject.idDrink}
           title={drinkObject.strDrink}
           image={drinkObject.strDrinkThumb}
-          instructions={drinkObject.strInstructions}
-          ingredients={ingredientsForDrink()}
-          measurements={measurementsForDrink()}
+          category={drinkObject.strCategory}
+          alcohol={drinkObject.strAlcoholic}
         />
       </Flex>
     </div>
