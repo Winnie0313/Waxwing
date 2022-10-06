@@ -21,6 +21,7 @@ function NewCocktail() {
     measurement2: "",
     measurement3: "",
     measurement4: "",
+    category: "",
     instructions: "",
     image: "",
   };
@@ -50,6 +51,7 @@ function NewCocktail() {
       measurement2: "",
       measurement3: "",
       measurement4: "",
+      category: "",
       instructions: "",
       image: "",
     });
@@ -66,6 +68,7 @@ function NewCocktail() {
         measurement2: cocktailInfo.measurement2,
         measurement3: cocktailInfo.ingredient3,
         measurement4: cocktailInfo.measurement4,
+        category: cocktailInfo.category,
         instructions: cocktailInfo.instructions,
         image: cocktailInfo.image,
       },
@@ -146,6 +149,13 @@ function NewCocktail() {
         <input
           value={cocktailInfo.measurement4}
           name="measurement4"
+          type="text"
+          onChange={handelChange}
+        />
+        <label>Category</label>
+        <input
+          value={cocktailInfo.category}
+          name="category"
           type="text"
           onChange={handelChange}
         />

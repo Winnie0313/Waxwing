@@ -18,11 +18,12 @@ import SearchedFirst from "./components/Search/SearchedFirst";
 import Drink from "./components/Drink";
 import SearchByFirst from "./components/Search/SearchByFirst";
 import Search from "./components/Search/Search";
-import ShowRecipe from "./components/ShowRecipe/ShowRecipe"
+import ShowRecipe from "./components/ShowRecipe/ShowRecipe";
 import MyDrinks from "./components/MyDrinks";
 import { Toaster } from 'react-hot-toast';
 
 import { MyContext } from "./components/MyContext";
+import MyRecipe from "./components/ShowRecipeNewDrink/MyRecipe";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -48,7 +49,7 @@ function App() {
 
               {/* view recipe page */}
               <Route path="/recipes/:id" element={<ShowRecipe />} />
-                          {/* {search by name } */}
+              {/* {search by name } */}
               <Route path="/search" element={<Search />} />
               <Route path="/searched/:search" element={<Searched />} />
               {/* {search by name } */}
@@ -68,13 +69,15 @@ function App() {
 
               {/* path for new drinks */}
               <Route path="/myDrinks" element={<MyDrinks />} />
+              {/* path for my recipe */}
+              <Route path="/MyRecipe/:id" element={<MyRecipe />} />
 
               {/* to catch all routes that don't match any of the above , and redirect to home page */}
               <Route path="*" element={<Homepage />} />
             </Routes>
           </MyContext.Provider>
         </UserContext.Provider>
-        <Footer style={{position: "relative"}}/>
+        <Footer style={{ position: "relative" }} />
       </Router>
     </div>
   );
