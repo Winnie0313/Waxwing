@@ -26,8 +26,10 @@
   font-weight: bold;
   margin-left: 10px;
   font-family: "Aclonica", sans-serif;
-
   
+  animation: fadein 2s;
+  animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 .brand-description {
@@ -36,4 +38,17 @@
   margin: 0 auto;
   padding: 10px;
   font-family: "Aclonica", sans-serif;
+
+    animation: fadein 6s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
