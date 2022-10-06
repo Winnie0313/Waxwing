@@ -4,12 +4,13 @@ import { Flex, CardFlex } from "./Search/CardStyles";
 import Error from "./Error";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function MyDrinks() {
   const erroMsg = "your list is empty ...";
   const { data, setData } = useContext(MyContext);
+  // const navigate = useNavigate();
 
-  /// to delet new cocktail
   const handleRemoveItem = (id) => {
     const dataAfterDelet = data.filter((item) => item.id !== id);
     localStorage.setItem("myDrinks", JSON.stringify(dataAfterDelet));
@@ -45,7 +46,7 @@ function MyDrinks() {
             {data.map((item) => {
               return (
                 <CardFlex key={item.id}>
-                  <Link to={"/recipe/" + item.id}>
+                  <Link to={"/Myrecipe/" + item.id}>
                     <img src={item.image} alt={item.cocktailName} />
                     <h4> {item.cocktailName}</h4>
                   </Link>
@@ -55,6 +56,10 @@ function MyDrinks() {
                   >
                     X
                   </button>
+
+                  <Button as={Link} to={"/Myrecipe/" + item.id}>
+                    details
+                  </Button>
                 </CardFlex>
               );
             })}
