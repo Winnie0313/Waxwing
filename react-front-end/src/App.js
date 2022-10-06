@@ -20,6 +20,7 @@ import SearchByFirst from "./components/Search/SearchByFirst";
 import Search from "./components/Search/Search";
 import ShowRecipe from "./components/ShowRecipe/ShowRecipe"
 import MyDrinks from "./components/MyDrinks";
+import { Toaster } from 'react-hot-toast';
 
 import { MyContext } from "./components/MyContext";
 
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <div className="App">
+      <Toaster />
       <Router>
         <UserContext.Provider value={value}>
           <MyContext.Provider value={{ data, setData }}>

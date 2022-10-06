@@ -4,6 +4,8 @@ import { GridContainer, TopLeft, TopRight, BottomLeft, BottomRight } from "./Sho
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faShare } from "@fortawesome/fontawesome-free-solid";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import toast, { Toaster } from 'react-hot-toast';
+import Tooltip from '@mui/material/Tooltip';
 
 
 const axios = require("axios");
@@ -69,8 +71,15 @@ function ShowRecipe() {
           <div>
             <h1>{drink.strDrink}</h1>
             <p>{drink.strCategory}</p>
-            <FontAwesomeIcon icon={faHeart} size="2x" className="fa-icon-heart"/>
-            <FontAwesomeIcon icon={faShare} size="2x" className="fa-icon-share"/>
+            <Tooltip title="Add to favourite">
+              <FontAwesomeIcon icon={faHeart} size="2x" className="fa-icon-heart"/>
+            </Tooltip>
+            <CopyToClipboard text={window.location.href}>
+              <FontAwesomeIcon icon={faShare} size="2x" className="fa-icon-share" onClick={() => {toast.success("URL copied to clipboard. Ready to share!")}}/>
+            </CopyToClipboard>
+
+
+
           </div>
         </TopLeft>
         <TopRight>

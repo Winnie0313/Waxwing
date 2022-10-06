@@ -42,6 +42,7 @@ export const TopLeft = styled.div`
 
   .fa-icon-share:hover {
     color: grey;
+    cursor: pointer;
   }
 `
 export const TopRight = styled.div`
