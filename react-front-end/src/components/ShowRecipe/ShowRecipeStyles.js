@@ -18,22 +18,31 @@ export const TopLeft = styled.div`
   display: grid;
   align-items: center;
   flex: 50%;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 30px;
+  padding-right: 30px;
   
   h1 {
-    padding: 2rem;
+    padding: 20px;
     font-size: 100px;
     font-family: 'Lobster', cursive;
   }
 
   p {
     font-size: 20px;
-    padding-bottom: 2rem;
+    padding-bottom: 30px;
   }
 
-  .fa-icon:hover {
+  .fa-icon-heart {
+    padding-right: 20px;
+  }
+
+  .fa-icon-heart:hover {
     color: red;
+  }
+
+  .fa-icon-share:hover {
+    color: grey;
+    cursor: pointer;
   }
 `
 export const TopRight = styled.div`
@@ -44,7 +53,7 @@ export const TopRight = styled.div`
   };
 `
 export const BottomLeft = styled.div`
-  padding: 1.5rem;
+  padding: 50px 30px 100px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,9 +64,7 @@ export const BottomLeft = styled.div`
   }
 `
 export const BottomRight = styled.div`
-  padding: 1.5rem;
+  padding: 50px 30px 100px;  
   display: flex;
   flex-direction: column;
-  padding-bottom: 100px;
-  
 `

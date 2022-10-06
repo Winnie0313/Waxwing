@@ -2,7 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { GridContainer, TopLeft, TopRight, BottomLeft, BottomRight } from "./ShowRecipeStyles";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from "@fortawesome/fontawesome-free-solid";
+import { faHeart, faShare } from "@fortawesome/fontawesome-free-solid";
+import toast, { Toaster } from 'react-hot-toast';
+import Tooltip from '@mui/material/Tooltip';
 import { UserContext } from "../UserContext";
 
 
@@ -64,6 +66,24 @@ function ShowRecipe() {
     setMeasurements(measurementsArray);
   };
 
+  // copy url to clipboard after click the share button
+const CopyToClipboard = async () => {
+  if ('clipboard' in navigator) {
+    return await navigator.clipboard.writeText(window.location.href);
+  } else {
+    return Document.execCommand('copy', true, window.location.href);
+  }
+}
+
+// show noticication after click on the share button
+const handleShare = () => {
+  CopyToClipboard()
+    .then((res) => toast.success("Successfully copied URL to clipboard!"))
+    .catch((err) => toast.error("Faild to copy URL!"))
+}
+
+
+
   // On click function to add cocktail to the favourites database by user id
   const addToFavourites = () => {
     fetch(`/api/favourites/${user.id}`, {
@@ -85,13 +105,18 @@ function ShowRecipe() {
           <div>
             <h1>{drink.strDrink}</h1>
             <p>{drink.strCategory}</p>
-            <FontAwesomeIcon icon={faHeart} size="2x" className="fa-icon" onClick={() => addToFavourites()}/>
+            <Tooltip title="Add to favourite">
+              <FontAwesomeIcon icon={faHeart} size="2x" className="fa-icon-heart" onClick={() => addToFavourites()}/>
+            </Tooltip>
+        
+            <Tooltip title="Share URL">
+              <FontAwesomeIcon icon={faShare} size="2x" className="fa-icon-share" onClick={handleShare}/>
+            </Tooltip>
           </div>
         </TopLeft>
         <TopRight>
           <img src={drink.strDrinkThumb} alt={drink.strDrink} />
         </TopRight> 
-      
     
         <BottomLeft>
           <h3>Ingredients</h3>
@@ -107,6 +132,7 @@ function ShowRecipe() {
             </ul>
           </div>
         </BottomLeft>
+
         <BottomRight>
           <h3>Instructions</h3>
           <p>{drink.strInstructions}</p>
