@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { GridContainer, TopLeft, TopRight, BottomLeft, BottomRight } from "./ShowRecipeStyles";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faShare } from "@fortawesome/fontawesome-free-solid";
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+// import {CopyToClipboard} from 'react-copy-to-clipboard';
 import toast, { Toaster } from 'react-hot-toast';
 import Tooltip from '@mui/material/Tooltip';
 
@@ -64,6 +64,25 @@ function ShowRecipe() {
     setMeasurements(measurementsArray);
   };
 
+  // copy url to clipboard after click the share button
+const CopyToClipboard = async () => {
+  if ('clipboard' in navigator) {
+    return await navigator.clipboard.writeText(window.location.href);
+  } else {
+    return Document.execCommand('copy', true, window.location.href);
+  }
+}
+
+// show noticication after click on the share button
+const handleClick = () => {
+  CopyToClipboard()
+    .then((res) => toast.success("Successfully copied URL to clipboard!"))
+    .catch((err) => toast.error("Faild to copy URL!"))
+}
+
+
+
+
   return (
     <div>
       <GridContainer>
@@ -74,18 +93,15 @@ function ShowRecipe() {
             <Tooltip title="Add to favourite">
               <FontAwesomeIcon icon={faHeart} size="2x" className="fa-icon-heart"/>
             </Tooltip>
-            <CopyToClipboard text={window.location.href}>
-              <FontAwesomeIcon icon={faShare} size="2x" className="fa-icon-share" onClick={() => {toast.success("URL copied to clipboard. Ready to share!")}}/>
-            </CopyToClipboard>
-
-
-
+        
+            <Tooltip title="Share URL">
+              <FontAwesomeIcon icon={faShare} size="2x" className="fa-icon-share" onClick={handleClick}/>
+            </Tooltip>
           </div>
         </TopLeft>
         <TopRight>
           <img src={drink.strDrinkThumb} alt={drink.strDrink} />
         </TopRight> 
-      
     
         <BottomLeft>
           <h3>Ingredients</h3>
@@ -101,6 +117,7 @@ function ShowRecipe() {
             </ul>
           </div>
         </BottomLeft>
+        
         <BottomRight>
           <h3>Instructions</h3>
           <p>{drink.strInstructions}</p>
