@@ -18,6 +18,16 @@
   height: 250px;
   width: 100%;
   object-fit: cover;
+
+  animation: fadein 6s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.brand-text-box {
+  background-color: #28282b;
+  border-radius: 25px;
+  margin: 10px;
 }
 
 .brand-title {
@@ -25,23 +35,24 @@
   font-size: 2rem;
   font-weight: bold;
   margin-left: 10px;
+  margin-top: 10px;
   font-family: "Aclonica", sans-serif;
-  
+
   animation: fadein 2s;
   animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 .brand-description {
   color: white;
   font-size: 1.25rem;
-  margin: 0 auto;
+  margin: 10px;
   padding: 10px;
   font-family: "Aclonica", sans-serif;
 
-    animation: fadein 6s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+  animation: fadein 6s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 @keyframes fadein {
