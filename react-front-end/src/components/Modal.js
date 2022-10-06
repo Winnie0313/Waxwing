@@ -20,27 +20,17 @@ function CentredModal(props) {
 
       <img src={props.image} alt={props.title} />
 
-      <h3>Ingredients</h3>
-      
-      <ul>
-        {props.ingredients.map((ingredient, index) => {
-          return (
-            <li key={index}>
-              {ingredient} - {props.measurements[index]}
-            </li>
-          );
-        })}
-      </ul>
+      <h4>Category</h4>
+      <p>{props.category}</p>
 
-
-      <h3>Instructions</h3>
-      <p>{props.instructions}</p>
+      <h4>Alcoholic/Non-Alcoholic</h4>
+      <p>{props.alcohol}</p>
 
     </Modal.Body>
 
     <Modal.Footer>
-      <Button variant="outline-dark" as={Link} to={`/recipes/${props.id}`}>VIEW RECIPE PAGE</Button>
       <h6>Like what you see?</h6>
+      <Button variant="outline-dark" as={Link} to={`/recipes/${props.id}`}>VIEW RECIPE PAGE</Button>
     </Modal.Footer>
 
     </Modal>
