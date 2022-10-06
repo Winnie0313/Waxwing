@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { GridContainer, TopLeft, TopRight, BottomLeft, BottomRight } from "./ShowRecipeStyles";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from "@fortawesome/fontawesome-free-solid";
+import { faHeart, faShare } from "@fortawesome/fontawesome-free-solid";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 
 const axios = require("axios");
@@ -68,7 +69,8 @@ function ShowRecipe() {
           <div>
             <h1>{drink.strDrink}</h1>
             <p>{drink.strCategory}</p>
-            <FontAwesomeIcon icon={faHeart} size="2x" className="fa-icon"/>
+            <FontAwesomeIcon icon={faHeart} size="2x" className="fa-icon-heart"/>
+            <FontAwesomeIcon icon={faShare} size="2x" className="fa-icon-share"/>
           </div>
         </TopLeft>
         <TopRight>
