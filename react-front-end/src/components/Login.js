@@ -20,7 +20,6 @@ function Login(props) {
     .then((response) => {
       if(response.data.length){
         setUser(response.data[0]);
-        console.log(user)
         navigate("/");
       } else {
         alert("Please enter correct email or passowrd.")

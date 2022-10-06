@@ -66,18 +66,18 @@ function ShowRecipe() {
 
   // On click function to add cocktail to the favourites database by user id
   const addToFavourites = () => {
-    axios.post(`/api/favourites/${user.id}`, {
-      user_id: user.id,
-      api_cocktail_id: drink.idDrink,
+    fetch(`api/favourites/${user.id}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: user.id, api_cocktail_id: drink.idDrink }),
     })
-    .then((response) => {
-      console.log(user)
-      console.log(response);
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
     })
-    .catch((err) => {
-      console.log(err)
-    })
-  }
+      .catch((err) => console.log(err));
+  };
+  
 
   return (
     <div>
