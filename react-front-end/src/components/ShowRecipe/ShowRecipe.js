@@ -213,17 +213,28 @@ function ShowRecipe() {
           <h3>Instructions</h3>
           <p>{drink.strInstructions}</p>
         </BottomRight>
+        <Video>
+          {drink.strVideo && <Iframe src={getUrl(drink.strVideo)}></Iframe>}
+        </Video>
       </GridContainer>
-      {drink.strVideo && <Iframe src={getUrl(drink.strVideo)}></Iframe>}
     </div>
   );
 }
 
 export default ShowRecipe;
 
-const Iframe = styled.iframe`
+const Video = styled.div`
   margin-top: 10rem;
   height: 50rem;
-  width: 80%;
+  width: 200%;
   margin-bottom: 13rem;
-`;
+  grid-column-start: 1;
+  grid-column-end: 2;
+
+  `;
+  
+  const Iframe = styled.iframe`
+  width: 80%;
+  height: 80%;
+
+`
