@@ -2,7 +2,6 @@ import React from "react";
 import "./Styles-login-reg.css";
 
 import { BsFacebook, BsTwitter, BsGithub } from "react-icons/bs";
-import { FaCocktail } from "react-icons/fa";
 
 function Footer() {
   return (

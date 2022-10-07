@@ -4,7 +4,6 @@ import { Nav, Navbar, NavLink } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { FaCocktail } from "react-icons/fa";
 
 function NavigationBar() {
   const { user, setUser } = useContext(UserContext);
