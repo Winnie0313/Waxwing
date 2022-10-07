@@ -20,4 +20,26 @@ h1 {
   height: 500px;
   object-fit: cover;
   border-radius: 10px;
+  border: 5px solid #212529;
+}
+
+.modal-ingredient {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #212529;
+  text-decoration: underline;
+}
+
+.modal-category {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #212529;
+  text-decoration: underline;
+}
+
+.modal-alcohol {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #212529;
+  text-decoration: underline;
 }
