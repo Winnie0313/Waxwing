@@ -17,7 +17,7 @@ const Favourites = () => {
   }, []);
 
   const fetchFavourites = async () => {
-    const response = await fetch("/api/favourites/" + user.id);
+    const response = await fetch(`/api/favourites/${user.id}`);
     const data = await response.json();
 
     const drinkArray = await Promise.all(

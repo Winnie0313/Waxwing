@@ -32,11 +32,13 @@ module.exports = (knex) => {
   });
 
   // route to delete a favourite from the database
-
   router.delete('/:id', (req, res) => {
-
+    console.log("query param is: ", req.query)
     knex('favourites')
-      .where('id', req.params.id)
+      .where({
+        api_cocktail_id: req.params.id,
+        user_id: req.query.userId
+      })
       .del()
       .then(() => {
         res.send('success');

@@ -84,6 +84,18 @@ button {
   margin-right: 1rem;
 }
 
+/* new drinks form styling */
+.options {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-radius: 0.5rem;
+}
+
+/* new cocktail form  */
+.newCockt {
+  margin-bottom: 5rem;
+}
+
 @media screen and (max-width: 600px) {
   .footerr {
     /* background-color: red; */
@@ -105,5 +117,10 @@ button {
     padding: 0;
     margin-left: 10px;
     margin-right: -1px;
+  }
+  /* new cocktail form */
+  .newCockt {
+    margin-bottom: 7rem;
+    margin-top: 2rem;
   }
 }
