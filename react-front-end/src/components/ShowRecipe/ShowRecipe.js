@@ -224,17 +224,14 @@ function ShowRecipe() {
 export default ShowRecipe;
 
 const Video = styled.div`
-  margin-top: 10rem;
   height: 50rem;
   width: 200%;
   margin-bottom: 13rem;
   grid-column-start: 1;
   grid-column-end: 2;
-
-  `;
+`;
   
   const Iframe = styled.iframe`
-  width: 80%;
-  height: 80%;
-
+  width: 70%;
+  height: 70%;
 `

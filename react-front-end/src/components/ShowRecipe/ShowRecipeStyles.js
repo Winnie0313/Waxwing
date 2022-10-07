@@ -54,18 +54,17 @@ export const TopRight = styled.div`
   };
 `
 export const BottomLeft = styled.div`
-  padding: 50px 30px 100px 30px;
+  padding: 50px 30px 70px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 100px;
 
   li {
     text-align: left;
   }
 `
 export const BottomRight = styled.div`
-  padding: 50px 30px 100px;  
+  padding: 50px 30px 70px;  
   display: flex;
   flex-direction: column;
 `
