@@ -7,14 +7,11 @@ export default function UserProvider(props) {
     const [user, setUser] = useState({});
 
     useEffect(() => {
-        document.cookie = "user_id=1";
-        const user_id = document.cookie
-            .split("; ")
-            .find((row) => row.startsWith("user_id="))
-            .split("=")[1];
-        fetch(`/api/users/${user_id}`)
+        fetch(`/api/users/`)
             .then((res) => res.json())
-            .then((data) => setUser(data));
+            .then((data) => {
+                setUser(data[0]);
+            });
     }, []);
 
     const userData = { user, setUser };
