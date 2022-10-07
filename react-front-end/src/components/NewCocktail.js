@@ -199,9 +199,10 @@ function NewCocktail() {
           name="video"
           type="text"
           onChange={handelChange}
+          className="videoFiled"
         />
 
-        <button type="submit">submit</button>
+        <button type="submit">Submit</button>
       </Form>
     </div>
   );

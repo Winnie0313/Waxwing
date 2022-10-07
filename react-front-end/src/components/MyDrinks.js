@@ -59,13 +59,14 @@ function MyDrinks() {
                       <img src={item.image} alt={item.cocktailName} />
                       <h4> {item.cocktailName}</h4>
                     </Link>
-                    <Button
-                      variant="danger"
+                    <TiDeleteOutline
+                      title="Delete this cocktail"
+                      size="2rem"
                       id={item.id}
                       onClick={() => handleRemoveItem(item.id)}
-                    >
-                      <TiDeleteOutline size="2rem" />
-                    </Button>
+                      className="delete-btn"
+                    />
+                    {/* <Button variant="danger"></Button> */}
                   </CardFlex>
                 </div>
               );
