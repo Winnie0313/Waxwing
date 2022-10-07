@@ -38,9 +38,9 @@ function MyDrinks() {
 
   return (
     <div>
-      <h2> My Drinks</h2>
+      <h2> My Cocktails</h2>
       <Button variant="dark" as={Link} to="/NewCocktail">
-        Add New cocktail
+        Add New Cocktail
       </Button>
 
       <Flex
