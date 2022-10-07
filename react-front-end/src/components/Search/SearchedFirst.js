@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
-import Button from "react-bootstrap/Button";
 import Error from "../Error";
 import CentredModal from "../Modal";
 const axios = require("axios");

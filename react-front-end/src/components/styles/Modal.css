@@ -1,0 +1,23 @@
+h1 {
+  font-weight: bold;
+  line-height: 1.2;
+  color: #212529;
+}
+
+.modal-body {
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.modal-image {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+}
