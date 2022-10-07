@@ -3,7 +3,6 @@ import { Flex, CardFlex } from "../Search/CardStyles";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CentredModal from "../Modal";
-import Button from "react-bootstrap/Button";
 import Search from "./Search";
 import Error from "../Error";
 const axios = require("axios");
@@ -60,12 +59,12 @@ function Searched() {
           <>
             {searchedRecipes.map((item) => {
               return (
-                <CardFlex key={item.idDrink}>
+                <CardFlex
+                  key={item.idDrink}
+                  onClick={() => handleModal(item.idDrink)}
+                >
                   <img src={item.strDrinkThumb} alt={item.strDrink} />
                   <h4> {item.strDrink}</h4>
-                  <Button onClick={() => handleModal(item.idDrink)}>
-                    View
-                  </Button>
                 </CardFlex>
               );
             })}

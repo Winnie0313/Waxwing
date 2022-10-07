@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Flex, CardFlex } from "./Search/CardStyles";
 import { useParams } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import CentredModal from "./Modal";
 
 function Drink() {
@@ -54,12 +53,9 @@ function Drink() {
     >
       {drink.map((item) => {
         return (
-          <CardFlex key={item.idDrink}>
+          <CardFlex key={item.idDrink} onClick={() => handleModal(item.idDrink)}>
             <img src={item.strDrinkThumb} alt={item.strDrink} />
             <h4> {item.strDrink}</h4>
-            <Button variant="primary" onClick={() => handleModal(item.idDrink)}>
-              View Recipe
-            </Button>
           </CardFlex>
         );
       })}

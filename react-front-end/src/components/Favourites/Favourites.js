@@ -1,13 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
-import Button from "react-bootstrap/Button";
 import CentredModal from "../Modal";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const Favourites = () => {
-
-    // Have to add user context to this page once login is accessing the user
+  // Have to add user context to this page once login is accessing the user
   const { user } = useContext(UserContext);
 
   const [db, setDb] = useState([]);
@@ -60,15 +58,12 @@ const Favourites = () => {
         >
           {db.map((item) => {
             return (
-              <Card key={item.idDrink}>
+              <Card
+                key={item.idDrink}
+                onClick={() => handleModal(item.idDrink)}
+              >
                 <img src={item.strDrinkThumb} alt={item.strDrink} />
                 <h4> {item.strDrink}</h4>
-                <Button
-                  variant="primary"
-                  onClick={() => handleModal(item.idDrink)}
-                >
-                  View Recipe
-                </Button>
               </Card>
             );
           })}

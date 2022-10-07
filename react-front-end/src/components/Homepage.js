@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Flex, CardFlex } from "./Search/CardStyles";
 import Search from "./Search/Search";
-import Button from "react-bootstrap/Button";
 import CentredModal from "./Modal";
 import BrandBar from "./Brand/BrandBar";
 const axios = require("axios");
@@ -53,12 +52,12 @@ function Homepage() {
         {popular.map((cocktail) => {
           return (
             <>
-              <CardFlex key={cocktail.idDrink}>
+              <CardFlex
+                key={cocktail.idDrink}
+                onClick={() => handleModal(cocktail.idDrink)}
+              >
                 <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
                 <h4> {cocktail.strDrink}</h4>
-                <Button onClick={() => handleModal(cocktail.idDrink)}>
-                  View
-                </Button>
               </CardFlex>
             </>
           );

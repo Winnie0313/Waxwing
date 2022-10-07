@@ -83,12 +83,12 @@ function SearchedFirst() {
           <>
             {searchedRecipes.map((item) => {
               return (
-                <CardFlex key={item.idDrink}>
+                <CardFlex
+                  key={item.idDrink}
+                  onClick={() => handleModal(item.idDrink)}
+                >
                   <img src={item.strDrinkThumb} alt={item.strDrink} />
                   <h4> {item.strDrink}</h4>
-                  <Button onClick={() => handleModal(item.idDrink)}>
-                    View
-                  </Button>
                 </CardFlex>
               );
             })}

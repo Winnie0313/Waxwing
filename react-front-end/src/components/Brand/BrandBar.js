@@ -1,4 +1,3 @@
-import react from "react";
 import "./BrandBar.css";
 
 export default function BrandBar(props) {

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
-import Button from "react-bootstrap/Button";
 import CentredModal from "../Modal";
 import Error from "../Error";
 const axios = require("axios");
@@ -89,12 +88,12 @@ function SearchedIng() {
           <>
             {searchedRecipes.map((item) => {
               return (
-                <CardFlex key={item.idDrink}>
+                <CardFlex
+                  key={item.idDrink}
+                  onClick={() => handleModal(item.idDrink)}
+                >
                   <img src={item.strDrinkThumb} alt={item.strDrink} />
                   <h4> {item.strDrink}</h4>
-                  <Button onClick={() => handleModal(item.idDrink)}>
-                    View
-                  </Button>
                 </CardFlex>
               );
             })}
