@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 /// Flex style
+
 export const Flex = styled(motion.div)`
   margin-top: 3rem;
   margin-left: 3rem;
