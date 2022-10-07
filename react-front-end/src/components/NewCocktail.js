@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "./MyContext";
+import Form from "react-bootstrap/Form";
 
 function NewCocktail() {
   const navigate = useNavigate();
@@ -24,6 +25,8 @@ function NewCocktail() {
     category: "",
     instructions: "",
     image: "",
+    video: "",
+    alcoholic: "",
   };
 
   const [cocktailInfo, setCocktailInfo] = useState(defaultCocktail);
@@ -54,6 +57,8 @@ function NewCocktail() {
       category: "",
       instructions: "",
       image: "",
+      video: "",
+      alcoholic: "",
     });
     const newData = [
       ...data,
@@ -71,6 +76,8 @@ function NewCocktail() {
         category: cocktailInfo.category,
         instructions: cocktailInfo.instructions,
         image: cocktailInfo.image,
+        video: cocktailInfo.video,
+        alcoholic: cocktailInfo.alcoholic,
       },
     ];
     localStorage.setItem("myDrinks", JSON.stringify(newData));
@@ -83,11 +90,11 @@ function NewCocktail() {
     <div
       className="auth-form-container newCockt "
       style={{
-        backgroundImage: `url("https://images.unsplash.com/photo-1556679343-c7306c1976bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80")`,
+        backgroundImage: `url("https://images.unsplash.com/photo-1597075759290-5c29a23c8a16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80")`,
       }}
     >
       <h2>Add new cocktail</h2>
-      <form className="register-form" onSubmit={handleSubmit}>
+      <Form className="register-form" onSubmit={handleSubmit}>
         <label>Name of your cocktail</label>
         <input
           value={cocktailInfo.name}
@@ -152,6 +159,19 @@ function NewCocktail() {
           type="text"
           onChange={handelChange}
         />
+        <label>Is this an Alcoholic drink</label>
+        <Form.Select
+          value={cocktailInfo.alcoholic}
+          name="alcoholic"
+          type="text"
+          onChange={handelChange}
+          className="options"
+        >
+          <option value=""> chose an option</option>
+          <option value="Alcoholic">Yes</option>
+          <option value="Non-Alcoholic">No</option>
+        </Form.Select>
+
         <label>Category</label>
         <input
           value={cocktailInfo.category}
@@ -173,9 +193,16 @@ function NewCocktail() {
           type="text"
           onChange={handelChange}
         />
+        <label>Video link</label>
+        <input
+          value={cocktailInfo.video}
+          name="video"
+          type="text"
+          onChange={handelChange}
+        />
 
         <button type="submit">submit</button>
-      </form>
+      </Form>
     </div>
   );
 }

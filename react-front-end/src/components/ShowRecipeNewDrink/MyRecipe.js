@@ -9,12 +9,20 @@ import {
   BottomRight,
 } from "../ShowRecipe/ShowRecipeStyles";
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
 
 function MyRecipe() {
   const { data } = useContext(MyContext);
 
   let params = useParams();
   let idDrink = params.id;
+
+  //// youtube video
+
+  function getUrl(url) {
+    let embeded = url.replace("/watch?v=", "/embed/");
+    return embeded;
+  }
 
   return (
     <div>
@@ -23,7 +31,7 @@ function MyRecipe() {
           if (item.id == idDrink) {
             return (
               <div key={item.id}>
-                <GridContainer>
+                <GridContainer fluid>
                   <TopLeft>
                     <h1>{item.cocktailName}</h1>
                     <p>{item.category}</p>
@@ -71,6 +79,7 @@ function MyRecipe() {
                     <p>{item.instructions}</p>
                   </BottomRight>
                 </GridContainer>
+                {item.video && <Iframe src={getUrl(item.video)}></Iframe>}
               </div>
             );
           }
@@ -82,3 +91,13 @@ function MyRecipe() {
 }
 
 export default MyRecipe;
+const Iframe = styled.iframe`
+  margin-top: 10rem;
+  height: 50rem;
+  width: 80%;
+  margin-bottom: 13rem;
+  @media screen and (max-width: 600px) {
+    height: 20rem;
+    width: 80%;
+  }
+`;
