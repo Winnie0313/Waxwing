@@ -111,6 +111,10 @@ function ShowRecipe() {
 
   // On click function to add cocktail to the favourites database by user id
   const addToFavourites = () => {
+    if (!user) {
+      toast.error('Please login in or create an account first!');
+      return;
+    }
     fetch(`/api/favourites/${user.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
