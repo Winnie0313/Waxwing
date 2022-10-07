@@ -87,7 +87,7 @@ function NavigationBar() {
                   Add New Cocktail
                 </NavLink>
                 <NavLink eventKey="2" as={Link} to="/myDrinks">
-                  My Drinks
+                  My Cocktails
                 </NavLink>
                 <NavLink eventKey="4" as={Link} to="/Favourites">
                   Favourites
