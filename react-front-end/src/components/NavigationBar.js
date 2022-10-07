@@ -64,10 +64,21 @@ function NavigationBar() {
 
           <Nav>
             {user ? (
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <NavLink
+              <div className="navbar-right">
+                <NavDropdown
                   style={{ cursor: "default" }}
-                >{`Welcome ${user.name}!`}</NavLink>
+                  title={`Welcome ${user.name}!`}
+                >
+                  <NavDropdown.Item eventKey="4" as={Link} to="/Favourites">
+                    Favourites
+                  </NavDropdown.Item>
+                  <NavDropdown.Item eventKey="2" as={Link} to="/myDrinks">
+                    My Cocktails
+                  </NavDropdown.Item>
+                  <NavDropdown.Item eventKey="2" as={Link} to="/NewCocktail">
+                    Add New Cocktail
+                  </NavDropdown.Item>
+                </NavDropdown>
                 <NavDropdown
                   title="Search Cocktail by"
                   bg="dark"
@@ -83,15 +94,7 @@ function NavigationBar() {
                     By Ingredients
                   </NavDropdown.Item>
                 </NavDropdown>
-                <NavLink eventKey="2" as={Link} to="/NewCocktail">
-                  Add New Cocktail
-                </NavLink>
-                <NavLink eventKey="2" as={Link} to="/myDrinks">
-                  My Cocktails
-                </NavLink>
-                <NavLink eventKey="4" as={Link} to="/Favourites">
-                  Favourites
-                </NavLink>
+
                 <NavLink as={Link} to="/" onClick={() => setUser(null)}>
                   Logout
                 </NavLink>
