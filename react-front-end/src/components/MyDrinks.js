@@ -53,7 +53,7 @@ function MyDrinks() {
               return (
                 <div key={item.id}>
                   <CardFlex key={item.id}>
-                    <Link to={"/Myrecipe/" + item.id}>
+                    <Link onClick={() => handleModal(item)}>
                       <img src={item.image} alt={item.cocktailName} />
                       <h4> {item.cocktailName}</h4>
                     </Link>
@@ -65,7 +65,7 @@ function MyDrinks() {
                       Delete
                     </Button>
 
-                    <Button onClick={() => handleModal(item)}>View</Button>
+                    {/* <Button onClick={() => handleModal(item)}>View</Button> */}
                   </CardFlex>
                 </div>
               );
