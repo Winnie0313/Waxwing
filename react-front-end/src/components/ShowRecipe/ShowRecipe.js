@@ -92,9 +92,15 @@ const handleShare = () => {
       body: JSON.stringify({ user_id: user.id, api_cocktail_id: drink.idDrink }),
     })
       .then((data) => {
+        toast.success("Successfully added to Favourites!")
+        
         console.log(data);
     })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        toast.error("Could not add to Favourites.")
+        console.log(err)
+      });
+      
   };
   
 
