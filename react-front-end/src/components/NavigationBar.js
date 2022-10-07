@@ -13,7 +13,13 @@ function NavigationBar() {
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <FaCocktail size="1.3em" />
+          <img 
+            src='../images/logo.png'
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+            alt="logo"
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
