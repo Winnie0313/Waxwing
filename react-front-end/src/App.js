@@ -28,9 +28,12 @@ import MyRecipe from "./components/ShowRecipeNewDrink/MyRecipe";
 function App() {
   const [user, setUser] = useState(null);
   const value = useMemo(() => ({ user, setUser }), [user, setUser]);
+  
 
   /// adding new cocktail
   const [data, setData] = useState([]);
+
+  
 
   return (
     <div className="App">

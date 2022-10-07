@@ -13,35 +13,42 @@ import toast, { Toaster } from "react-hot-toast";
 import Tooltip from "@mui/material/Tooltip";
 import { UserContext } from "../UserContext";
 import styled from "styled-components";
-
 const axios = require("axios");
 
 function ShowRecipe() {
   const [drink, setDrink] = useState({});
-  console.log("drink is: ", drink);
+  // console.log("drink is: ", drink);
   const [ingredients, setIngredients] = useState([]);
   const [measurements, setMeasurements] = useState([]);
-
   const { user } = useContext(UserContext);
-  // get drink id from the endpoint
+  const [isFavourited, setIsFavourited] = useState(false);
 
+  // get drink id from the endpoint
   const { id } = useParams();
-  console.log(id);
+
+  // console.log("user is: ", user);
 
   useEffect(() => {
     getDrinkById();
   }, []);
+
+  useEffect(() => {
+    // only check favourites
+    if (!user) return;
+    checkFavourite();
+  }, [user]);
 
   // get drink by id
   const getDrinkById = () => {
     axios
       .get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
       .then((response) => {
-        console.log("response is: ", response);
+        // console.log("response is: ", response);
         setDrink(response.data.drinks[0]);
         getIngredientsForDrink(response.data.drinks[0]);
         getMeasurementsForDrink(response.data.drinks[0]);
-        console.log(response.data.drinks[0]);
+
+        // console.log(response.data.drinks[0])
       })
       .catch((err) => console.log(err));
   };
@@ -85,8 +92,27 @@ function ShowRecipe() {
       .catch((err) => toast.error("Faild to copy URL!"));
   };
 
+  // check if the current recipe is faverited
+  const checkFavourite = async () => {
+    // fetch favourites of a user
+    const response = await fetch(`/api/favourites/${user.id}`);
+    const data = await response.json();
+    console.log("favourites are: ", data);
+
+    // check if the current recipe is faverited
+    const foundFavourite = data.find((drink) => drink.api_cocktail_id === id);
+    console.log("foundFavourite is: ", foundFavourite);
+    if (foundFavourite) {
+      setIsFavourited(true);
+    }
+  };
+
   // On click function to add cocktail to the favourites database by user id
   const addToFavourites = () => {
+    if (!user) {
+      toast.error("Please login in or create an account first!");
+      return;
+    }
     fetch(`/api/favourites/${user.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -96,11 +122,29 @@ function ShowRecipe() {
       }),
     })
       .then((data) => {
-        console.log(data);
+        toast.success("Successfully added to Favourites!");
+        setIsFavourited(true);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        toast.error("Could not add to Favourites.");
+        console.log(err);
+      });
   };
 
+  // Remove drink from Favourites
+  const unFavourite = () => {
+    fetch(`/api/favourites/${id}?userId=${user.id}`, {
+      method: "DELETE",
+    })
+      .then((data) => {
+        toast.success("Removed from Favourites!");
+        setIsFavourited(false);
+      })
+      .catch((err) => {
+        toast.error("Could not remove from Favourites.");
+        console.log(err);
+      });
+  };
   //// youtube video
   // examples of cocktails with videos ( aviation , Alexander )
   function getUrl(url) {
@@ -115,14 +159,26 @@ function ShowRecipe() {
           <div>
             <h1>{drink.strDrink}</h1>
             <p>{drink.strCategory}</p>
-            <Tooltip title="Add to favourite">
-              <FontAwesomeIcon
-                icon={faHeart}
-                size="2x"
-                className="fa-icon-heart"
-                onClick={() => addToFavourites()}
-              />
-            </Tooltip>
+            {isFavourited ? (
+              <Tooltip title="Unfavourite">
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  size="2x"
+                  color="red"
+                  className="fa-icon-heart"
+                  onClick={() => unFavourite()}
+                />
+              </Tooltip>
+            ) : (
+              <Tooltip title="Add to favourite">
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  size="2x"
+                  className="fa-icon-heart"
+                  onClick={() => addToFavourites()}
+                />
+              </Tooltip>
+            )}
 
             <Tooltip title="Share URL">
               <FontAwesomeIcon
