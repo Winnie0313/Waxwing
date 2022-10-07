@@ -3,6 +3,7 @@ import "./Styles-login-reg.css";
 import { UserContext } from "./UserContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 function Login(props) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -22,7 +23,7 @@ function Login(props) {
         setUser(response.data[0]);
         navigate("/");
       } else {
-        alert("Please enter correct email or passowrd.")
+        alert("Please enter correct email or password.")
       }
       console.log("response is: ", response);
     })

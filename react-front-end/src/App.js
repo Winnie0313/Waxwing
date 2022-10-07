@@ -1,5 +1,4 @@
-import React, { useState, useMemo } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import "./App.css";
 import NavigationBar from "./components/NavigationBar";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,7 +9,7 @@ import Favourites from "./components/Favourites/Favourites";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import NewCocktail from "./components/NewCocktail";
-import { UserContext } from "./components/UserContext";
+import UserProvider from "./components/UserContext";
 import Searched from "./components/Search/Searched";
 import SearchByIngred from "./components/Search/SearchByIngred";
 import SearchedIng from "./components/Search/SearchedIng";
@@ -26,8 +25,6 @@ import { MyContext } from "./components/MyContext";
 import MyRecipe from "./components/ShowRecipeNewDrink/MyRecipe";
 
 function App() {
-  const [user, setUser] = useState(null);
-  const value = useMemo(() => ({ user, setUser }), [user, setUser]);
   
 
   /// adding new cocktail
@@ -39,7 +36,7 @@ function App() {
     <div className="App">
       <Toaster />
       <Router>
-        <UserContext.Provider value={value}>
+        <UserProvider>
           <MyContext.Provider value={{ data, setData }}>
             <NavigationBar />
             <Routes>
@@ -79,7 +76,7 @@ function App() {
               <Route path="*" element={<Homepage />} />
             </Routes>
           </MyContext.Provider>
-        </UserContext.Provider>
+        </UserProvider>
         <Footer style={{ position: "relative" }} />
       </Router>
     </div>
