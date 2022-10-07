@@ -91,7 +91,7 @@ function MyDrinks() {
                   <p>{selectedItem.category}</p>
 
                   <h4>Alcoholic/Non-Alcoholic</h4>
-                  <p>{selectedItem.category}</p>
+                  <p>{selectedItem.alcoholic}</p>
                 </Modal.Body>
 
                 <Modal.Footer>
