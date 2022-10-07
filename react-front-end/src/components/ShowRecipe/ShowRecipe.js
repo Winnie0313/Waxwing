@@ -131,9 +131,17 @@ function ShowRecipe() {
   
   // Remove drink from Favourites
   const unFavourite = () => {
-    fetch(`/api/favourites/${id}`)
-    toast.success("Removed from Favourites!");
-    setIsFavourited(false);
+    fetch(`/api/favourites/${id}?userId=${user.id}`, {
+      method: "DELETE"
+    })
+      .then((data) => {
+        toast.success("Removed from Favourites!")
+        setIsFavourited(false)
+      })
+      .catch((err) => {
+        toast.error("Could not remove from Favourites.")
+        console.log(err)
+      });
   }
 
   return (
