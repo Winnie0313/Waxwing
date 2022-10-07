@@ -146,7 +146,7 @@ function ShowRecipe() {
       });
   };
   //// youtube video
-  // examples of cocktails with videos ( aviation , Alexander )
+  // examples of cocktails with videos ( aviation , Alexander, old fashioned, Negroni, manhattan, alexander , casino   )
   function getUrl(url) {
     let embeded = url.replace("/watch?v=", "/embed/");
     return embeded;

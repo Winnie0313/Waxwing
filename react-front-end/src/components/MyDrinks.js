@@ -5,11 +5,14 @@ import Error from "./Error";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
+import { TiDeleteOutline } from "react-icons/ti";
+import Styled from "styled-components";
 
 function MyDrinks() {
   const erroMsg = "your list is empty ...";
   const { data, setData } = useContext(MyContext);
 
+  /// to delete my new drinks
   const handleRemoveItem = (id) => {
     const dataAfterDelet = data.filter((item) => item.id !== id);
     localStorage.setItem("myDrinks", JSON.stringify(dataAfterDelet));
@@ -25,7 +28,7 @@ function MyDrinks() {
     }
   }, [setData]);
 
-  /// modal
+  /// to show modal
   const [modalView, setModalView] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const handleModal = (item) => {
@@ -36,9 +39,8 @@ function MyDrinks() {
   return (
     <div>
       <h2> My Drinks</h2>
-      <Button as={Link} to="/NewCocktail">
-        {" "}
-        Add New cocktail{" "}
+      <Button variant="dark" as={Link} to="/NewCocktail">
+        Add New cocktail
       </Button>
 
       <Flex
@@ -62,10 +64,8 @@ function MyDrinks() {
                       id={item.id}
                       onClick={() => handleRemoveItem(item.id)}
                     >
-                      Delete
+                      <TiDeleteOutline size="2rem" />
                     </Button>
-
-                    {/* <Button onClick={() => handleModal(item)}>View</Button> */}
                   </CardFlex>
                 </div>
               );
