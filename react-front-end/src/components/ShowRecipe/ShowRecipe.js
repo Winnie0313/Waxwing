@@ -18,8 +18,8 @@ function ShowRecipe() {
   const [measurements, setMeasurements] = useState([])
   const {user} = useContext(UserContext)
   const [isFavourited, setIsFavourited] = useState(false);
+  
   // get drink id from the endpoint
- 
   const { id } = useParams();
   // console.log(id);
 
@@ -131,6 +131,7 @@ function ShowRecipe() {
   
   // Remove drink from Favourites
   const unFavourite = () => {
+    fetch(`/api/favourites/${id}`)
     toast.success("Removed from Favourites!");
     setIsFavourited(false);
   }
