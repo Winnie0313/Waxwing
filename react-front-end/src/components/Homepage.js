@@ -69,6 +69,7 @@ function Homepage() {
           id={drinkObject.idDrink}
           title={drinkObject.strDrink}
           image={drinkObject.strDrinkThumb}
+          ingredient={drinkObject.strIngredient1}
           category={drinkObject.strCategory}
           alcohol={drinkObject.strAlcoholic}
         />

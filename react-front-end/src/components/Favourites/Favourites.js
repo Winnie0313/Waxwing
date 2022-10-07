@@ -17,7 +17,7 @@ const Favourites = () => {
   }, []);
 
   const fetchFavourites = async () => {
-    const response = await fetch("/api/favourites/1");
+    const response = await fetch("/api/favourites/" + user.id);
     const data = await response.json();
 
     const drinkArray = await Promise.all(
@@ -74,6 +74,7 @@ const Favourites = () => {
             id={drinkObject.idDrink}
             title={drinkObject.strDrink}
             image={drinkObject.strDrinkThumb}
+            ingredient={drinkObject.strIngredient1}
             category={drinkObject.strCategory}
             alcohol={drinkObject.strAlcoholic}
           />
