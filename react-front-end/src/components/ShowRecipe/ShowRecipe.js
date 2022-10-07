@@ -6,8 +6,6 @@ import { faHeart, faShare } from "@fortawesome/fontawesome-free-solid";
 import toast, { Toaster } from 'react-hot-toast';
 import Tooltip from '@mui/material/Tooltip';
 import { UserContext } from "../UserContext";
-
-
 const axios = require("axios");
 
 
@@ -21,7 +19,6 @@ function ShowRecipe() {
   
   // get drink id from the endpoint
   const { id } = useParams();
-  // console.log(id);
 
   // console.log("user is: ", user);
 
@@ -123,8 +120,6 @@ function ShowRecipe() {
       .then((data) => {
         toast.success("Successfully added to Favourites!")
         setIsFavourited(true)
-        
-        console.log(data);
     })
       .catch((err) => {
         toast.error("Could not add to Favourites.")
