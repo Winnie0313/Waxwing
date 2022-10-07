@@ -6,6 +6,7 @@ import {
   TopRight,
   BottomLeft,
   BottomRight,
+  Iframe,
 } from "./ShowRecipeStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faShare } from "@fortawesome/fontawesome-free-solid";
@@ -220,10 +221,3 @@ function ShowRecipe() {
 }
 
 export default ShowRecipe;
-
-const Iframe = styled.iframe`
-  margin-top: 10rem;
-  height: 50rem;
-  width: 80%;
-  margin-bottom: 13rem;
-`;
