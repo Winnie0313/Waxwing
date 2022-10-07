@@ -10,7 +10,13 @@ function Footer() {
       <footer className="">
         <div className="footer-elements ">
           <div>
-            <FaCocktail size="2rem" />
+            <img
+              src="../images/logo.png"
+              alt="logo"
+              className="footer-logo"
+              height="40"
+              width="40"
+              />
           </div>
           <div className="text-center copyright p-3">© 2022 Copyright</div>
           <div className="icons">
