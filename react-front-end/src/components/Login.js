@@ -24,7 +24,7 @@ function Login(props) {
       } else {
         alert("Please enter correct email or passowrd.")
       }
-      console.log(response);
+      console.log("response is: ", response);
     })
     .catch((err) => {
       console.log(err)
