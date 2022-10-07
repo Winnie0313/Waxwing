@@ -78,30 +78,40 @@ function MyDrinks() {
                 onHide={() => setModalView(false)}
               >
                 <Modal.Header closeButton>
-                  <Modal.Title>{selectedItem.cocktailName}</Modal.Title>
+                  <Modal.Title>
+                    <div className="modal-title">
+                      <h1> {selectedItem.cocktailName}</h1>
+                    </div>
+                  </Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
                   <img
                     src={selectedItem.image}
                     alt={selectedItem.cocktailName}
+                    className="modal-image"
                   />
 
-                  <h4>Category</h4>
+                  <h4 className="modal-ingredient">Main Ingredient</h4>
+                  <p>{selectedItem.ingredient1}</p>
+
+                  <h4 className="modal-category">Category</h4>
                   <p>{selectedItem.category}</p>
 
-                  <h4>Alcoholic/Non-Alcoholic</h4>
+                  <h4 className="modal-alcohol">Alcoholic/Non-Alcoholic</h4>
                   <p>{selectedItem.alcoholic}</p>
                 </Modal.Body>
 
                 <Modal.Footer>
-                  <h6>Like what you see?</h6>
+                  <h6>
+                    <b>Like what you see?</b>
+                  </h6>
                   <Button
                     variant="outline-dark"
                     as={Link}
                     to={"/Myrecipe/" + selectedItem.id}
                   >
-                    VIEW RECIPE PAGE
+                    <b>View The Recipe</b>
                   </Button>
                 </Modal.Footer>
               </Modal>
