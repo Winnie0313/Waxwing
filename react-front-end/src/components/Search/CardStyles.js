@@ -9,9 +9,24 @@ export const Flex = styled(motion.div)`
   margin-right: 3rem;
   display: flex;
   align-content: flex-start;
+  font-family: "Aclonica", sans-serif;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-bottom: 3rem;
+  position: relative;
+  & {
+    .delete-btn {
+      position: absolute;
+      margin-top: -28.5rem;
+      margin-left: 10rem;
+      color: black;
+      cursor: pointer;
+      &:hover {
+        color: red;
+        cursor: pointer;
+      }
+    }
+  }
 `;
 
 export const CardFlex = styled.div`

@@ -5,8 +5,11 @@
   flex-direction: column;
   color: white;
 }
+* {
+  font-family: "Aclonica", sans-serif;
+}
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 992px) {
   .auth-form-container {
     width: 50%;
     background-color: black;
@@ -14,12 +17,15 @@
     padding: 2rem;
     margin: 2rem auto;
   }
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 990px) {
   .auth-form-container {
     padding: 2rem;
-
     border-radius: 10px;
     margin: 0.6rem;
     background-color: black;
@@ -94,6 +100,9 @@ button {
 /* new cocktail form  */
 .newCockt {
   margin-bottom: 5rem;
+}
+.videoFiled {
+  margin-bottom: 2rem;
 }
 
 @media screen and (max-width: 600px) {

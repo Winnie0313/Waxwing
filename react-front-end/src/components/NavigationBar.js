@@ -4,7 +4,6 @@ import { Nav, Navbar, NavLink } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { FaCocktail } from "react-icons/fa";
 
 function NavigationBar() {
   const { user, setUser } = useContext(UserContext);
@@ -13,7 +12,13 @@ function NavigationBar() {
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <FaCocktail size="1.3em" />
+          <img 
+            src='../images/logo.png'
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+            alt="logo"
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -59,10 +64,21 @@ function NavigationBar() {
 
           <Nav>
             {user ? (
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <NavLink
+              <div className="navbar-right">
+                <NavDropdown
                   style={{ cursor: "default" }}
-                >{`Welcome ${user.name}!`}</NavLink>
+                  title={`Welcome ${user.name}!`}
+                >
+                  <NavDropdown.Item eventKey="4" as={Link} to="/Favourites">
+                    Favourites
+                  </NavDropdown.Item>
+                  <NavDropdown.Item eventKey="2" as={Link} to="/myDrinks">
+                    My Cocktails
+                  </NavDropdown.Item>
+                  <NavDropdown.Item eventKey="2" as={Link} to="/NewCocktail">
+                    Add New Cocktail
+                  </NavDropdown.Item>
+                </NavDropdown>
                 <NavDropdown
                   title="Search Cocktail by"
                   bg="dark"
@@ -78,15 +94,7 @@ function NavigationBar() {
                     By Ingredients
                   </NavDropdown.Item>
                 </NavDropdown>
-                <NavLink eventKey="2" as={Link} to="/NewCocktail">
-                  Add New Cocktail
-                </NavLink>
-                <NavLink eventKey="2" as={Link} to="/myDrinks">
-                  My Drinks
-                </NavLink>
-                <NavLink eventKey="4" as={Link} to="/Favourites">
-                  Favourites
-                </NavLink>
+
                 <NavLink as={Link} to="/" onClick={() => setUser(null)}>
                   Logout
                 </NavLink>

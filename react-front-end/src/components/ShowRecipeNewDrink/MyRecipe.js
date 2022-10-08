@@ -7,9 +7,14 @@ import {
   TopRight,
   BottomLeft,
   BottomRight,
+  Iframe,
 } from "../ShowRecipe/ShowRecipeStyles";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShare, faHeart } from "@fortawesome/fontawesome-free-solid";
+import toast, { Toaster } from "react-hot-toast";
+import Tooltip from "@mui/material/Tooltip";
 
 function MyRecipe() {
   const { data } = useContext(MyContext);
@@ -24,6 +29,22 @@ function MyRecipe() {
     return embeded;
   }
 
+  // copy url to clipboard after click the share button
+  const CopyToClipboard = async () => {
+    if ("clipboard" in navigator) {
+      return await navigator.clipboard.writeText(window.location.href);
+    } else {
+      return Document.execCommand("copy", true, window.location.href);
+    }
+  };
+
+  // show noticication after click on the share button
+  const handleShare = () => {
+    CopyToClipboard()
+      .then((res) => toast.success("Successfully copied URL to clipboard!"))
+      .catch((err) => toast.error("Faild to copy URL!"));
+  };
+
   return (
     <div>
       <div>
@@ -31,10 +52,21 @@ function MyRecipe() {
           if (item.id == idDrink) {
             return (
               <div key={item.id}>
-                <GridContainer fluid>
+                <GridContainer>
                   <TopLeft>
-                    <h1>{item.cocktailName}</h1>
-                    <p>{item.category}</p>
+                    <div>
+                      <h1>{item.cocktailName}</h1>
+                      <p>{item.category}</p>
+
+                      <Tooltip title="Share URL">
+                        <FontAwesomeIcon
+                          icon={faShare}
+                          size="2x"
+                          className="fa-icon-share"
+                          onClick={handleShare}
+                        />
+                      </Tooltip>
+                    </div>
                   </TopLeft>
                   <TopRight>
                     <img src={item.image} alt={item.cocktailName} />
@@ -91,13 +123,3 @@ function MyRecipe() {
 }
 
 export default MyRecipe;
-const Iframe = styled.iframe`
-  margin-top: 10rem;
-  height: 50rem;
-  width: 80%;
-  margin-bottom: 13rem;
-  @media screen and (max-width: 600px) {
-    height: 20rem;
-    width: 80%;
-  }
-`;
