@@ -103,6 +103,7 @@ const Card = styled.div`
   &:hover {
     box-shadow: 14px 6px 19px -1px rgba(0, 0, 0, 0.75);
     transform: scale(1.05);
+    cursor: pointer;
   }
 
   img {

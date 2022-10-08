@@ -68,3 +68,14 @@ export const BottomRight = styled.div`
   display: flex;
   flex-direction: column;
 `
+export const Video = styled.div`
+  height: 50rem;
+  width: 200%;
+  margin-bottom: 13rem;
+  grid-column-start: 1;
+  grid-column-end: 2;
+`
+export const Iframe = styled.iframe`
+  width: 70%;
+  height: 70%;
+`

@@ -6,6 +6,8 @@ import {
   TopRight,
   BottomLeft,
   BottomRight,
+  Video,
+  Iframe,
 } from "./ShowRecipeStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faShare } from "@fortawesome/fontawesome-free-solid";
@@ -223,15 +225,4 @@ function ShowRecipe() {
 
 export default ShowRecipe;
 
-const Video = styled.div`
-  height: 50rem;
-  width: 200%;
-  margin-bottom: 13rem;
-  grid-column-start: 1;
-  grid-column-end: 2;
-`;
-  
-  const Iframe = styled.iframe`
-  width: 70%;
-  height: 70%;
-`
+
