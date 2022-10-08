@@ -48,7 +48,11 @@ export const TopLeft = styled.div`
 export const TopRight = styled.div`
   flex: 50%;
   img {
-    width: 100%;
+    width: 80%;
+    border: 2px solid black;
+    border-radius: 1rem;
+    margin-top: 3rem;
+    margin-right: rem;
   }
 `;
 export const BottomLeft = styled.div`
@@ -62,18 +66,18 @@ export const BottomLeft = styled.div`
   }
 `;
 export const BottomRight = styled.div`
-  padding: 50px 30px 70px;  
+  padding: 50px 30px 70px;
   display: flex;
   flex-direction: column;
-`
+`;
 export const Video = styled.div`
   height: 50rem;
   width: 200%;
   margin-bottom: 13rem;
   grid-column-start: 1;
   grid-column-end: 2;
-`
+`;
 export const Iframe = styled.iframe`
   width: 70%;
   height: 70%;
-`
+`;
