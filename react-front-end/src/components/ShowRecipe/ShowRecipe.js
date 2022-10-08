@@ -215,9 +215,11 @@ function ShowRecipe() {
           <h3>Instructions</h3>
           <p>{drink.strInstructions}</p>
         </BottomRight>
-        <Video>
-          {drink.strVideo && <Iframe src={getUrl(drink.strVideo)}></Iframe>}
-        </Video>
+        {drink.strVideo &&
+          <Video>
+            <Iframe src={getUrl(drink.strVideo)}></Iframe>
+          </Video>
+        }
       </GridContainer>
     </div>
   );
