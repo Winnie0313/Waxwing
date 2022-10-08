@@ -12,8 +12,8 @@ function NavigationBar() {
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <img 
-            src='../images/logo.png'
+          <img
+            src="../images/logo.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
@@ -65,10 +65,10 @@ function NavigationBar() {
           <Nav>
             {user ? (
               <div className="navbar-right">
-                <NavDropdown
+                <NavLink
                   style={{ cursor: "default" }}
-                  title={`Welcome ${user.name}!`}
-                >
+                >{`Welcome ${user.name}!`}</NavLink>
+                <NavDropdown title="Click here to see more ">
                   <NavDropdown.Item eventKey="4" as={Link} to="/Favourites">
                     Favourites
                   </NavDropdown.Item>
