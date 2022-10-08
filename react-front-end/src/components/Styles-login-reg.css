@@ -67,9 +67,8 @@ button {
 .footer-container {
   position: fixed;
   bottom: 0;
-
   width: 100%;
-  background-color: rgb(5, 4, 4);
+  background-color: rgb(33, 37, 41);
   color: azure;
 }
 

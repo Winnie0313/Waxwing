@@ -5,7 +5,7 @@ import Error from "./Error";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
-import { TiDeleteOutline } from "react-icons/ti";
+import { RiDeleteBin5Line } from "react-icons/ri";
 import Styled from "styled-components";
 
 function MyDrinks() {
@@ -59,7 +59,7 @@ function MyDrinks() {
                       <img src={item.image} alt={item.cocktailName} />
                       <h4> {item.cocktailName}</h4>
                     </Link>
-                    <TiDeleteOutline
+                    <RiDeleteBin5Line
                       title="Delete this cocktail"
                       size="2rem"
                       id={item.id}
