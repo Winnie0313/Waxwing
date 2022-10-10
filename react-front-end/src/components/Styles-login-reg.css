@@ -1,3 +1,4 @@
+/* forms */
 .auth-form-container,
 .login-form,
 .register-form {
@@ -9,6 +10,14 @@
   font-family: "Aclonica", sans-serif;
 }
 
+.form-bg {
+  background: rgb(28, 22, 22);
+  background: linear-gradient(
+    90deg,
+    rgba(28, 22, 22, 1) 16%,
+    rgba(71, 70, 71, 1) 97%
+  );
+}
 @media screen and (min-width: 992px) {
   .auth-form-container {
     width: 50%;

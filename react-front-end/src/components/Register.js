@@ -8,21 +8,21 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const { user, setUser } = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext);
 
   // function to post user into database and set user context
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(name, email, password);
 
-    if(!name || !email || !password) {
+    if (!name || !email || !password) {
       alert("If you want to start drinking, you need to fill out the form!");
       return;
     }
 
     fetch("/api/users", {
       method: "POST",
-      headers: { "Content-Type": "application/json", },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password }),
     })
       .then((res) => res.json())
@@ -33,11 +33,11 @@ function Register() {
       })
       .catch((err) => console.log(err));
 
-      navigate("/home");
+    navigate("/home");
   };
 
   return (
-    <div className="auth-form-container">
+    <div className="auth-form-container form-bg">
       <h2>Register</h2>
       <form className="register-form" onSubmit={handleSubmit}>
         <label htmlFor="name">Full name</label>

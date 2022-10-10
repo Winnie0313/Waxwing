@@ -8,33 +8,32 @@ function Login(props) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const { user, setUser } = useContext(UserContext)
-  
+  const { user, setUser } = useContext(UserContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // check email and password 
-    axios.post("/api/users/login", {
-      email: email,
-      password: pass
-    })
-    .then((response) => {
-      if(response.data.length){
-        setUser(response.data[0]);
-        navigate("/");
-      } else {
-        alert("Please enter correct email or password.")
-      }
-      console.log("response is: ", response);
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-
+    // check email and password
+    axios
+      .post("/api/users/login", {
+        email: email,
+        password: pass,
+      })
+      .then((response) => {
+        if (response.data.length) {
+          setUser(response.data[0]);
+          navigate("/");
+        } else {
+          alert("Please enter correct email or password.");
+        }
+        console.log("response is: ", response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
-    <div className="auth-form-container">
+    <div className="auth-form-container form-bg">
       <h2>Login</h2>
       <form className="login-form" onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
