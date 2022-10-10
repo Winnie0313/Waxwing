@@ -6,6 +6,14 @@ export const GridContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   width: 100vw;
   height: 100vh;
+  background-color: red;
+
+  @media only screen and (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: green;
+  }
 `;
 
 // const Top = styled.div`
@@ -69,8 +77,24 @@ export const Video = styled.div`
   margin-bottom: 13rem;
   grid-column-start: 1;
   grid-column-end: 2;
+
+  @media only screen and (max-width: 600px) {
+    height: 100rem;
+    width: 100%;
+    margin-bottom: 30rem;
+    padding-bottom: 15rem;
+  }
+
 `;
 export const Iframe = styled.iframe`
   width: 70%;
   height: 70%;
+
+  @media only screen and (max-width: 600px) {
+    width: 70%;
+    height: 150%;
+  }
 `;
+
+
+
