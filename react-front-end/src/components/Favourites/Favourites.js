@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
 import CentredModal from "../Modal";
-import styled from "styled-components";
-import { motion } from "framer-motion";
+import { Flex, CardFlex } from "../Search/CardStyles";
 
 const Favourites = () => {
   // Have to add user context to this page once login is accessing the user
@@ -50,7 +49,7 @@ const Favourites = () => {
         <h1>Favourites</h1>
       </div>
       <>
-        <Grid
+        <Flex
           animate={{ opacity: 1 }}
           initial={{ opacity: 0 }}
           exit={{ opacity: 0 }}
@@ -58,13 +57,13 @@ const Favourites = () => {
         >
           {db.map((item) => {
             return (
-              <Card
+              <CardFlex
                 key={item.idDrink}
                 onClick={() => handleModal(item.idDrink)}
               >
                 <img src={item.strDrinkThumb} alt={item.strDrink} />
                 <h4> {item.strDrink}</h4>
-              </Card>
+              </CardFlex>
             );
           })}
 
@@ -78,49 +77,10 @@ const Favourites = () => {
             category={drinkObject.strCategory}
             alcohol={drinkObject.strAlcoholic}
           />
-        </Grid>
+        </Flex>
       </>
     </>
   );
 };
-
-const Grid = styled(motion.div)`
-  margin-top: 3rem;
-  margin-left: 3rem;
-  margin-right: 3rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  grid-gap: 3rem;
-  padding-bottom: 5rem;
-`;
-
-const Card = styled.div`
-  border: 2px solid black;
-  background-color: black;
-  border-radius: 2rem;
-
-  transition: all 0.2s ease-in-out;
-  &:hover {
-    box-shadow: 14px 6px 19px -1px rgba(0, 0, 0, 0.75);
-    transform: scale(1.05);
-    cursor: pointer;
-  }
-
-  img {
-    width: 100%;
-    /* border-radius: 2rem; */
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-  }
-
-  a {
-    text-decoration: none;
-  }
-  h4 {
-    text-align: center;
-    padding: 1rem;
-    color: white;
-  }
-`;
 
 export default Favourites;
