@@ -17,8 +17,9 @@ export const Flex = styled(motion.div)`
   & {
     .delete-btn {
       position: absolute;
-      margin-top: -28.5rem;
-      margin-left: 10rem;
+      display: none;
+      margin-left: -1rem;
+      margin-top: -6.5rem;
       color: black;
       cursor: pointer;
       &:hover {
@@ -35,20 +36,20 @@ export const CardFlex = styled.div`
   border-radius: 2rem;
   width: 25rem;
   margin-bottom: 3rem;
-
   transition: all 0.2s ease-in-out;
   &:hover {
     box-shadow: 14px 6px 19px -1px rgba(0, 0, 0, 0.75);
     transform: scale(1.05);
     cursor: pointer;
+    .delete-btn {
+      display: inline-block;
+    }
   }
-
   img {
     width: 100%;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
   }
-
   a {
     text-decoration: none;
   }
@@ -63,7 +64,6 @@ export const CardFlex = styled.div`
 
 export const FormStyle = styled.form`
   margin: 0rem 5rem;
-
   width: 100%auto;
   div {
     width: 100%auto;
