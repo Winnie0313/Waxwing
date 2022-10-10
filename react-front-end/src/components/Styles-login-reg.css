@@ -104,6 +104,11 @@ button {
   margin-bottom: 2rem;
 }
 
+/* /// Search bar  */
+.searchBar {
+  margin-top: 2rem;
+}
+
 @media screen and (max-width: 600px) {
   .footerr {
     /* background-color: red; */

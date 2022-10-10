@@ -59,7 +59,7 @@ function SearchedFirst() {
   };
 
   return (
-    <div>
+    <div className="searchBar">
       <FormStyle onSubmit={submitHandler}>
         <div>
           <FaSearch></FaSearch>

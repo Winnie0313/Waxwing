@@ -16,7 +16,7 @@ function SearchedIng() {
   let params = useParams();
 
   const erroMsg =
-    "Oops , couldn't find any drinks, please try other ingredients";
+    "Oops , couldn't find any cocktails, please try other ingredients";
 
   ///// Functions for the search bar/modal
   const getSearched = (name) => {
@@ -65,7 +65,7 @@ function SearchedIng() {
   };
 
   return (
-    <div>
+    <div className="searchBar">
       <FormStyle onSubmit={submitHandler}>
         <div>
           <FaSearch></FaSearch>

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import CentredModal from "../Modal";
 import Search from "./Search";
 import Error from "../Error";
+import BrandBar from "../Brand/BrandBar";
 const axios = require("axios");
 
 function Searched() {
@@ -46,6 +47,10 @@ function Searched() {
 
   return (
     <div>
+      <BrandBar
+        title="Welcome to Waxwing"
+        description="The cedar waxwing is a bird native to North America, a natural work of art known to feast on fermented berries and get a little tipsy. Their habits and their beauty inspired the creation of a space where people can share their own unique and beautiful cocktail creations."
+      />
       <Search />
 
       <Flex
