@@ -8,6 +8,7 @@ import {
   BottomLeft,
   BottomRight,
   Iframe,
+  Video,
 } from "../ShowRecipe/ShowRecipeStyles";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -110,8 +111,10 @@ function MyRecipe() {
                     <h3>Instructions</h3>
                     <p>{item.instructions}</p>
                   </BottomRight>
+                  <Video>
+                    {item.video && <Iframe src={getUrl(item.video)}></Iframe>}
+                  </Video>
                 </GridContainer>
-                {item.video && <Iframe src={getUrl(item.video)}></Iframe>}
               </div>
             );
           }
