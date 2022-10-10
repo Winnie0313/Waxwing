@@ -215,15 +215,14 @@ function ShowRecipe() {
           <h3>Instructions</h3>
           <p>{drink.strInstructions}</p>
         </BottomRight>
-        {drink.strVideo &&
+        {drink.strVideo && (
           <Video>
             <Iframe src={getUrl(drink.strVideo)}></Iframe>
           </Video>
-        }
+        )}
       </GridContainer>
     </div>
   );
 }
 
 export default ShowRecipe;
-

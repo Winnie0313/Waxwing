@@ -13,33 +13,27 @@ export const GridContainer = styled.div`
 // `
 export const TopLeft = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Bungee&family=Lobster&family=Source+Sans+Pro:ital,wght@0,600;1,300&display=swap");
-
   display: grid;
   align-items: center;
   flex: 50%;
   padding-left: 30px;
   padding-right: 30px;
-
   h1 {
     padding: 20px;
     font-size: 100px;
     font-family: "Lobster", cursive;
   }
-
   p {
     font-size: 20px;
     padding-bottom: 30px;
   }
-
   .fa-icon-heart {
     padding-right: 20px;
   }
-
   .fa-icon-heart:hover {
     color: red;
     cursor: pointer;
   }
-
   .fa-icon-share:hover {
     color: grey;
     cursor: pointer;
@@ -60,7 +54,6 @@ export const BottomLeft = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   li {
     text-align: left;
   }
