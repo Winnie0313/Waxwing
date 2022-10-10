@@ -21,7 +21,7 @@ function SearchByIngred() {
   // Vodka,Tomato juice,Lime
 
   return (
-    <div>
+    <div className="searchBar">
       <FormStyle onSubmit={submitHandler}>
         <div>
           <FaSearch></FaSearch>

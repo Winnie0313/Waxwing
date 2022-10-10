@@ -18,7 +18,7 @@ function SearchByFirst() {
   //  c
   //  d
   return (
-    <div>
+    <div className="searchBar">
       <FormStyle onSubmit={submitHandler}>
         <div>
           <FaSearch></FaSearch>

@@ -84,9 +84,9 @@ function NavigationBar() {
                   bg="dark"
                   id="collasible-nav-dropdown"
                 >
-                  <NavDropdown.Item as={Link} to={"/search"}>
+                  {/* <NavDropdown.Item as={Link} to={"/search"}>
                     Name
-                  </NavDropdown.Item>
+                  </NavDropdown.Item> */}
                   <NavDropdown.Item as={Link} to={"/SearchByFirst"}>
                     First letter
                   </NavDropdown.Item>
