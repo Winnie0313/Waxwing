@@ -20,7 +20,7 @@ export const Flex = styled(motion.div)`
       display: none;
       margin-left: -1rem;
       margin-top: -6.5rem;
-      color: black;
+      color: white;
       cursor: pointer;
       &:hover {
         color: red;

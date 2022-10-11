@@ -68,7 +68,7 @@ function NewCocktail() {
         ingredient1: cocktailInfo.ingredient1,
         ingredient2: cocktailInfo.ingredient2,
         ingredient3: cocktailInfo.ingredient3,
-        ingredient4: cocktailInfo.ingredient3,
+        ingredient4: cocktailInfo.ingredient4,
         measurement1: cocktailInfo.measurement1,
         measurement2: cocktailInfo.measurement2,
         measurement3: cocktailInfo.ingredient3,
