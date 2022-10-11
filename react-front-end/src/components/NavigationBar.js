@@ -68,7 +68,7 @@ function NavigationBar() {
                 <NavLink
                   style={{ cursor: "default" }}
                 >{`Welcome ${user.name}!`}</NavLink>
-                <NavDropdown title="Click here to see more ">
+                <NavDropdown title="My Bar ">
                   <NavDropdown.Item eventKey="4" as={Link} to="/Favourites">
                     Favourites
                   </NavDropdown.Item>
