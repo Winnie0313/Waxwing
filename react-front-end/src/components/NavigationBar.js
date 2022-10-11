@@ -45,7 +45,7 @@ function NavigationBar() {
                 Milk / Float /shake
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to={"/drink/c=shot"}>
-                shot
+                Shot
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to={"/drink/c=Soft_Drink"}>
                 Soft Drink
