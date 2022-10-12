@@ -28,8 +28,6 @@ function ShowRecipe() {
   // get drink id from the endpoint
   const { id } = useParams();
 
-  // console.log("user is: ", user);
-
   useEffect(() => {
     getDrinkById();
   }, []);
@@ -45,12 +43,10 @@ function ShowRecipe() {
     axios
       .get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
       .then((response) => {
-        // console.log("response is: ", response);
         setDrink(response.data.drinks[0]);
         getIngredientsForDrink(response.data.drinks[0]);
         getMeasurementsForDrink(response.data.drinks[0]);
 
-        // console.log(response.data.drinks[0])
       })
       .catch((err) => console.log(err));
   };
