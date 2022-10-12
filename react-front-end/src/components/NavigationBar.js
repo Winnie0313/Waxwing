@@ -45,7 +45,7 @@ function NavigationBar() {
                 Milk / Float /shake
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to={"/drink/c=shot"}>
-                shot
+                Shot
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to={"/drink/c=Soft_Drink"}>
                 Soft Drink
@@ -68,7 +68,7 @@ function NavigationBar() {
                 <NavLink
                   style={{ cursor: "default" }}
                 >{`Welcome ${user.name}!`}</NavLink>
-                <NavDropdown title="Click here to see more ">
+                <NavDropdown title="My Bar ">
                   <NavDropdown.Item eventKey="4" as={Link} to="/Favourites">
                     Favourites
                   </NavDropdown.Item>

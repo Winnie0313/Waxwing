@@ -68,10 +68,10 @@ function NewCocktail() {
         ingredient1: cocktailInfo.ingredient1,
         ingredient2: cocktailInfo.ingredient2,
         ingredient3: cocktailInfo.ingredient3,
-        ingredient4: cocktailInfo.ingredient3,
+        ingredient4: cocktailInfo.ingredient4,
         measurement1: cocktailInfo.measurement1,
         measurement2: cocktailInfo.measurement2,
-        measurement3: cocktailInfo.ingredient3,
+        measurement3: cocktailInfo.measurement3,
         measurement4: cocktailInfo.measurement4,
         category: cocktailInfo.category,
         instructions: cocktailInfo.instructions,
@@ -87,12 +87,7 @@ function NewCocktail() {
   };
 
   return (
-    <div
-      className="auth-form-container newCockt form-bg"
-      // style={{
-      //   backgroundImage: `url("https://images.unsplash.com/photo-1597075759290-5c29a23c8a16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80")`,
-      // }}
-    >
+    <div className="auth-form-container newCockt form-bg">
       <h2>Add new cocktail</h2>
       <Form className="register-form" onSubmit={handleSubmit}>
         <label>Name of your cocktail</label>
@@ -159,7 +154,8 @@ function NewCocktail() {
           type="text"
           onChange={handelChange}
         />
-        <label>Is this an Alcoholic drink</label>
+
+        <label>Is this an alcoholic drink ?</label>
         <Form.Select
           value={cocktailInfo.alcoholic}
           name="alcoholic"
@@ -167,18 +163,25 @@ function NewCocktail() {
           onChange={handelChange}
           className="options"
         >
-          <option value=""> chose an option</option>
+          <option value=""> Chose an option</option>
           <option value="Alcoholic">Yes</option>
           <option value="Non-Alcoholic">No</option>
         </Form.Select>
-
         <label>Category</label>
-        <input
+        <Form.Select
           value={cocktailInfo.category}
           name="category"
           type="text"
           onChange={handelChange}
-        />
+          className="options"
+        >
+          <option value=""> Chose category</option>
+          <option value="Cocktail">Cocktail</option>
+          <option value="Ordinary Drink">Ordinary Drink</option>
+          <option value="Shot">Shot</option>
+          <option value="Beer">Beer</option>
+          <option value="Milk / Shake">Milk / Shake</option>
+        </Form.Select>
         <label>Instructions</label>
         <input
           value={cocktailInfo.instructions}
