@@ -21,20 +21,20 @@ This is a single page app that allows users to :
 
 ### DataBase Setup :
 
-- cd express-back-end
-- `sh npm install `
-- `sh psql -h <localhost> -p<5432> -U <labber> -d <nameOfYouDb> `
-- `sh npm run migrate `
-- `sh npm run seed `
-- `sh npm start `
+- cd to express-back-end folder
+- `npm install `
+- `psql -h <localhost> -p<5432> -U <labber> -d <nameOfYouDb> `
+- `npm run migrate `
+- `npm run seed `
+- `npm start `
 
 Front-end setup
 
-- cd react-fron-end
-- `sh npm install `
-- `sh npm start `
+- cd to react-fron-end folder
+- `npm install `
+- `npm start `
 
-## Final Product
+# Final Product
 
 #### Home page
 
