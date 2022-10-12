@@ -6,19 +6,14 @@ export const GridContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   width: 100vw;
   height: 100vh;
-  background-color: red;
 
   @media only screen and (max-width: 600px) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: green;
   }
 `;
 
-// const Top = styled.div`
-//   display: flex;
-// `
 export const TopLeft = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Bungee&family=Lobster&family=Source+Sans+Pro:ital,wght@0,600;1,300&display=swap");
   display: grid;
@@ -46,6 +41,12 @@ export const TopLeft = styled.div`
     color: grey;
     cursor: pointer;
   }
+
+  @media only screen and (max-width: 600px) {
+    h1 {
+      font-size: 70px;
+    }
+  }
 `;
 export const TopRight = styled.div`
   flex: 50%;
@@ -62,14 +63,23 @@ export const BottomLeft = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   li {
     text-align: left;
+  }
+
+  @media only screen and (max-width: 600px) {
+    padding: 50px 30px 0px 30px;
   }
 `;
 export const BottomRight = styled.div`
   padding: 50px 30px 70px;
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: 600px) {
+    padding: 30px 30px 40px;
+  }
 `;
 export const Video = styled.div`
   height: 50rem;
