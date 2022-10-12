@@ -2,13 +2,13 @@
 
 This is a single page app that was built by Mustafa Bhm, Winnie Li and Alexander Jackson as the final project for the Lighthouse Labs full stack development program.
 
-This app allow's the user to :
+This app allow's the users to :
 
-- Search cocktal recipies by category (Alcoholic, Non-alcoholic , Shot ...)
+- Search cocktal recipes by category (Alcoholic, Non-alcoholic , Shot ...)
 - Serach by name , fisrt letter and ingredients
 - Add drinks to their favorite list
-- Share drink recipes link
-- Create their own cocktail recipe and image and video to it
+- Share drink recipe link with friends
+- Create their own cocktail recipe with an image and video attached to it
 
 # Tech Stack:
 
