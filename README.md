@@ -1,9 +1,11 @@
 # Waxwing
 
-This is a single page app that allows users to :
+This is a single page app that was built by Mustafa Bhm, Winnie Li and Alexander Jackson as the final project for the Lighthouse Labs full stack development program.
 
-- search cocktal recipies by category (Alcoholic, Non-alcoholic , Shot ...)
-- serach by name , fisrt letter and ingredients
+This app allow's the user to :
+
+- Search cocktal recipies by category (Alcoholic, Non-alcoholic , Shot ...)
+- Serach by name , fisrt letter and ingredients
 - Add drinks to their favorite list
 - Share drink recipes link
 - Create their own cocktail recipe and image and video to it
