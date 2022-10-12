@@ -36,7 +36,7 @@ function ShowRecipe() {
 
   useEffect(() => {
     // only check favourites
-    if (!user) return;
+    if (!user.id) return;
     checkFavourite();
   }, [user]);
 
@@ -97,15 +97,18 @@ function ShowRecipe() {
   // check if the current recipe is faverited
   const checkFavourite = async () => {
     // fetch favourites of a user
-    const response = await fetch(`/api/favourites/${user.id}`);
-    const data = await response.json();
-    console.log("favourites are: ", data);
+    try {
+      const response = await fetch(`/api/favourites/${user.id}`);
+      const data = await response.json();
+      console.log("favourites are: ", data);
 
-    // check if the current recipe is faverited
-    const foundFavourite = data.find((drink) => drink.api_cocktail_id === id);
-    console.log("foundFavourite is: ", foundFavourite);
-    if (foundFavourite) {
-      setIsFavourited(true);
+      // check if the current recipe is faverited
+      const foundFavourite = data.find((drink) => drink.api_cocktail_id === id);
+      console.log("foundFavourite is: ", foundFavourite);
+      if (foundFavourite) {
+        setIsFavourited(true);
+    }} catch(err) {
+      console.log(err);
     }
   };
 

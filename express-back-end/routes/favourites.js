@@ -6,7 +6,6 @@ module.exports = (knex) => {
   // route to get favourites by user id
 
   router.get('/:id', (req, res) => {
-
     knex
       .select('*')
       .from('favourites')

@@ -11,7 +11,8 @@ export default function UserProvider(props) {
             .then((res) => res.json())
             .then((data) => {
                 setUser(data[0]);
-            });
+            })
+            .catch((err) => console.log(err));
     }, []);
 
     const userData = { user, setUser };

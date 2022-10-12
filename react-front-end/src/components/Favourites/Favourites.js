@@ -12,11 +12,13 @@ const Favourites = () => {
   const [drinkObject, setDrinkObject] = useState({});
 
   useEffect(() => {
+    if (!user.id) return;
     fetchFavourites();
-  }, []);
+  }, [user]);
 
   const fetchFavourites = async () => {
-    const response = await fetch(`/api/favourites/${user.id}`);
+    try {
+      const response = await fetch(`/api/favourites/${user.id}`);
     const data = await response.json();
 
     const drinkArray = await Promise.all(
@@ -30,6 +32,11 @@ const Favourites = () => {
     );
 
     setDb(drinkArray);
+
+    } catch(err){
+      console.log(err);
+    }
+    
   };
 
   const singleDrinkId = (id) => {
