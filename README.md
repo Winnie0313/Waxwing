@@ -1,7 +1,6 @@
 # Waxwing
 
-This is a single page app that allows users to search, create and share cocktail recipes.
-users can:
+This is a single page app that allows users to :
 
 - search cocktal recipies by category (Alcoholic, Non-alcoholic , Shot ...)
 - serach by name , fisrt letter and ingredients
