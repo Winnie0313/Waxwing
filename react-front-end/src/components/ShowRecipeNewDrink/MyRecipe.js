@@ -58,6 +58,13 @@ function MyRecipe() {
                     <div>
                       <h1>{item.cocktailName}</h1>
                       <p>{item.category}</p>
+                      <Tooltip title="Add to favourite">
+                        <FontAwesomeIcon
+                          icon={faHeart}
+                          size="2x"
+                          className="fa-icon-heart"
+                        />
+                      </Tooltip>
 
                       <Tooltip title="Share URL">
                         <FontAwesomeIcon
