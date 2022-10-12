@@ -28,7 +28,7 @@ This is a single page app that allows users to :
 - `npm run seed `
 - `npm start `
 
-Front-end setup
+### Front-end setup
 
 - cd to react-fron-end folder
 - `npm install `
