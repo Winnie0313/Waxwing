@@ -69,3 +69,29 @@ This app allow's the users to :
 #### My cocktails page
 
 ![My cocktails page](screenshots/my%20cocktails%20page.png)
+
+
+## Dependencies
+
+### Front-End
+
+- React
+- Axios 
+- Bootstrap
+- framer-motion
+- Emotion
+- Fontawesome
+- MaterialUI
+- styled-components
+- react-bootstrap
+- web-vitals
+
+### Back-end
+
+- axios
+- body-parser
+- cors
+- dotenv
+- express
+- nodemon
+- pg
